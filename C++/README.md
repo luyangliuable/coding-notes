@@ -2,7 +2,7 @@
 
 ## Case sensitive
 
-**Simple hello-world app:** <br/ >
+**Simple hello-world app:** <br />
 ```C++
 // This program outputs the message "Hello World!" to the monitor
  
