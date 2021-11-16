@@ -73,3 +73,11 @@ g++ hello.cpp
 ```bash
 g++ hello.cpp -o hello
 ```
+C++ is a **compiled language**. That means that to get a program to run, you must first translate it from the human-readable form to something a machine can “understand.” That translation is done by a program called a compiler.
+
+What you read and write is called source code (usually it’s in an English-like language like C++), and what the computer executes is called executable, object code, or machine code (a machine language).
+
+Typically C++ source code files are given the suffix:
+
+.cpp (ex: hello.cpp) or
+.h (ex: std_lib_facilities.h).
