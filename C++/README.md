@@ -29,3 +29,13 @@ C++ is a case-sensitive language. If you were to type Cout or COUT, the compiler
 ```C++
 #include <iostream>
 ```
+
+## Code → Save → Compile → Execute
+
+When you program in C++, you mainly go through 4 phases during development:
+
+**Code** — writing the program
+**Save** — saving the program
+**Compile** — compiling via the terminal
+**Execute** — executing via the terminal
+And repeat (debug the errors if needed).
