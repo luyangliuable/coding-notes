@@ -19,4 +19,13 @@ int main() {
 
 C++ is a case-sensitive language. If you were to type Cout or COUT, the compiler would not know that your intention was to use the keyword cout.
 
+## Comments
 
+```C++
+// This program outputs the message "Hello World!" to the monitor
+```
+
+## Pre-processor directive
+```C++
+#include <iostream>
+```
