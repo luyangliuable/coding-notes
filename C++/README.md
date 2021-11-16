@@ -37,5 +37,5 @@ When you program in C++, you mainly go through 4 phases during development:
 **Code** — writing the program <br />
 **Save** — saving the program <br />
 **Compile** — compiling via the terminal <br />
-Execute — executing via the terminal <br />
+**Execute** — executing via the terminal <br />
 And repeat (debug the errors if needed). <br />
