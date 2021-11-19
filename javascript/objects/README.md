@@ -40,9 +40,9 @@ spaceship.speed = 'Mach 5'; // Creates a new key of 'speed' with a value of 'Mac
 const spaceship = {
   'Fuel Type': 'Turbo Fuel',
   homePlanet: 'Earth',
-  mission: 'Explore the universe' 
+  mission: 'Explore the universe'
 };
- 
+
 delete spaceship.mission;  // Removes the mission property
 ```
 
@@ -51,7 +51,7 @@ delete spaceship.mission;  // Removes the mission property
 
 ```javascript
 const alienShip = {
-  invade: function () { 
+  invade: function () {
     console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called New Xaculon.')
   }
 };
@@ -60,7 +60,7 @@ const alienShip = {
 
 ```javascript
 const alienShip = {
-  invade () { 
+  invade () {
     console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called New Xaculon.')
   }
 };
@@ -79,13 +79,13 @@ const spaceship = {
      telescope: {
         yearBuilt: 2018,
         model: '91031-XLT',
-        focalLength: 2032 
+        focalLength: 2032
      },
     crew: {
-        captain: { 
-            name: 'Sandra', 
-            degree: 'Computer Engineering', 
-            encourageTeam() { console.log('We got this!') } 
+        captain: {
+            name: 'Sandra',
+            degree: 'Computer Engineering',
+            encourageTeam() { console.log('We got this!') }
          }
     },
     engine: {
@@ -101,7 +101,7 @@ const spaceship = {
            terabytes: 50
          }
     }
-}; 
+};
 ```
 
 **Chain operators to access nested properties:**
@@ -117,14 +117,94 @@ const spaceship = {
   homePlanet : 'Earth',
   color : 'silver'
 };
- 
+
 let paintIt = obj => {
   obj.color = 'glorious gold'
 };
- 
+
 paintIt(spaceship);
- 
+
 spaceship.color // Returns 'glorious gold'
 ```
+## Looping Through Objects
 
+```javascript
+let spaceship = {
+  crew: {
+    captain: {
+      name: 'Lily',
+      degree: 'Computer Engineering',
+      cheerTeam() { console.log('You got this!') }
+    },
+    'chief officer': {
+      name: 'Dan',
+      degree: 'Aerospace Engineering',
+      agree() { console.log('I agree, captain!') }
+    },
+    medic: {
+      name: 'Clementine',
+      degree: 'Physics',
+      announce() { console.log(`Jets on!`) } },
+    translator: {
+      name: 'Shauna',
+      degree: 'Conservation Science',
+      powerFuel() { console.log('The tank is full!') }
+    }
+  }
+};
+
+// for...in
+for (let crewMember in spaceship.crew) {
+  console.log(`${crewMember}: ${spaceship.crew[crewMember].name}`);
+}
+```
+
+Loops are programming tools that repeat a block of code until a condition is met. We learned how to iterate through arrays using their numerical indexing, but the key-value pairs in objects aren’t ordered! JavaScript has given us alternative solution for iterating through objects with the for...in syntax .
+
+for...in will execute a given block of code for each property in an object.
+
+## This keyword
+
+
+
+```javascript
+const goat = {
+  dietType: 'herbivore',
+  makeSound() {
+    console.log('baaa');
+  },
+  diet() {
+    console.log(this.dietType);
+  }
+};
+
+goat.diet();
+// Output: herbivore
+```
+
+That’s strange, why is dietType not defined even though it’s a property of goat? That’s because **inside the scope of the .diet() method, we don’t automatically have access to other properties of the goat object**.
+
+## Arrow Functions and this
+
+We saw in the previous exercise that for a method, the calling object is the object the method belongs to. If we use the this keyword in a method then the value of this is the calling object. However, it becomes a bit more complicated when we start using arrow functions for methods. Take a look at the example below:
+
+```javascript
+const goat = {
+  dietType: 'herbivore',
+
+  makeSound() {
+    console.log('baaa');
+  },
+
+  diet: () => {
+    console.log(this.dietType);
+  }
+};
+ 
+goat.diet(); // Prints undefined
+```
+
+In the comment, you can see that goat.diet() would log undefined. So what happened? Notice that the .diet() method is defined using an arrow function.
+
+**Arrow functions inherently bind, or tie, an already defined this value to the function itself that is NOT the calling object.** In the code snippet above, the value of this is the global object, or an object that exists in the global scope, which doesn’t have a dietType property and therefore returns undefined.
 
