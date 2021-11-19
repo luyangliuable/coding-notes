@@ -208,3 +208,19 @@ In the comment, you can see that goat.diet() would log undefined. So what happen
 
 **Arrow functions inherently bind, or tie, an already defined this value to the function itself that is NOT the calling object.** In the code snippet above, the value of this is the global object, or an object that exists in the global scope, which doesn’t have a dietType property and therefore returns undefined.
 
+## Privacy
+
+```javascript
+const bankAccount = {
+  _amount: 1000
+}
+```
+
+In the example above, **the _amount is not intended to be directly manipulated**.
+
+Even so, it is still possible to reassign _amount:
+
+```javascript
+bankAccount._amount = 1000000;
+```
+
