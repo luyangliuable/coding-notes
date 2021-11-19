@@ -20,6 +20,32 @@ returnAnyProp(spaceship, 'homePlanet'); // Returns 'Earth'
 ```
 
 If we tried to write our returnAnyProp() function with dot notation (objectName.propName) the computer would look for a key of 'propName' on our object and not the value of the propName parameter. Let’s get some practice using bracket notation to access properties!
+
+## Objects Property Assignment
+One of two things can happen with property assignment:
+
+* If the property already exists on the object, whatever value it held before will be replaced with the newly assigned value.
+* If there was no property with that name, a new property will be added to the object.
+
+```javascript
+const spaceship = {type: 'shuttle'};
+
+spaceship = {type: 'alien'}; // TypeError: Assignment to constant variable.
+spaceship.type = 'alien'; // Changes the value of the type property
+spaceship.speed = 'Mach 5'; // Creates a new key of 'speed' with a value of 'Mach 5'
+```
+### **Delete** operator
+
+```javascript
+const spaceship = {
+  'Fuel Type': 'Turbo Fuel',
+  homePlanet: 'Earth',
+  mission: 'Explore the universe' 
+};
+ 
+delete spaceship.mission;  // Removes the mission property
+```
+
 ## Methods in objects
 
 
