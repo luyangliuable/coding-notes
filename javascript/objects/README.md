@@ -233,3 +233,27 @@ Even so, it is still possible to reassign _amount:
 bankAccount._amount = 1000000;
 ```
 
+## Getters
+
+
+```javascript
+const person = {
+  _firstName: 'John',
+  _lastName: 'Doe',
+  get fullName() {
+    if (this._firstName && this._lastName){
+      return `${this._firstName} ${this._lastName}`;
+    } else {
+      return 'Missing a first name or a last name.';
+    }
+  }
+}
+ 
+// To call the getter method: 
+person.fullName; // 'John Doe'
+```
+
+* We use the get keyword followed by a function.
+* We use an if...else conditional to check if both _firstName and _lastName exist (by making sure they both return truthy values) and then return a different value depending on the result.
+* We can access the calling object’s internal properties using this. In fullName, we’re accessing both this._firstName and this._lastName.
+* In the last line we call fullName on person. In general, getter methods do not need to be called with a set of parentheses. Syntactically, it looks like we’re accessing a property.
