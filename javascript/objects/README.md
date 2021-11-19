@@ -14,6 +14,8 @@
     - [This keyword](#this-keyword)
     - [Arrow Functions and this](#arrow-functions-and-this)
     - [Privacy](#privacy)
+    - [Getters](#getters)
+    - [Setters](#setters)
 
 <!-- markdown-toc end -->
 
