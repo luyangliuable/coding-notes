@@ -5,6 +5,15 @@
 
 - [Objects](#objects)
     - [Accessing objects bracket notation](#accessing-objects-bracket-notation)
+    - [Objects Property Assignment](#objects-property-assignment)
+        - [**Delete** operator](#delete-operator)
+    - [Methods in objects](#methods-in-objects)
+    - [Nested objects](#nested-objects)
+    - [Pass By Reference](#pass-by-reference)
+    - [Looping Through Objects](#looping-through-objects)
+    - [This keyword](#this-keyword)
+    - [Arrow Functions and this](#arrow-functions-and-this)
+    - [Privacy](#privacy)
 
 <!-- markdown-toc end -->
 
