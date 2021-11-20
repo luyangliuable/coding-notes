@@ -322,3 +322,30 @@ const monsterFactory = (name, age) => {
   }
 };
 ```
+### Destructured Assignment
+
+```javascript
+const vampire = {
+  name: 'Dracula',
+  residence: 'Transylvania',
+  preferences: {
+    day: 'stay inside',
+    night: 'satisfy appetite'
+  }
+};
+
+const { residence } = vampire; 
+console.log(residence); // Prints 'Transylvania'
+
+const { day } = vampire.preferences; 
+console.log(day); // Prints 'stay inside'
+```
+
+
+### Built-in Object methods
+We can also take advantage of built-in methods for Objects!
+
+For example, we have access to object instance methods like: .hasOwnProperty(), .valueOf(), and many more! Practice your documentation reading skills and check out: MDN’s object instance documentation.
+
+
+There are also useful Object class methods such as Object.assign(), Object.entries(), and Object.keys() just to name a few. For a comprehensive list, browse: [MDN’s object instance documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods) 
