@@ -289,4 +289,23 @@ console.log(person._age); // Logs: 40
 person.age = '40'; // Logs: You must assign a number to age
 ```
 
+## Factory functions
 
+**Factory function is a function that returns an object and can be reused to make multiple object instances.** Factory functions can also have parameters allowing us to customize the object that gets returned.
+
+```javascript
+const monsterFactory = (name, age, energySource, catchPhrase) => {
+  return { 
+    name: name,
+    age: age, 
+    energySource: energySource,
+    scare() {
+      console.log(catchPhrase);
+    } 
+  }
+};
+```
+```javascript
+const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');
+ghost.scare(); // 'BOO!'
+```
