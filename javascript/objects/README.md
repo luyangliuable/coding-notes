@@ -309,3 +309,16 @@ const monsterFactory = (name, age, energySource, catchPhrase) => {
 const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');
 ghost.scare(); // 'BOO!'
 ```
+
+## Destructuring
+
+### Property value shorthand
+
+```javascript
+const monsterFactory = (name, age) => {
+  return { 
+    name,
+    age 
+  }
+};
+```
