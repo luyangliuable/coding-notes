@@ -16,6 +16,12 @@
     - [Privacy](#privacy)
     - [Getters](#getters)
     - [Setters](#setters)
+    - [Factory functions](#factory-functions)
+    - [Destructuring](#destructuring)
+        - [Property value shorthand](#property-value-shorthand)
+        - [Destructured Assignment](#destructured-assignment)
+        - [Built-in Object methods](#built-in-object-methods)
+    - [[MDN][MDN]](#mdnmdn)
 
 <!-- markdown-toc end -->
 
@@ -349,3 +355,10 @@ For example, we have access to object instance methods like: .hasOwnProperty(), 
 
 
 There are also useful Object class methods such as Object.assign(), Object.entries(), and Object.keys() just to name a few. For a comprehensive list, browse: [MDN’s object instance documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods) 
+
+## [MDN][MDN]
+
+## [MDN - Objects][MDN - Objects]
+
+[MDN]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
+[MDN - Objects]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
