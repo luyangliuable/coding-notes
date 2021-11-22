@@ -17,3 +17,9 @@ AIR (Annotation, Inspection and recommendation)
 Q-sort
 
 Values-agnostic?
+
+Android application package (APK)
+
+Java abstract syntax tree (PST) analysis
+
+Depth first search
