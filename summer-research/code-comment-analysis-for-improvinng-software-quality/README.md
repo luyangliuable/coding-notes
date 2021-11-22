@@ -6,6 +6,7 @@
 - [Code comment analysis for improving software quality](#code-comment-analysis-for-improving-software-quality)
     - [Annotation language](#annotation-language)
     - [Code editor features](#code-editor-features)
+    - [Specification mining and software bug detection](#specification-mining-and-software-bug-detection)
 
 <!-- markdown-toc end -->
 
@@ -18,3 +19,5 @@
 * For detecting bug and bad comments
 * as documentation to help developers avoid new bugs and better understand code.
     * improve software reliability and maintainability
+
+* Comment analysis tools incl. iComment
