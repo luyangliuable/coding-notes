@@ -8,6 +8,9 @@
 :%s/foo\(\w+\)Bar/& = \1 + \1\Old/
 ```
 
+Can use \0 for all before
+
+
 ### Before
 ```txt
 fooVal1Bar;
@@ -16,7 +19,6 @@ fooVal2Bar;
 
 fooVal3Bar;
 ```
-
 
 ### After
 
