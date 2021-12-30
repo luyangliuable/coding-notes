@@ -1,4 +1,4 @@
-from movies import from movies import movie_dataset, movie_ratings
+from movies import movie_dataset, movie_ratings
 
 def distance(movie1, movie2):
     squared_difference = 0
