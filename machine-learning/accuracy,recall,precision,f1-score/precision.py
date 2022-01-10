@@ -1,7 +1,6 @@
 labels = [1, 0, 0, 1, 1, 1, 0, 1, 1, 1]
 guesses = [0, 1, 1, 1, 1, 0, 1, 0, 1, 0]
 
-
 true_positives = 0
 true_negatives = 0
 false_positives = 0
