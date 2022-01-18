@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <a href="/">Back To Recipe List</a>
+    <h1>{{ template_recipe | title }}</h1>
+    {% if template_description %}
+      <p>{{ template_description }}</p>
+    {%else%}
+      <p>A {{ template_recipe }} recipe.</p>
+    {% endif %}
+    <h3>Ingredients - {{ template_ingredients | length}}</h3>
+    <ul>
+      <!-- Implement a for loop to iterate through
+      `template_ingredients`-->
+    {% for ingredient in template_ingredients %}
+      <li>{{ ingredient }}</li>
+    {% endfor %}
+
+    </ul>
+    <h3>Instructions</h3>
+    <ul>
+    {% for key, instruction in template_instructions|dictsort %}
+      <!-- Add the correct dictionary element to list
+      the instructions -->
+      <p>{{key}}: {{instruction}}</p>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Cooking By Myself</h1>
+        <p>Welcome to my cookbook. These are recipes I like.</p>
+        <!-- Implement a for loop using `template_recipes`-->
+        {% for id, name in template_recipes.items() %}
+        <p><a href="/recipe/{{id}}">{{name}}</a></p>
+        {% endfor %}
+    </body>
+</html>
