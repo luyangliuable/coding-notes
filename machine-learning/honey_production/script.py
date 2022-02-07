@@ -16,4 +16,4 @@ y = df[['totalprod']].values.reshape(-1, 1)
 
 # plt.scatter(X, y)
 
-# plt.show()
+#plt.show()
