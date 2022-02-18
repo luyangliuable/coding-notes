@@ -1,5 +1,6 @@
 import numpy as np
 
+
 p_positive_given_disease = (0.99 * (.00001))/ (1./100000.)
 print(p_positive_given_disease)
 
