@@ -16,9 +16,9 @@ review_words = review.split()
 for word in review_words:
   word_in_pos = pos_counter[word]
   word_in_neg = neg_counter[word]
-
-  pos_probability *= ( word_in_pos  + 1)/ (total_pos + len(pos_counter) )
-  neg_probability *= ( word_in_neg  + 1)/ (total_neg + len(neg_counter) )
-
+  
+  pos_probability *= word_in_pos + 1/ total_pos
+  neg_probability *= word_in_neg + 1/ total_neg
+  
 print(pos_probability)
 print(neg_probability)
