@@ -4,7 +4,11 @@
 
 - [FIT3143 Lab 1](#fit3143-lab-1)
     - [Finding Help](#finding-help)
+        - [**Which text-based command provides information on the use of other Linux commands and utilities? List at least two.](#which-text-based-command-provides-information-on-the-use-of-other-linux-commands-and-utilities-list-at-least-two)
+        - [List the command-line for finding help on the usage of ssh?](#list-the-command-line-for-finding-help-on-the-usage-of-ssh)
+        - [How do you access Linux manual pages? List the full command line for accessing a](#how-do-you-access-linux-manual-pages-list-the-full-command-line-for-accessing-a)
     - [File and Directory Manipulation](#file-and-directory-manipulation)
+        - [List the command-lines for creating and deleting sub-directories.](#list-the-command-lines-for-creating-and-deleting-sub-directories)
     - [Users and Access Control](#users-and-access-control)
         - [To add a new user](#to-add-a-new-user)
         - [To assignment password for new user](#to-assignment-password-for-new-user)
@@ -44,8 +48,8 @@
 
 ## Finding Help
 
-a. **Which text-based command provides information on the use of other Linux commands and utilities? List at least two. 
-**
+### **Which text-based command provides information on the use of other Linux commands and utilities? List at least two. 
+(**)
 
 ```shell
 man
@@ -55,13 +59,13 @@ man
 manual
 ```
 
-b. List the command-line for finding help on the usage of ssh?
+### List the command-line for finding help on the usage of ssh?
 
 ```shell
 man ssh
 ```
 
-c. How do you access Linux manual pages? List the full command line for accessing a
+### How do you access Linux manual pages? List the full command line for accessing a
 particular section. 
 
 e.g. Access section 2
@@ -84,7 +88,7 @@ d. Where would you generally look for help on the Web? List 3 major sites.
 
 ## File and Directory Manipulation 
 
-a. List the command-lines for creating and deleting sub-directories.
+### List the command-lines for creating and deleting sub-directories.
 
 * Create a sub directory
 
@@ -337,3 +341,16 @@ touch test.sh
 chmod u+x test.sh
 ./test.sh
 ```
+
+
+## Networking
+
+
+### Using ifconfig list the following networking parameters for eth0
+#### IP Address 
+```shell
+ipconfig getifaddr en0
+```
+
+#### Hardware Address
+
