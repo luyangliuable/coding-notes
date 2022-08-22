@@ -43,6 +43,11 @@
         - [Count line number](#count-line-number)
     - [List the command-line for search all files with an extension .html on the system.](#list-the-command-line-for-search-all-files-with-an-extension-html-on-the-system)
     - [Create a simple shell script for listing the contents of your directory and make it executable. List the script and the command-line for changing it into an executable file.](#create-a-simple-shell-script-for-listing-the-contents-of-your-directory-and-make-it-executable-list-the-script-and-the-command-line-for-changing-it-into-an-executable-file)
+    - [Networking](#networking)
+        - [Using ifconfig list the following networking parameters for eth0](#using-ifconfig-list-the-following-networking-parameters-for-eth0)
+            - [IP Address](#ip-address)
+            - [Hardware Address](#hardware-address)
+    - [File command](#file-command)
 
 <!-- markdown-toc end -->
 
@@ -354,3 +359,11 @@ ipconfig getifaddr en0
 
 #### Hardware Address
 
+
+## File command
+
+
+* Show file details
+```
+file *
+```
