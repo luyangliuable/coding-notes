@@ -6,12 +6,13 @@ struct Person {
 };
 
 int main(void) {
-  struct Person person1 = {"Martin"};
-  struct Person person2 = {"Michelle"};
+  struct Person person1 = {"Martin", 57};
+  struct Person person2 = {"Michelle", 27};
   // Write your code below
-
-  person1.age = 57;
-  person2.age = 27;
+  struct Person *person1Pointer = &person1;
+  struct Person *person2Pointer = &person2;
+  ( *person1Pointer ).age++;
+  person2Pointer->age += 10;
 
   printf("Hello my name is %s and I am %d years old.\n", person1.name,
          person1.age);
