@@ -1,0 +1,70 @@
+import React from 'react';
+
+class App extends React.Component {
+
+
+    constructor(props) {
+        super(props);
+        this.state = { date: new Date(), display: true };
+    }
+
+
+    render() {
+        return (
+                <>
+                <button onClick={() => this.setState({display: !this.state.display})}>Toggle Hide</button>
+                {this.state.display ? "hello" : "bye"}
+                <div style={
+                    {
+                        position: 'absolute',
+                        left: '25vw',
+                        top: '10vw',
+                        borderRadius: '20px',
+                        background: '#1e90ff',
+                        width: '50vw',
+                        height: '40vw',
+                        color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '40px'
+                    }}>
+
+            {this.props.isPrecise
+             ? this.state.date.toISOString()
+             : this.state.date.toLocaleTimeString()}
+            </div>
+                </>
+        );
+    }
+
+
+    componentDidMount() {
+        const oneSecond = 1000;
+        this.startInterval(oneSecond);
+    }
+
+
+    componentWillUnmount() {
+        clearInterval(this.intervalID);
+    }
+
+    startInterval(delay) {
+        // const delay = 100;
+        this.intervalID = setInterval(() => {
+            this.setState({ date: new Date() });
+        }, delay);
+    }
+
+    componentDidUpdate(prevProps) {
+        if ( this.props.isPrecise === prevProps.isPrecise) {
+            return;
+        };
+
+        clearInterval(this.intervalID);
+        const delay = 100;
+        this.startInterval(delay);
+    }
+}
+
+export default App;
