@@ -1,4 +1,3 @@
-#
 
 const whatsMyAge = () : number => {
     return Math.floor(Math.random() * 120 + 1);
