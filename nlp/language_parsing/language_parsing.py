@@ -1,6 +1,6 @@
 from nltk import RegexpParser
 
-pos_tagged_oz = ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog']
+pos_tagged_oz = ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the' 'lazy' 'dog']
 
 # define noun-phrase chunk grammar here
 chunk_grammar = "NP: {<DT>?<JJ>*<NN>}"
