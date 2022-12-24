@@ -33,7 +33,7 @@ public class Watch3 extends Watch {
 ```
 
 #### Does not need **private** modifier for final fields
-**Static final fields can’t be modified after creation**, so there is no danger of unauthorised modification as there is with non-final fields (which should all be private). 
+**Static final fields can’t be modified after creation**, so there is no danger of unauthorised modification as there is with non-final fields (which should all be private).
 
 ## Reduce dependencies whenever possible! (ReD)
 
