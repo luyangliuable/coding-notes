@@ -1,0 +1,15 @@
+/Users/blackfish/coding-notes/c#/bin/Debug/net7.0/c#
+/Users/blackfish/coding-notes/c#/bin/Debug/net7.0/c#.deps.json
+/Users/blackfish/coding-notes/c#/bin/Debug/net7.0/c#.runtimeconfig.json
+/Users/blackfish/coding-notes/c#/bin/Debug/net7.0/c#.dll
+/Users/blackfish/coding-notes/c#/bin/Debug/net7.0/c#.pdb
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/c#.csproj.AssemblyReference.cache
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/c#.GeneratedMSBuildEditorConfig.editorconfig
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/c#.AssemblyInfoInputs.cache
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/c#.AssemblyInfo.cs
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/c#.csproj.CoreCompileInputs.cache
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/c#.dll
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/refint/c#.dll
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/c#.pdb
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/c#.genruntimeconfig.cache
+/Users/blackfish/coding-notes/c#/obj/Debug/net7.0/ref/c#.dll
