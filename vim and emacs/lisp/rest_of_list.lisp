@@ -18,4 +18,4 @@
 ;; Using cdr
 (defun rest-of-it (cons)
   (setq result ( cdr cons ))
-  )
+)
