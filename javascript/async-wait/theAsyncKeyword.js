@@ -9,7 +9,6 @@ function withConstructor(num){
 }
 
 
-
 withConstructor(0)
 	.then((resolveValue) => {
 		console.log(` withConstructor(0) returned a promise which resolved to: ${resolveValue}.`);
@@ -17,16 +16,6 @@ withConstructor(0)
 
 // Write your code below:
 
-
-
-
-
-
-
-
-
-
-// Leave this commented out until step 3:
 const withAsync = async (num) => {
 	if (num === 0) {
 		return 'zero';

@@ -7,11 +7,9 @@
 
 <!-- markdown-toc end -->
 
-
 * How physical products are used in light of **human capabilities**.
 * Elements of human influence beyond **screen-based products** (e.g. phones)
 * Possible careers: human factor engineer/specialist
-
 
 ## Responsibilities
 * Regulatory compliance (through usability test)
