@@ -19,5 +19,8 @@ int main(int argc, char *argv[]) {
   p1.x = 0.0;      // assign values to its members
   p1.y = 0.2;
   p1.z = 0.4;
+
+  struct point *structptr = &p1;
+  printf("x: %.2lf\n", structptr->x);
   return 0;
 }

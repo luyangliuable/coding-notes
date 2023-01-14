@@ -1,21 +1,21 @@
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main(int argc, char *argv[]) {
-  // Allocate space for an array with n elements
-  // of integer type where n is a variable */
-  const int n = 5;
-  int *ptr = (int *)malloc(n * sizeof(int));
-  if (ptr == NULL) {
-    /* Memory could not be allocated */
-  } else {
-    // Allocation is done
-    for (int i = 0; i < sizeof(ptr)/sizeof(int); i++) {
-      printf("%i.\n", ptr[i]);
-    }
-    free(ptr);  /* free the associated pointer. */
-    ptr = NULL; /* The set NULL value to the pointer. */
-  }
-  return 0;
+int main() {
+  typedef struct {
+    char *str;
+  } test;
+
+  test *t = (test *)malloc(sizeof(test));
+  t->str = (char *)calloc(sizeof(char), 200);
+
+  /* char *str; */
+  /* str = (char *)malloc(20); */
+  /* str = (char *)calloc(sizeof(char), 20); */
+  /* str = (char *)calloc(sizeof(char), 200); */
+  strcpy(t->str, "FIT3173 Software security");
+  printf("String = %s\n", t->str);
+  free(t);
+  return (0);
 }

@@ -35,3 +35,8 @@ git config --global http.postBuffer 524288000
 git gc --agressive
 
 ```
+
+## Remove all files that are currently being ignored by Git,
+```shell
+git ls-files -i -c --exclude-standard | grep -v $(FILES_TO_NOT_REMOVE) | xargs git rm -r --cached
+```
