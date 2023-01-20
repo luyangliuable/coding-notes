@@ -6,3 +6,6 @@ ev
 *.icloud
 *.pdf
 *.out
+*.swp
+*.swo
+*.bak
