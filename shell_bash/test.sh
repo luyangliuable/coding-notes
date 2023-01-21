@@ -1,0 +1,3 @@
+cd $PWD
+
+echo $PWD
