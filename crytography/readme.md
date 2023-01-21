@@ -10,6 +10,22 @@
     - [Password Verification](#password-verification)
         - [Need for:](#need-for)
     - [Commands](#commands)
+    - [Symmetric Crytosystem](#symmetric-crytosystem)
+        - [Issues](#issues)
+    - [Stream Cipher](#stream-cipher)
+        - [WEP](#wep)
+        - [Insecurity of WEP](#insecurity-of-wep)
+        - [Security Analysis of WEP](#security-analysis-of-wep)
+    - [Key Reuse Vulnerability](#key-reuse-vulnerability)
+    - [Block Cipher](#block-cipher)
+        - [Advanced AES Standard](#advanced-aes-standard)
+            - [Incorrect use of Block Cipher](#incorrect-use-of-block-cipher)
+            - [AES Rounds](#aes-rounds)
+            - [Modes of Operation](#modes-of-operation)
+        - [Strength and Weakness of Electronic Code Book ECBs](#strength-and-weakness-of-electronic-code-book-ecbs)
+        - [Cipher Block Chaining](#cipher-block-chaining)
+            - [Strength and Weakness of Cipher Block Chaining](#strength-and-weakness-of-cipher-block-chaining)
+            - [Padding Oracle Attack (POODLE)](#padding-oracle-attack-poodle)
 
 <!-- markdown-toc end -->
 
@@ -45,7 +61,6 @@
 ## Commands
 seed:9D,q^S)Z9tnxW[.%814U:[eKqmV~LD$^{f~.]wDlduZPGiL(%4SHH_)Im6z]/}Yy)~9[5^DUU+<XtQTzg$
 
-
 Deterministic random number generator
 
 ## Symmetric Crytosystem 
@@ -57,6 +72,9 @@ Deterministic random number generator
     * What is the complexity of encryption/descryption
     * What is the size of the cyphertext, relative to the plaintext.
 
+
+## Random Number Generator
+
 ## Stream Cipher
 
 ### WEP
@@ -66,7 +84,6 @@ Deterministic random number generator
 ### Security Analysis of WEP
 
 ## Key Reuse Vulnerability
-
 
 ## Block Cipher
 
