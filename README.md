@@ -1,5 +1,6 @@
 # Coding Notes by Coding Exaples
 
+
 This repository contains my personal coding notes and snippets, organized by language and topic.
 
 The approach is by helping you learn by looking at examples.
