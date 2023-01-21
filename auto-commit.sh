@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# TODO Added following line to cron -e
+# */30 * * * * cd /home/blackfish/Documents/coding-notes && /home/blackfish/Documents/coding-notes/auto-commit.sh
+
+
 # Function to automatically commit changes to a git repository
 function auto_commit() {
     # Print the received argument
