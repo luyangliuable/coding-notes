@@ -1,3 +1,10 @@
+# Ignore Binary files
+*
+!*.*
+!*/
+
+.#*
+
 ev
 *.icloud
 .DS_Store

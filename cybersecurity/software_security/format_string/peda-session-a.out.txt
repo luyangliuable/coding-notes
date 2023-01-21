@@ -1,0 +1,3 @@
+break /media/sf_shared_seed/coding-notes/cybersecurity/software_security/format_string/vulnerability.c:8
+break /media/sf_shared_seed/coding-notes/cybersecurity/software_security/format_string/vulnerability.c:13
+
