@@ -13,7 +13,7 @@ function auto_commit() {
 
     # Create commit message with the modified and untracked files
     if [ -z "$untracked" ] && [ -n "$modified" ]; then
-        gitmessage="Modified notes $modified."
+        gitmessage="Modified $modified."
     elif [ -n "$untracked" ] && [ -n "$modified" ]; then
         gitmessage="Added notes on $untracked. Modified notes $modified."
     elif [ -n "$untracked" ] && [ -z "$modified" ]; then
