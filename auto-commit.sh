@@ -22,11 +22,11 @@ function auto_commit() {
 
     echo $gitmessage
 
-    Add all changes
+    # Add all changes
     git add .
-    Commit with the generated message
+    # Commit with the generated message
     git commit -m "$gitmessage"
-    Push to remote repository
+    # Push to remote repository
     git push
 }
 
