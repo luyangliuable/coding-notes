@@ -28,7 +28,7 @@ Cron is a powerful tool that allows you to automate repetitive tasks, such as ba
 
 ## Troubleshooting
 
-Check the cron logs to see if there are any error messages or issues running the script. On Ubuntu and Debian systems, the cron logs can be found in the /var/log/syslog or /var/log/cron file.
+Check the cron logs to see if there are any error messages or issues running the script. On Ubuntu and Debian systems, the cron logs can be found in the */var/log/syslog* or */var/log/cron* file.
 
 1. Make sure the script has the proper permissions to be executed. The script should be executable by the user that the cron job is running as. You can check the permissions of the script by running the ls -l command on the script and make sure that the x (execute) permission is set for the owner of the script.
 
