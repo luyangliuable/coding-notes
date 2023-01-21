@@ -1,6 +1,7 @@
+# Ignore Binary files
 *
-!/**/
 !*.*
+!*/
 
 ev
 *.icloud
