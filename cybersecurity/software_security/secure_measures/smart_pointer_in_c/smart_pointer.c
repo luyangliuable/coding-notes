@@ -1,8 +1,10 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 struct SimpleSmartPointer {
   int* ptr;
-  void (*deleter)(int*);
+  /* Function pointer: deleter is a pointer to a function that takes a single argument of type int *and returns void. */
+  void (*deleter)(int *);
 };
 
 void int_deleter(int* ptr) {
@@ -21,5 +23,7 @@ int main() {
 
   // Release the memory when done
   myInt.deleter(myInt.ptr);
+
+  printf("Value after deleted: %d\n", *myInt.ptr);
   return 0;
 }
