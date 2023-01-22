@@ -7,11 +7,13 @@
     - [Notion of Trust](#notion-of-trust)
         - [Establishing Trust](#establishing-trust)
     - [Hardware Assisted Trust](#hardware-assisted-trust)
-        - [Examples](#examples)
+        - [Examples (that are also TCBs)](#examples-that-are-also-tcbs)
     - [Trusted computing Base (TCB)](#trusted-computing-base-tcb)
-    - [Trusted Execution and Isolation](#trusted-execution-and-isolation)
-    - [Threat Model](#threat-model)
+    - [Isolation in Trusted Execution](#isolation-in-trusted-execution)
+    - [SGX Threat Model](#sgx-threat-model)
     - [SGX Security Services](#sgx-security-services)
+        - [Features of SGX Trusted Computing Enabler](#features-of-sgx-trusted-computing-enabler)
+    - [SGX + Secure Boot](#sgx--secure-boot)
     - [Employ basic programming model of SGX](#employ-basic-programming-model-of-sgx)
     - [Side-channel Attacks Methods](#side-channel-attacks-methods)
     - [SGX Enclave](#sgx-enclave)
@@ -95,10 +97,33 @@ Use of hardware-based security features to enhance the security and trust of sys
 * Cloud provider's software (e.g. web, cloud and remote access services) are malicious,
   * modifying the OS to install malware.
   * modifying the firmware to disable security features.
-  * SGX guarantees that the code/data inside the enclave cannot be accessed by an attacker, even if the attacker has gained full control of the system's firmware, BIOS, and operating system.
+  * **SGX guarantees that the code/data inside the enclave cannot be accessed by an attacker, even if the attacker has gained full control of the system's firmware, BIOS, and operating system**.
+
+* All hardware besides the CPU is untrusted
+    * An attacker could install a hardware **keylogger** on via I/O, or could use a **hardware-based rootkit** to gain persistent access to the system.
+    * **If either CPU, firmware, BIOS, or operating system is compromised the security guarantees provided by SGX can be bypassed**.
 
 
 ## SGX Security Services
+* Trusted computing enabler
+    * secure computer on someone else's computer
+    * ability to provide **trusted execution environment** (TEE) enabling deployment of secure applications/services
+      * TEE is a secure area of the main processor
+
+### Features of SGX Trusted Computing Enabler
+* Confidentiality: code and data inside an enclave cannot be accessed or modified by an attacker, even if the attacker has gained full control of the system's firmware, BIOS, and operating system.
+
+* Integrity: SGX guarantees that the code and data inside an enclave cannot be tampered with or modified by an attacker, even if the attacker has gained full control of the system's firmware, BIOS, and operating system.
+
+* Remote Attestation: SGX guarantees that a **remote party can verify the identity and configuration of an enclave, and can confirm that the code and data inside the enclave have not been tampered with or modified**.
+
+* Key Protection: SGX guarantees that the keys used to encrypt and decrypt data inside the enclave are protected from attackers.
+
+
+## SGX + Secure Boot
+By using Secure Boot and SGX together, the system can ensure that it is running only authorized software during the boot process and that sensitive data and operations are protected by SGX. Secure boot can also ensure that the firmware and OS are not compromised before SGX starts.
+
+* Secure boot is not part of SGX.
 
 ## Employ basic programming model of SGX
 
