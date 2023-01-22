@@ -136,6 +136,21 @@ of App                 call data   of App
  --------------------
 ```
 
+## Sealed Storaged
+Sealed storage in an enclave refers to a mechanism that allows data to be encrypted and stored within the enclave in a secure and tamper-proof manner. The data can be sealed, meaning that it is encrypted and bound to a specific set of attestation parameters, such as a specific enclave and platform, so that it can only be accessed when those parameters are met.
+
+This sealed storage is used to store sensitive data such as keys, credentials, and other sensitive data that must be protected from disclosure. The data is encrypted with a key that is derived from the attestation parameters and is stored within the enclave.
+
+Sealing the data makes it resistant to attacks that attempt to extract the data from the enclave, as the data is only accessible when the attestation parameters are met, and it would be difficult to extract the key used to encrypt the data.
+
+Sealed storage can also be used to store an encrypted version of the data, which can be decrypted only inside the enclave. This ensures that the data is protected even if the attacker is able to extract the data from the enclave.
+
+In summary, Sealed storage in an enclave is a mechanism that allows data to be encrypted and stored within the enclave in a secure and tamper-proof manner. The data is sealed, meaning that it is encrypted and bound to specific attestation parameters, such as a specific enclave and platform, so that it can only be accessed when those parameters are met. This makes the data resistant to extraction and disclosure.
+
+
+
+
+
 ## Side-channel Attacks Methods
 A type of attack that aims to extract sensitive information from a system by **analysing low-level information** such as **power consumption**, **electromagnetic emissions**, or **timing**. These attacks can be used to extract sensitive information such as encryption keys or other secret data.
 
@@ -250,7 +265,9 @@ cache   | ....         |           | ...          |
 3. During the instruction retirement, commit to registers in order or roll back if CPU realises a mispredication or exception
 
 #### Meltdown Attack
-1. Access a probe buffer with *offset = secret * 4096*.
+    1. Access a probe buffer with *offset = secret * 4096*.
+    * 4096 = size of page memory
+    * "secret" = arbitrary value that the chosen to target a specific memory page believed to contain sensitive data.
     * Purpose is to load memory page into cache.
     * Location likely to contain sensitive data.
     * "Secret" is the guess? and value of the secret data.
