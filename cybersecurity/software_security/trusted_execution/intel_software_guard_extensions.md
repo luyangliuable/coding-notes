@@ -38,11 +38,13 @@
 ### Establishing Trust
 Trust can be established through a combination of factors such as:
 
-* Authentication: The process of verifying the identity of a user or system
-* Access controls: Restricting access to resources to authorized users
-* Encryption: Protection of data in transit and at rest
-* Monitoring: Detection and response to security incidents
-* Policies, procedures, and standards: Governing the security of systems and networks
+* Trust Verification Mechanisms
+  * **Authentication**: The process of verifying the identity of a user or system
+  * **Access controls**: Restricting access to resources to authorized users
+  * **Encryption**: Protection of data in transit and at rest
+* Prevention and Response Mechanisms
+  * **Monitoring**: Detection and response to security incidents
+  * **Policies**, **procedures**, and **standards**: Governing the security of systems and networks
 
 ## Hardware Assisted Trust
 Use of hardware-based security features to enhance the security and trust of system.
@@ -73,7 +75,11 @@ Use of hardware-based security features to enhance the security and trust of sys
     * Incl. built-in mechanisms to detect and prevent unauthorised access or modifications to its own components.
 
 ## Isolation in Trusted Execution
-* Can create self-contained computation
+* Separation of resources via trust verification mechanisms
+    * use of authentication, encryption, access controls and encryption.
+* Can create self-contained **computation** and **communication** environments
+    * e.g. **Virtual machines** or **containers** isolated from the rest of the system.
+    * **Limit the scope** or attack surface of a potential security incident.
 * System separation in trusted and untrusted zones.
     * Trusted zone is protected by TCB.
     * Trusted zone: Secure environment for sensitive operations and data.
