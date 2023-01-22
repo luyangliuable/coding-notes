@@ -7,6 +7,8 @@
     - [Notion of Trust](#notion-of-trust)
         - [Establishing Trust](#establishing-trust)
     - [Hardware Assisted Trust](#hardware-assisted-trust)
+        - [Examples](#examples)
+    - [Trusted computing Base (TCB)](#trusted-computing-base-tcb)
     - [Trusted Execution and Isolation](#trusted-execution-and-isolation)
     - [Threat Model](#threat-model)
     - [SGX Security Services](#sgx-security-services)
@@ -33,8 +35,6 @@
     * Multi-dimensional concept,
         * different trust dimensions can be considered such as trust in the identity, trust in the technology, trust in the organization, and trust in the security controls and practices.
 
-
-
 ### Establishing Trust
 Trust can be established through a combination of factors such as:
 
@@ -45,9 +45,39 @@ Trust can be established through a combination of factors such as:
 * Policies, procedures, and standards: Governing the security of systems and networks
 
 ## Hardware Assisted Trust
-Use of hardware-based security features to enhance the security of system.
+Use of hardware-based security features to enhance the security and trust of system.
 
-## Trusted Execution and Isolation
+### Examples (that are also TCBs)
+* Secure boot
+    * Verify the integrity of system's firmware and os during startup.
+    * Prevent malicious software from loaded during boot process.
+* Secure storage
+    * Hardware-based encryption and secure key storage to protect sensitive data (e.g. on hard disk).
+* **Secure enclaves**
+    * Hardware or software environment adding extra layer of security for sensitive data and operations.
+    * Only trusted software is executed.
+    * Sensitive data is protected.
+    * Operations are performed in a secure environment
+    * Only trusted software is executed, sensitive data is protected, operations are performed in a secure environment.
+
+## Trusted computing Base (TCB)
+* Use of hardware, software and controls to
+    * ensure trust
+    * enforce security policy.
+    * protect system from unauthorised access
+* Has the **highest OS privilege** level.
+* **Responsible for system's security police enforcement**. **Core** of system's security
+* It is **small** to facility thorough and detailed examination of come base
+* Managed and **thoroughly checked periodically** for security compliance.
+* Must be also be protected from itself
+    * Incl. built-in mechanisms to detect and prevent unauthorised access or modifications to its own components.
+
+## Isolation in Trusted Execution
+* Can create self-contained computation
+* System separation in trusted and untrusted zones.
+    * Trusted zone is protected by TCB.
+    * Trusted zone: Secure environment for sensitive operations and data.
+    * Untrusted zone: Store less sensitive operations and data can be access by trusted zone.
 
 ## Threat Model
 
