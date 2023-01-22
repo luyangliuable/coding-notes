@@ -126,8 +126,45 @@ By using Secure Boot and SGX together, the system can ensure that it is running 
 * Secure boot is not part of SGX.
 
 ## Employ basic programming model of SGX
+1. App is built with trusted and untrusted parts.
+2. App runs and creates enclave which is placed in trusted memory
+3. Trusted function is called; code running inside enclave sees data
+    * External access to data is denied.
+4. Function returns; enclave data (sensitive) remains in trusted memory
+
+```
+
+Untrusted Part                     Trusted Part
+of App                 call data   of App
+ --------------------       __ --------------
+|                    |     |  |              |
+|  1. Create Enclave |     |--|              |
+|                    |     |  |-> 3. Execute |
+|                    |     |--|     .        |
+|2. Call trusted func|---->|  |     .        |
+|                    |     |--|     .        |
+|                    |     |  |     .        |
+|                    |      --|     v        |
+|    etc             |<-------| 4. return    |
+|                    |        |              |
+|                    |         --------------
+|                    |
+|                    |
+ --------------------
+```
 
 ## Side-channel Attacks Methods
+A type of attack that aims to extract sensitive information from a system by **analysing low-level information** such as **power consumption**, **electromagnetic emissions**, or **timing**. These attacks can be used to extract sensitive information such as encryption keys or other secret data.
+
+* can be used to extract sensitive information from an enclave.
+
+### Prime+Probe Attack
+* Analyse the behaviour or the cache.
+* Based on the fact that accessing a memory location that is currently in the cache is much faster than accessing a memory location that is not in the cache.
+
+* Prime phase: In this phase, the attacker loads a large number of data into the cache. This data is chosen in a way that it will cause the sensitive data that the attacker wants to extract to also be loaded into the cache.
+
+* Probe phase: In this phase, the attacker repeatedly accesses a large number of memory locations. By measuring the access time for each memory location, the attacker can determine **which memory locations are currently in the cache, and therefore which memory locations contain the sensitive data**.
 
 
 ## SGX Enclave
