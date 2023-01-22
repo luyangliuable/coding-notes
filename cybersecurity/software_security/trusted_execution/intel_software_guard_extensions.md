@@ -30,7 +30,7 @@
 * Trust tries to formulate a good-faith relationship between computing machines as well as between their users.
 
 * Involves user and computing device.
-* Trust is:
+  * Trust is:
     * Not a binary state, it can vary in degree and can change over time.
     * Multi-dimensional concept,
         * different trust dimensions can be considered such as trust in the identity, trust in the technology, trust in the organization, and trust in the security controls and practices.
@@ -76,6 +76,7 @@ Use of hardware-based security features to enhance the security and trust of sys
 
 ## Isolation in Trusted Execution
 * Separation of resources via trust verification mechanisms
+    * prevent unauthorised access to sensitive data such as authentication or encryption.
     * use of authentication, encryption, access controls and encryption.
 * Can create self-contained **computation** and **communication** environments
     * e.g. **Virtual machines** or **containers** isolated from the rest of the system.
@@ -84,8 +85,18 @@ Use of hardware-based security features to enhance the security and trust of sys
     * Trusted zone is protected by TCB.
     * Trusted zone: Secure environment for sensitive operations and data.
     * Untrusted zone: Store less sensitive operations and data can be access by trusted zone.
+* Handled by a specialised level consisting of collection of software tools that use the **TCB services**.
+    * TCB is implemented at a low level of the system.
+    * The TCB is implemented at a low level of the system such as **firmware or kernel**.
+    * Provide an additional layer of protection.
+    * TCB services example incl. secure boot, secure enclaves
 
-## Threat Model
+## SGX Threat Model
+* Cloud provider's software (e.g. web, cloud and remote access services) are malicious,
+  * modifying the OS to install malware.
+  * modifying the firmware to disable security features.
+  * SGX guarantees that the code/data inside the enclave cannot be accessed by an attacker, even if the attacker has gained full control of the system's firmware, BIOS, and operating system.
+
 
 ## SGX Security Services
 
