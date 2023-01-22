@@ -245,9 +245,53 @@ cache   | ....         |           | ...          |
     * Allowing attacker to access data from memory
 
 #### Steps to Out of Order Execution
-* Execute instructions based on the availability of hardware and source operands instead of the instruction order
-* Sort the execution result in a CPU buffer (ROB, reorder buffer)
-* During the instruction retirement, commit to registers in order or roll back if CPU realises a mispredication or exception
+1. Execute instructions based on the availability of hardware and source operands instead of the instruction order
+2. Sort the execution result in a CPU buffer called re-order buffer (ROB)
+3. During the instruction retirement, commit to registers in order or roll back if CPU realises a mispredication or exception
+
+#### Meltdown Attack
+1. Access a probe buffer with *offset = secret * 4096*.
+    * Purpose is to load memory page into cache.
+    * Location likely to contain sensitive data.
+    * "Secret" is the guess? and value of the secret data.
+2. Access memory page and count the access time.
+    * Attacker repeatedly access a large number of memory pages.
+    * Gauge which memory page contain the sensitive data.
+3. The cached page w/ the shortest access time is likely the one containing the sensitive data. Extract data from memory page.
+
+```
+ -----------------------------------------------------      --------
+|                                              ----   |    |        |
+|                                   /-------->|    |<---\  |        |
+|                                   |         |    |  | |  |        |
+|                                   |          ----   | |  |        |
+|                                   |          Cache  | |  |        |
+|  ----------------------------     |     -------     | |  |   Mem  |
+| | 1. mov al secret           |-------->| 1. ax |    | |  |        |
+| | 2. sh ax 0xc               |         | 2. bx |    | |  |        |
+| | 3. mov bx qword[bx+ax]     |<---X----|       |    | |   --------
+|  ----------------------------           -------     | \--| al*4096| ------> Observe
+|        Execution Unit                  reorder      |     --------
+|                                         buffer      |    |        |
+ -----------------------------------------------------      --------
+
+```
+
+
+#### Difficulties
+* The contents in the enclave page cache (EPC) is encrypted
+  * EVen if an attacker gains access to the EPC, they will not be able to read or modify the code and data that make up the enclave.
+* An attempt to read a memory address in EPC return abort page (0xFF, not an exception )
+
+### Foreshadow
+* Variations of the meltdown vulnerability
+    * Exploits **speculative execution**.
+* Observations:
+    * When processor encounters an exception it is not handled immediately and the processor continues to execute code speculatively.
+    * mprotect() can be used to clear the "present" bit of a page.
+        * a flag that indicates whether a page is currently in memory or not.
+        * By clearing the "present" bit, the attacker can cause the legacy page table check to fail and allow the exploitation of the vulnerability.
+
 
 ## SGX Enclave
 In an SGX enclave, the code and data are divided into two sections: the trusted and the untrusted sections.
