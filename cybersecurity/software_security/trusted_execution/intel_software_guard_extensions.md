@@ -4,6 +4,14 @@
 **Table of Contents**
 
 - [Intel Software Guard Extensions](#intel-software-guard-extensions)
+    - [Notion of Trust](#notion-of-trust)
+        - [Establishing Trust](#establishing-trust)
+    - [Hardware Assisted Trust](#hardware-assisted-trust)
+    - [Trusted Execution and Isolation](#trusted-execution-and-isolation)
+    - [Threat Model](#threat-model)
+    - [SGX Security Services](#sgx-security-services)
+    - [Employ basic programming model of SGX](#employ-basic-programming-model-of-sgx)
+    - [Side-channel Attacks Methods](#side-channel-attacks-methods)
     - [SGX Enclave](#sgx-enclave)
         - [Trusted Section](#trusted-section)
         - [Untrusted Section](#untrusted-section)
@@ -12,6 +20,42 @@
     - [Source](#source)
 
 <!-- markdown-toc end -->
+
+## Notion of Trust
+*  Confidence that A system or component can be relied
+* The realisation of trust of entity B from entity A is based on the notion B will always behave **honourably, reliably and securely** under the right circumstances.
+
+* Trust tries to formulate a good-faith relationship between computing machines as well as between their users.
+
+* Involves user and computing device.
+* Trust is:
+    * Not a binary state, it can vary in degree and can change over time.
+    * Multi-dimensional concept,
+        * different trust dimensions can be considered such as trust in the identity, trust in the technology, trust in the organization, and trust in the security controls and practices.
+
+
+
+### Establishing Trust
+Trust can be established through a combination of factors such as:
+
+* Authentication: The process of verifying the identity of a user or system
+* Access controls: Restricting access to resources to authorized users
+* Encryption: Protection of data in transit and at rest
+* Monitoring: Detection and response to security incidents
+* Policies, procedures, and standards: Governing the security of systems and networks
+
+## Hardware Assisted Trust
+Use of hardware-based security features to enhance the security of system.
+
+## Trusted Execution and Isolation
+
+## Threat Model
+
+## SGX Security Services
+
+## Employ basic programming model of SGX
+
+## Side-channel Attacks Methods
 
 
 ## SGX Enclave
