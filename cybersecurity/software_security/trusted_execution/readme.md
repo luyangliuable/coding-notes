@@ -162,9 +162,36 @@ A type of attack that aims to extract sensitive information from a system by **a
 * Analyse the behaviour or the cache.
 * Based on the fact that accessing a memory location that is currently in the cache is much faster than accessing a memory location that is not in the cache.
 
-* Prime phase: In this phase, the attacker loads a large number of data into the cache. This data is chosen in a way that it will cause the sensitive data that the attacker wants to extract to also be loaded into the cache.
+1. Prime phase: In this phase, the attacker loads a large number of data into the cache. This data is chosen in a way that it will cause the **sensitive data that the attacker wants to extract to also be loaded into the cache**.
 
-* Probe phase: In this phase, the attacker repeatedly accesses a large number of memory locations. By measuring the access time for each memory location, the attacker can determine **which memory locations are currently in the cache, and therefore which memory locations contain the sensitive data**.
+2. Probe phase: In this phase, the attacker repeatedly accesses a large number of memory locations. By measuring the access time for each memory location, the attacker can determine **which memory locations are currently in the cache, and therefore which memory locations contain the sensitive data**.
+
+```
+* Access to Memory to               * Victim runs normal    * Access memory again and measure
+  fill all cache lines                code with dependent     the access time
+                                      access patterns
+         --------------             -------------               -------------
+        | Cache Line 1 |           | Cache Line 1 |            |             |
+         --------------             --------------              -------------
+        | Cache Line 2 |           | Cache Line 2 |            |             |
+         --------------             --------------              -------------
+cache   | ....         |           | ...          |            |             |
+         --------------             --------------              -------------
+        |              |           |              |            |             |
+         --------------             --------------              -------------
+        | Cache Line n |           | Cache Line n |            |             |
+         --------------             --------------              --------------
+```
+
+### Flush+Reload Attack
+* Analyse the behaviour of cache similar to flush and reload that aims to extract sensitive information from a system by analysing the behaviour of the cache.
+
+1. **Flush Phase**: The attacker uses a special instruction (such as CLFLUSH on x86 process) to flush a memory location out of the cache.
+2. **Reload Phase**: In this phase, the attacker repeatedly accesses a large number of memory locations.
+    * Then measuring the access time for each memory location, the attacker can determine which memory locations are currently in the cache and therefore which memory location contains the sensitive data.
+
+### Page Fault Attack
+
 
 
 ## SGX Enclave
