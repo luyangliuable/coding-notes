@@ -79,8 +79,7 @@ fn main() -> Result<(), ImageDataErrors> {
 
 
 fn combine_images(image_1: DynamicImage, image_2: DynamicImage) -> Vec<u8> {
-    let vec_1 = image_1.to_rgba8()
-.into_vec();
+    let vec_1 = image_1.to_rgba8().into_vec();
     let vec_2 = image_2.to_rgba8().into_vec();
 
     alternate_pixels(vec_1, vec_2)
@@ -160,4 +159,3 @@ fn find_image_from_path(path: String) -> Result<(DynamicImage, ImageFormat), Ima
 
 // To compile and release program
 // cargo build --release
-
