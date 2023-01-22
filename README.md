@@ -17,22 +17,24 @@ The approach is by helping you learn by looking at examples.
 
 <!-- markdown-toc end -->
 
+## Depth of Knowldege rating
+The following is a rating system that demonstrates the level of depth in terms of knowledge covered in different skills. The rating system ranges from 1 to 5, with 5 being the highest level of coverage.
+
 ## Languages
-* JavaScript
-* Python
-* C++
-* Java
-* C#
-* REST-api
-* c
-* c#
-* c++
-* code-smells
-* crytography
-* design-process
-* expressjs
-* flask
-* git
+* JavaScript 1/5
+* Python 1/5
+* C++ 0/5
+* Java 0/5
+* C# 1/5
+* REST-api 5/5
+* c 5/5
+* c# 1/5
+* code-smells 5/5
+* crytography 3/5
+* design-process 3/4
+* expressjs 2/5
+* flask 3/5
+* git 4/5
 * html-css
 * javascript
 * machine-learning

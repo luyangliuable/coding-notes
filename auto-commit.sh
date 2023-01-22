@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # TODO Added following line to cron -e
-# */30 * * * * cd /home/blackfish/Documents/coding-notes && /home/blackfish/Documents/coding-notes/auto-commit.sh
+# */30 * * * * cd $PATH_TO_FOLDER && $PATH_TO_FOLDER/coding-notes/auto-commit.sh
 
 
 # Function to automatically commit changes to a git repository
@@ -17,11 +17,11 @@ function auto_commit() {
 
     # Create commit message with the modified and untracked files
     if [ -z "$untracked" ] && [ -n "$modified" ]; then
-        gitmessage="Modified $modified."
+        gitmessage="Autocommit: Modified $modified."
     elif [ -n "$untracked" ] && [ -n "$modified" ]; then
-        gitmessage="Added notes on $untracked. Modified notes $modified."
+        gitmessage="Autocommit: Added notes on $untracked. Modified notes $modified."
     elif [ -n "$untracked" ] && [ -z "$modified" ]; then
-        gitmessage="Added notes on $untracked."
+        gitmessage="Autocommit: Added notes on $untracked."
     fi
 
     echo $gitmessage
