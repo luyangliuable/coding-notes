@@ -4,8 +4,6 @@
 **Table of Contents**
 
 - [Intel Software Guard Extensions](#intel-software-guard-extensions)
-    - [Notion of Trust](#notion-of-trust)
-        - [Establishing Trust](#establishing-trust)
     - [Hardware Assisted Trust](#hardware-assisted-trust)
         - [Examples (that are also TCBs)](#examples-that-are-also-tcbs)
     - [Trusted computing Base (TCB)](#trusted-computing-base-tcb)
@@ -16,6 +14,10 @@
     - [SGX + Secure Boot](#sgx--secure-boot)
     - [Employ basic programming model of SGX](#employ-basic-programming-model-of-sgx)
     - [Side-channel Attacks Methods](#side-channel-attacks-methods)
+        - [Prime+Probe Attack](#primeprobe-attack)
+        - [Flush+Reload Attack](#flushreload-attack)
+        - [Page Fault Attack](#page-fault-attack)
+        - [Adversary (Hardware level)](#adversary-hardware-level)
     - [SGX Enclave](#sgx-enclave)
         - [Trusted Section](#trusted-section)
         - [Untrusted Section](#untrusted-section)
@@ -24,25 +26,6 @@
     - [Source](#source)
 
 <!-- markdown-toc end -->
-
-## Notion of Trust
-*  Confidence that A system or component can be relied
-* The realisation of trust of entity B from entity A is based on the notion B will always behave **honourably, reliably and securely** under the right circumstances.
-
-* Trust tries to formulate a good-faith relationship between computing machines as well as between their users.
-
-* Involves user and computing device.
-  * Trust is:
-    * Not a binary state, it can vary in degree and can change over time.
-    * Multi-dimensional concept,
-        * different trust dimensions can be considered such as trust in the identity, trust in the technology, trust in the organization, and trust in the security controls and practices.
-
-### Establishing Trust
-Trust can be established through a combination of factors such as:
-
-* Trust Verification Mechanisms
-  * **Authentication**: The process of verifying the identity of a user or system
-  * **Access controls**: Restricting access to resources to authorized users
   * **Encryption**: Protection of data in transit and at rest
 * Prevention and Response Mechanisms
   * **Monitoring**: Detection and response to security incidents
@@ -160,39 +143,111 @@ A type of attack that aims to extract sensitive information from a system by **a
 
 ### Prime+Probe Attack
 * Analyse the behaviour or the cache.
-* Based on the fact that accessing a memory location that is currently in the cache is much faster than accessing a memory location that is not in the cache.
+    * Attacker load large number of data chosen in a way to cause sensitive data to be loaded in the cache.
+* Based on the fact that **accessing a memory location that is currently in the cache is much faster** than accessing a memory location that is not in the cache.
 
 1. Prime phase: In this phase, the attacker loads a large number of data into the cache. This data is chosen in a way that it will cause the **sensitive data that the attacker wants to extract to also be loaded into the cache**.
 
 2. Probe phase: In this phase, the attacker repeatedly accesses a large number of memory locations. By measuring the access time for each memory location, the attacker can determine **which memory locations are currently in the cache, and therefore which memory locations contain the sensitive data**.
 
 ```
-* Access to Memory to               * Victim runs normal    * Access memory again and measure
+1. Access to Memory to               2. Victim runs normal    3. Access memory again and measure
   fill all cache lines                code with dependent     the access time
                                       access patterns
          --------------             -------------               -------------
-        | Cache Line 1 |           | Cache Line 1 |            |             |
+        | Cache Line 1 |           | Cache Line 1 |            |             | <- time this
          --------------             --------------              -------------
-        | Cache Line 2 |           | Cache Line 2 |            |             |
+        | Cache Line 2 |           | Cache Line 2 |            |             | <- time this
          --------------             --------------              -------------
-cache   | ....         |           | ...          |            |             |
+cache   | ....         |           | ...          |            |             | <- time this
          --------------             --------------              -------------
-        |              |           |              |            |             |
+        |              |           |              |            |             | <- time this
          --------------             --------------              -------------
-        | Cache Line n |           | Cache Line n |            |             |
-         --------------             --------------              --------------
+        | Cache Line n |           | Cache Line n |            |             | <- time this
+         --------------             --------------              -------------
 ```
 
 ### Flush+Reload Attack
 * Analyse the behaviour of cache similar to flush and reload that aims to extract sensitive information from a system by analysing the behaviour of the cache.
 
+* Based on the fact that **accessing a memory location that is currently in the cache is much faster** than accessing a memory location that is not in the cache.
+
 1. **Flush Phase**: The attacker uses a special instruction (such as CLFLUSH on x86 process) to flush a memory location out of the cache.
 2. **Reload Phase**: In this phase, the attacker repeatedly accesses a large number of memory locations.
     * Then measuring the access time for each memory location, the attacker can determine which memory locations are currently in the cache and therefore which memory location contains the sensitive data.
 
+```
+1. Flush the cache lines         2. Victim runs normal        3. Access memory again and measure
+  of interested address          code with dependent                the access time
+                                    access patterns
+         --------------             -------------               -------------
+        | Cache Line 1 |           | Cache Line 1 |            |             | <- time this
+         --------------             --------------              -------------
+        | Cache Line 2 |           | Cache Line 2 |            |             | <- time this
+         --------------             --------------              -------------
+cache   | ....         |           | ...          |            |             | <- time this
+         --------------             --------------              -------------
+        |              |           |              |            |             | <- time this
+         --------------             --------------              -------------
+        | Cache Line n |           | Cache Line n |            |             | <- time this
+         --------------             --------------              -------------
+```
+
 ### Page Fault Attack
+* Extract sensitive information by measuring the time it takes for a long fault to occur.
+    * Occurs when memory page does not reside on physical memory so OS retrieves from disk.
+* Exploits the time difference between page faults that occur when sensitive data is present in memory versus not.
+
+```
+1. Reset the present bit        2. Victim runs normal
+  of interesting pages          code with dependent
+                                    access patterns
+         --------------             --------------
+        |    Page 1    |           |    Page  1   |
+         --------------             --------------
+        |    Page 2    |           ||||Page||2||||| <---- Page Fault (From measurement)
+         --------------             --------------
+cache   | ....         |           | ...          |
+         --------------             --------------
+        |              |           |              |
+         --------------             --------------
+        |    Page n    |           |    Page  n   |
+         --------------             --------------
+```
 
 
+### Adversary (Hardware level)
+* Attack who can access the "environment" but privileged
+* Leakage from code is no longer necessary
+
+```
+                                                             -----------
+                                                            |           |
+                                                            | Adversary | \
+                                                            |           |  \
+                                                             -----------    \
+                                                                  |          \
+                                                                  X           \
+                                                                  V            \
+ -----------                                                 ------------       \  ------------
+|           |  ------------ Attestation ------------------> |            |       \|            |
+|    User   |                                               | Enclave    |  <-->  | Envinroment|
+|           | --- communication via the secure channel ---> |            |        |            |
+ -----------                                                 ------------          ------------
+                                                            Computed securely
+                                                        (conidentiality and integrity)
+
+```
+
+### Meltdown on Out of Order Execution (OOE)
+* Process may choose to execution instructions out of order if it deems to be more efficient
+* Exploit race condition for accessing sensitive data imposed by OOE
+    * Allowing attacker to access data from memory
+
+#### Steps to Out of Order Execution
+* Execute instructions based on the availability of hardware and source operands instead of the instruction order
+* Sort the execution result in a CPU buffer (ROB, reorder buffer)
+* During the instruction retirement, commit to registers in order or roll back if CPU realises a mispredication or exception
 
 ## SGX Enclave
 In an SGX enclave, the code and data are divided into two sections: the trusted and the untrusted sections.
