@@ -133,7 +133,7 @@ cache   | ....         |           | ...          |
 3. During the instruction retirement, commit to registers in order or roll back if CPU realises a mispredication or exception
 
 ## Meltdown Attack
-    1. Access a probe buffer with *offset = secret * 4096*.
+  1. Access a probe buffer with *offset = secret * 4096*.
     * 4096 = size of page memory
     * "secret" = arbitrary value that the chosen to target a specific memory page believed to contain sensitive data.
     * Purpose is to load memory page into cache.
