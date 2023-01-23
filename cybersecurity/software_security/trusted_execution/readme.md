@@ -14,6 +14,7 @@
     - [SGX + Secure Boot](#sgx--secure-boot)
     - [Employ basic programming model of SGX](#employ-basic-programming-model-of-sgx)
     - [Sealed Storaged](#sealed-storaged)
+    - [Remote Attestation](#remote-attestation)
     - [SGX Enclave](#sgx-enclave)
         - [Trusted Section](#trusted-section)
         - [Untrusted Section](#untrusted-section)
@@ -144,21 +145,91 @@ Sealed storage can also be used to store an encrypted version of the data, which
 In summary, Sealed storage in an enclave is a mechanism that allows data to be encrypted and stored within the enclave in a secure and tamper-proof manner. The data is sealed, meaning that it is encrypted and bound to specific attestation parameters, such as a specific enclave and platform, so that it can only be accessed when those parameters are met. This makes the data resistant to extraction and disclosure.
 
 
+## Remote Attestation
+* Guarantees that a remote party can verify the identity and configuration of an enclave.
+    * Proof an enclave runs on a given cpu and a given **security level**.
+    * Confirm that the code and data inside the enclave has not been tampered or modified.
+
+* SGX attestation parameters:
+    * MRENCLAVE: Enclave Unique ID. Crytographic hash of enclave code and data.
+    * MRSIGNER: Platform Unique ID. Crytographic hash of signing entity's public key.
+    * ISVPRODID: Enclave Product ID Unique Value. Assigned my intel or ISV (independent software vendor)
+    * ISVSVN: A unique value that represents the security version of the enclave.
+
+* Verification
+  * The enclaved code generates a quote that includes a digest of the code and data inside the enclave, which is then signed by the enclave's private key.
+  * The verifier uses the enclave's public key to verify the quote.
+  * Example: Verify enclave integrity and code/data has not been tampered with
+
+  ```c
+  #include <sgx_urts.h>
+  #include <sgx_uae_service.h>
+
+  int main() {
+      sgx_enclave_id_t eid;
+      sgx_status_t ret;
+
+      // Initialize the enclave
+      ret = sgx_create_enclave(ENCLAVE_FILENAME, SGX_DEBUG_FLAG, NULL, NULL, &eid, NULL);
+
+      if (ret != SGX_SUCCESS) {
+          // Handle error
+      }
+
+      // Prepare the attestation report
+      sgx_report_t report;
+
+      ret = sgx_create_report(eid, NULL, &report);
+      if (ret != SGX_SUCCESS) {
+          // Handle error
+      }
+
+      // Retrieve the quote from the report
+      sgx_quote_t* quote;
+      uint32_t quote_size;
+
+      ret = sgx_get_quote(&report, SGX_LINKABLE_SIGNATURE, NULL, 0, quote, &quote_size);
+
+      // Send the quote to the verifier for validation
+      // ...
+
+      // Destroy the enclave
+      sgx_destroy_enclave(eid);
+
+      return 0;
+  }
+  ```
+
 ## SGX Enclave
 In an SGX enclave, the code and data are divided into two sections: the trusted and the untrusted sections.
 
 ### Trusted Section
-The trusted section contains the code and data that are protected by the enclave and that have access to the sensitive data and functionality provided by the enclave. This section includes the main logic of the application, such as cryptographic operations, data processing, and any other functionality that needs to be protected from the untrusted host.
+* Contains the code and data that are protected by the enclave and that have **access to the sensitive data and functionality provided by the enclave**.
+* Section includes the **main logic of the application**, such as:
+    * Cryptographic operations
+    * Data processing
+    * Any other functionality that needs to be protected from the untrusted host.
 
 ### Untrusted Section
-The untrusted section contains the code and data that are not protected by the enclave and that have limited access to the sensitive data and functionality provided by the enclave. This section includes the code that communicates with the host, such as the EDL functions that are called by the host, the code that manages the enclave's lifecycle, such as the code that creates and destroys the enclave, and any other code that does not need to be protected by the enclave.
+Contains the code and data that are not protected by the enclave and that have limited access to the sensitive data and functionality provided by the enclave.
+* This section includes the code that communicates with the host, such as:
+    * The EDL functions that are called by the host
+    * Code that manages the enclave's lifecycle, such as the code that creates and destroys the enclave
+    * Any other code that does not need to be protected by the enclave.
 
 ### Ecall and Ocall functions
 The trusted and untrusted sections are separated by the use of the ecall and ocall functions.
 
-* ecall (enclave call) functions are functions that are **executed inside the enclave and that can be called from the untrusted host**. These functions are defined in the untrusted section and are used to invoke the functionality provided by the enclave.
+* ecall
+    * enclave call
+    * functions that are **executed inside the enclave and that can be called from the untrusted host**.
+    * These functions are defined in the untrusted section and are used to invoke the functionality provided by the enclave.
 
-* ocall (outside call) functions are functions that are **executed outside the enclave and that can be called from the trusted section**. These functions are used to perform operations that are not available inside the enclave, such as accessing the file system or making network connections.
+* ocall
+    * outside call
+    * functions that are **executed outside the enclave and that can be called from the trusted section**.
+    * These functions are used to perform operations that are not available inside the enclave, such as accessing the file system or making network connections.
+    * Perform privileged or I/O operations in an enclave, e.g., system calls, file I/O
 
 * The trusted section should include the main logic of the application and it should only perform the operations that need to be protected by the enclave
 
