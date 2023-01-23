@@ -11,6 +11,10 @@
     - [Reply attack](#reply-attack)
 
 <!-- markdown-toc end -->
+
+A stream cipher is a type of symmetric-key encryption algorithm that encrypts plaintext into ciphertext.
+
+
 * Pseudo random key using pseudorandom bit generator (PRBG).
 * PRGB is a mathematical algorithm that generates a sequence of bits, which are seemingly random, but are actually determined by an initial value called a seed.
 
@@ -40,6 +44,19 @@
 | ciphertext  |
  -------------
 ```
+
+## Pros
+* It takes **less memory than block cipher algorithm**
+    * Suited for **low resource environments** such as wireless communication services.
+* **Can entrypt messages of any length** whereas block cipher can only encrypt fix sizes of plaintext sometimes needing padding.
+
+
+## Cons
+* Prone to key-reuse vulerability
+* Relies heavily on the randomess and secrecy of random number generators
+    * Good Randomness: Evenly distributed number
+    * Good Secrecy: Hard to predict random number based on previous outputs
+
 
 ## Rivest Cipher 4 (RC4)
 * A symmetric key stream cipher that was widely used in many protocols and systems
