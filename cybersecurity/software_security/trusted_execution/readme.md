@@ -68,7 +68,6 @@ Use of hardware-based security features to enhance the security and trust of sys
     * Trusted zone: Secure environment for sensitive operations and data.
     * Untrusted zone: Store less sensitive operations and data can be access by trusted zone.
 * Handled by a specialised level consisting of collection of software tools that use the **TCB services**.
-    * TCB is implemented at a low level of the system.
     * The TCB is implemented at a low level of the system such as **firmware or kernel**.
     * Provide an additional layer of protection.
     * TCB services example incl. secure boot, secure enclaves
@@ -160,6 +159,9 @@ In summary, Sealed storage in an enclave is a mechanism that allows data to be e
   * The enclaved code generates a quote that includes a digest of the code and data inside the enclave, which is then signed by the enclave's private key.
   * The verifier uses the enclave's public key to verify the quote.
   * Example: Verify enclave integrity and code/data has not been tampered with
+
+## Side-channel Attacks Methods
+A type of attack that aims to extract sensitive information from a system by **analysing low-level information** such as **power consumption**, **electromagnetic emissions**, or **timing**. These attacks can be used to extract sensitive information such as encryption keys or other secret data.
 
   ```c
   #include <sgx_urts.h>
