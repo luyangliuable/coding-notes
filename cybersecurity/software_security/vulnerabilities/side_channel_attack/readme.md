@@ -5,16 +5,17 @@
 
 - [Side Channel Attacks](#side-channel-attacks)
     - [Side-channel Attacks Methods](#side-channel-attacks-methods)
-        - [Prime+Probe Attack](#primeprobe-attack)
-        - [Flush+Reload Attack](#flushreload-attack)
-        - [Page Fault Attack](#page-fault-attack)
-        - [Adversary (Hardware level)](#adversary-hardware-level)
-        - [Meltdown on Out of Order Execution (OOE)](#meltdown-on-out-of-order-execution-ooe)
-            - [Steps to Out of Order Execution](#steps-to-out-of-order-execution)
-            - [Meltdown Attack](#meltdown-attack)
-            - [Difficulties](#difficulties)
-        - [Foreshadow](#foreshadow)
-        - [Difference between Meltdown Attack and Prime and Probe](#difference-between-meltdown-attack-and-prime-and-probe)
+    - [Prime+Probe Attack](#primeprobe-attack)
+    - [Flush+Reload Attack](#flushreload-attack)
+    - [Page Fault Attack](#page-fault-attack)
+    - [Adversary (Hardware level)](#adversary-hardware-level)
+    - [Meltdown on Out of Order Execution (OOE)](#meltdown-on-out-of-order-execution-ooe)
+        - [Steps to Out of Order Execution](#steps-to-out-of-order-execution)
+    - [Meltdown Attack](#meltdown-attack)
+        - [Difficulties](#difficulties)
+    - [Foreshadow](#foreshadow)
+        - [Steps](#steps)
+    - [References](#references)
 
 <!-- markdown-toc end -->
 
@@ -23,7 +24,7 @@ A type of attack that aims to extract sensitive information from a system by **a
 
 * can be used to extract sensitive information from an enclave.
 
-### Prime+Probe Attack
+## Prime+Probe Attack
 * Analyse the behaviour or the cache.
     * Attacker load large number of data chosen in a way to cause sensitive data to be loaded in the cache.
 * Based on the fact that **accessing a memory location that is currently in the cache is much faster** than accessing a memory location that is not in the cache.
@@ -49,7 +50,7 @@ cache   | ....         |           | ...          |            |             | <
          --------------             --------------              -------------
 ```
 
-### Flush+Reload Attack
+## Flush+Reload Attack
 * Analyse the behaviour of cache similar to flush and reload that aims to extract sensitive information from a system by analysing the behaviour of the cache.
 
 * Based on the fact that **accessing a memory location that is currently in the cache is much faster** than accessing a memory location that is not in the cache.
@@ -75,7 +76,7 @@ cache   | ....         |           | ...          |            |             | <
          --------------             --------------              -------------
 ```
 
-### Page Fault Attack
+## Page Fault Attack
 * Extract sensitive information by measuring the time it takes for a long fault to occur.
     * Occurs when memory page does not reside on physical memory so OS retrieves from disk.
 * Exploits the time difference between page faults that occur when sensitive data is present in memory versus not.
@@ -98,7 +99,7 @@ cache   | ....         |           | ...          |
 ```
 
 
-### Adversary (Hardware level)
+## Adversary (Hardware level)
 * Attacker who can access the "environment" but unprivileged
 * Leakage from code is no longer necessary
 
@@ -121,17 +122,17 @@ cache   | ....         |           | ...          |
 
 ```
 
-### Meltdown on Out of Order Execution (OOE)
+## Meltdown on Out of Order Execution (OOE)
 * Process may choose to execution instructions out of order if it deems to be more efficient
 * Exploit race condition for accessing sensitive data imposed by OOE
     * Allowing attacker to access data from memory
 
-#### Steps to Out of Order Execution
+### Steps to Out of Order Execution
 1. Execute instructions based on the availability of hardware and source operands instead of the instruction order
 2. Sort the execution result in a CPU buffer called re-order buffer (ROB)
 3. During the instruction retirement, commit to registers in order or roll back if CPU realises a mispredication or exception
 
-#### Meltdown Attack
+## Meltdown Attack
     1. Access a probe buffer with *offset = secret * 4096*.
     * 4096 = size of page memory
     * "secret" = arbitrary value that the chosen to target a specific memory page believed to contain sensitive data.
@@ -162,12 +163,12 @@ cache   | ....         |           | ...          |
 ```
 
 
-#### Difficulties
+### Difficulties
 * The contents in the enclave page cache (EPC) is encrypted
   * EVen if an attacker gains access to the EPC, they will not be able to read or modify the code and data that make up the enclave.
 * An attempt to read a memory address in EPC return abort page (0xFF, not an exception )
 
-### Foreshadow
+## Foreshadow
 * Variations of the meltdown vulnerability to target the sgx
     * Bypass the abort page semantics when using meltdown to access data in enclave.
     * Exploits **speculative execution**.
@@ -178,6 +179,15 @@ cache   | ....         |           | ...          |
         * a flag that indicates whether a page is currently in memory or not.
         * By clearing the "present" bit, the attacker can cause the legacy page table check to fail and allow the exploitation of the vulnerability.
 * Can be used to recover provisioning key and the recover attestation key to attest any malicious enclave in the remote platform.
+
+### Steps
+  1. Identify a **victim's enclave** and the **physical address of the data** they want to extract.
+  2. Use **Cache side-channel attack** by clearing the "present" bit of the page table entry to evict the data from the l1 cache.
+     * "Present" bit determines if a page of memory is currently mapped to physical memory
+     * The target data will no longer be present in the memory. CPU will automatically evict data from the L1 data cache instead
+  3. the attacker uses a technique called **"Flush+Reload"** to access the targeted data from the L1 data cache by timing the accesses to the targeted data
+  4. Once identified target, attacker can extract the sensitive information from the L1 data cache.
+  5. Use the extracted sensitive information to stealing sensitive data, or launching further attacks.
 
 ## References
 [Meltdown explained like you're five](https://www.youtube.com/watch?v=JSqDqNysycQ)
