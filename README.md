@@ -68,17 +68,13 @@ git clone https://github.com/yourusername/personal-coding-notes.git
 
 Search for a specific topic
 ```sh
-grep -rI --exclude='*[A-Za-z0-9]{1000}*' --exclude-dir={.git,crytography_utility_tool,node_modules} "{TOPIC}" .
+grep -rIi --exclude='*[A-Za-z0-9]{1000}*' --exclude-dir={.git,crytography_utility_tool,node_modules} "{TOPIC}" .
 ```
 
 
 Search only file for a specific topic
 ```sh
-grep -rI --exclude='*[A-Za-z0-9]{1000}*' --exclude-dir={.git,crytography_utility_tool,node_modules} "{TOPIC}" .
-```
-
-```sh
-grep -rI --exclude='*[A-Za-z0-9]{1000}*' --exclude-dir={.git,crytography_utility_tool,node_modules} "sgx" . | awk '{print $1}'
+grep -rIi --exclude='*[A-Za-z0-9]{1000}*' --exclude-dir={.git,crytography_utility_tool,node_modules} "{TOPIC}" . | awk '{print $1}'
 ```
 
 Browse through the directory structure to find the notes you're looking for

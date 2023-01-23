@@ -1,5 +1,28 @@
 # Safety
 
+## Memory safety
+Ability to prevent illegal access to memory data.
+* Prevents buffer overflow and dangling pointer
+* Prevents attacker from reading sensitive data and executing malicious code.
+
+### Measures
+* Garbage collections
+    * Use a thread to periodically scan and automatically deallocate unused object.
+* Pointer Safety
+    * Safety and predictable pointers created through standard means.
+    * Dereference only non-null pointers (belong to that pointer)
+    * Prevent dangling pointers, wild pointers, double freeing pointers.
+    * Example: Rust's Non-null pointer
+        * std::ptr::NonNull used to indicate that a pointer will never be null
+        * ensure that a pointer is only dereferenced when it is non-null.
+* Bounds checking
+* Enforce Type Safety
+
+### Is C/C++ Memory Safe?
+* C/C++ is not memory safe but you can write memory safe programs.
+    * Compiler can check for violations.
+    * Speed is a shortcoming for compiler check.
+
 ## Spatial Safety
 
 
@@ -61,4 +84,3 @@ High address (0xffffffff)
   * Often a background process running periodically that checks for memory blocks that are no longer reachable by the program.
 * Reference counting
   * Each block of memory has a reference count, which is incremented and decremented as it is used, and the memory is freed when the count reaches zero.
-

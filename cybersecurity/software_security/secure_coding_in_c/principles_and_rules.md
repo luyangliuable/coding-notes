@@ -26,7 +26,6 @@
 
 
 ## Rules
-
 ### Enforce Input Compliance
 
 ### Use Safe String Functions

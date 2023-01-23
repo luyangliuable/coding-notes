@@ -61,7 +61,7 @@ v   |----------------|
 movl 12(%ebp), %eax ; store b at %ebp + 12
 movl 8(%ebp), %edx  ; store a at %ebp + 8
 addl %edx, $eax
-    movl %eax, -8(%ebp) ; store x at %ebp - 8
+movl %eax, -8(%ebp) ; store x at %ebp - 8
 ```
 
 * x is actually allocated 8 bytes below the frame pointer by the compiler, not 4 bytes as what is shown in the diagram.
