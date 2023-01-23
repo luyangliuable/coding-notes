@@ -16,3 +16,6 @@ ev
 *.swp
 *.swo
 *.bak
+
+test.c
+test.py

@@ -1,4 +1,4 @@
-# FIT3143 Lab 1 
+# FIT3143 Lab 1
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
@@ -53,7 +53,7 @@
 
 ## Finding Help
 
-### **Which text-based command provides information on the use of other Linux commands and utilities? List at least two. 
+### **Which text-based command provides information on the use of other Linux commands and utilities? List at least two.
 (**)
 
 ```shell
@@ -71,7 +71,7 @@ man ssh
 ```
 
 ### How do you access Linux manual pages? List the full command line for accessing a
-particular section. 
+particular section.
 
 e.g. Access section 2
 
@@ -83,7 +83,7 @@ man 2 man
 man man.2
 ```
 
-d. Where would you generally look for help on the Web? List 3 major sites. 
+d. Where would you generally look for help on the Web? List 3 major sites.
 
 1. GeeksOfGeeks
 2. StackOverflow
@@ -91,7 +91,7 @@ d. Where would you generally look for help on the Web? List 3 major sites.
 4. Edstem
 5. w3schools
 
-## File and Directory Manipulation 
+## File and Directory Manipulation
 
 ### List the command-lines for creating and deleting sub-directories.
 
@@ -109,7 +109,7 @@ The -r is important for recursively removing all subdirectories.
 rm -rf dirname
 ```
 
-b. List the command-line for creating a zero-length file. 
+b. List the command-line for creating a zero-length file.
 
 ```shell
 touch filename
@@ -125,9 +125,9 @@ nano filename
 vim filename
 ```
 
-## Users and Access Control 
+## Users and Access Control
 
-a. Create a user account for yourself and assign it to a unique group. List the command line. 
+a. Create a user account for yourself and assign it to a unique group. List the command line.
 
 ### To add a new user
 ```shell
@@ -196,31 +196,31 @@ chmod u+x,g+wx test1.txt
 ```
 
 ## What does chmod 4775 filename mean?
-* The owner can read, write and execute. 
+* The owner can read, write and execute.
 
-* Group can read, write and execute. 
+* Group can read, write and execute.
 
 * Others can read, can't write and can execute.
 
-## How do you set the executable permission on a file? List the command-line. 
+## How do you set the executable permission on a file? List the command-line.
 
 ### Enable Execute Permission on a file
 ```shell
 chmod +x test1.txt
 ```
 
-## List the command-line for inspecting the permissions assigned to a file or directory. 
+## List the command-line for inspecting the permissions assigned to a file or directory.
 
 TODO These commands should work for both files and directories.
 
 ```shell
-ls -l filename 
+ls -l filename
 ```
 
 or
 
 ```shell
-stat filename 
+stat filename
 ```
 
 ### Octal notation
@@ -244,17 +244,17 @@ e.g. -rw-r--r--@
 * r-- represents permission for the group (read only).
 * r-- represents permission for the others (read only).
 
-### Linux Shell 
+### Linux Shell
 
 ## What is your default Linux shell? Read the manual pages on your shell and then
-answer the following questions. 
+answer the following questions.
 
 /bin/bash
 
-## How do you get the last command-line re-displayed? 
+## How do you get the last command-line re-displayed?
 * Up arrow
 
-## Which key-stroke invokes filename completion? 
+## Which key-stroke invokes filename completion?
 * Tab key
 
 
@@ -289,7 +289,7 @@ alias stopmongodb="brew services stop mongodb/brew/mongodb-community"
 
 To ```~/.bashrc``` or running it in the terminal.
 
-## How does which command work? List a command-line demonstrating its function. 
+## How does which command work? List a command-line demonstrating its function.
 Which command find the source program file of the command in the user's file path.
 
 ```shell
@@ -298,7 +298,7 @@ which node
 
 >> /opt/homebrew/bin/node
 
-## How do you execute a program file in the shell? List the command-line. 
+## How do you execute a program file in the shell? List the command-line.
 
 ```shell
 ./program_to_execute
@@ -333,13 +333,13 @@ nl filename
 cat filename | wc -l
 ```
 
-## List the command-line for search all files with an extension .html on the system. 
+## List the command-line for search all files with an extension .html on the system.
 
 ```shell
 find  / -iname "*.html"
 ```
 
-## Create a simple shell script for listing the contents of your directory and make it executable. List the script and the command-line for changing it into an executable file. 
+## Create a simple shell script for listing the contents of your directory and make it executable. List the script and the command-line for changing it into an executable file.
 
 ```shell
 touch test.sh
@@ -352,7 +352,7 @@ chmod u+x test.sh
 
 
 ### Using ifconfig list the following networking parameters for eth0
-#### IP Address 
+#### IP Address
 ```shell
 ipconfig getifaddr en0
 ```
@@ -367,4 +367,3 @@ ipconfig getifaddr en0
 ```
 file *
 ```
-

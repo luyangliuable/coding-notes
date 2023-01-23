@@ -35,20 +35,19 @@ The following is a rating system that demonstrates the level of depth in terms o
 * expressjs 2/5
 * flask 3/5
 * git 4/5
-* html-css
-* javascript
-* machine-learning
-* macos
-* nlp
-* nodejs
-* object-oriented-programming
-* react
-* reading
-* rust
-* shell/bash
-* typescript
-* ui-ux
-* vim and emacs
+* html-css 1/5
+* javascript 4/5
+* machine-learning 4/5
+* macos 1/5
+* nlp 1/5
+* nodejs 2/5
+* object-oriented-programming 4/5
+* react 4/5
+* rust 2/5
+* shell/bash 2/5
+* typescript 5/5
+* ui-ux 2/5
+* vim and emacs 1/5
 
 ## Topics
 * Agile Methodology
@@ -63,8 +62,19 @@ The following is a rating system that demonstrates the level of depth in terms o
 
 # How to Use
 Clone the repository to your local machine
-```shell
+```sh
 git clone https://github.com/yourusername/personal-coding-notes.git
+```
+
+Search for a specific topic
+```sh
+grep -rIi --exclude='*[A-Za-z0-9]{1000}*' --exclude-dir={.git,crytography_utility_tool,node_modules} "{TOPIC}" .
+```
+
+
+Search only file for a specific topic
+```sh
+grep -rIi --exclude='*[A-Za-z0-9]{1000}*' --exclude-dir={.git,crytography_utility_tool,node_modules} "{TOPIC}" . | awk '{print $1}'
 ```
 
 Browse through the directory structure to find the notes you're looking for

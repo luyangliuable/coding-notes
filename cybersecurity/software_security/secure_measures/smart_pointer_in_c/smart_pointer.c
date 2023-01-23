@@ -4,11 +4,12 @@
 struct SimpleSmartPointer {
   int* ptr;
   /* Function pointer: deleter is a pointer to a function that takes a single argument of type int *and returns void. */
-  void (*deleter)(int *);
+  void (*deleter)(int **);
 };
 
-void int_deleter(int* ptr) {
-  free(ptr);
+void int_deleter(int ** ptr) {
+  free(*ptr);
+  *ptr = NULL;
 }
 
 int main() {
@@ -19,11 +20,12 @@ int main() {
   myInt.deleter = &int_deleter;
 
   // Use the smart pointer
-  printf("Value: %d\n", *myInt.ptr);
+  printf("Value to ptr %i: %d\n", (int) myInt.ptr, *myInt.ptr);
 
   // Release the memory when done
-  myInt.deleter(myInt.ptr);
+  myInt.deleter(&myInt.ptr);
 
-  printf("Value after deleted: %d\n", *myInt.ptr);
+  printf("Pointer to value after deleted: %i\n", myInt.ptr);
+
   return 0;
 }
