@@ -15,11 +15,17 @@
 <!-- markdown-toc end -->
 
 
-## Principle
-* Defensive coding
-  * Avoid depending on anyone else around you.
+## Principle: Robust Coding
+* A system will be **able to function correctly and continue to operate even in the presence of unexpected inputs**, errors, or other unexpected conditions.
+* Handle and recover from:
+    * Errors
+    * Exceptions
+    * Unexpected conditions
+* Denfensive Programming
+  * Avoid depending on anything.
   * If someone does something unexpected, your program will not crash.
   * It is minimising trust.
+  * **Prevent and minimise effects of bugs and malicious attacks**
 * Pessimistically Check Preconditions
   * Better to throw an exception than run malicious code.
   * e.g. Check even though user not likely will input a NULL pointer.
