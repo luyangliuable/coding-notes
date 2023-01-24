@@ -54,28 +54,44 @@
 (print (change-size-of-char #\a :big))
 (print (change-size-of-char #\A :small))
 
+
 (defun type-of-char (char)
   "This function takes a character as an input and returns whether the character is alphabetic, numeric, a newline, a space or unknown."
   (cond
     ((alpha-char-p char)
-     :alpha
+      (progn
+      (print :alpaha)
+      :alpha
+      )
     )
     ((digit-char-p char)
-     :numeric
+      (progn
+        (print :numeric)
+        :numeric
+      )
     )
     ((char= char #\Newline)
-     :newline
+      (progn
+        (print :newline)
+        :newline
+      )
     )
     ((char= char #\Space)
-     :space
+      (progn
+        (print :space)
+        :space
+      )
     )
-    (:unknown)
+    ((progn
+      (print :unknown )
+      :unknown
+    ))
   )
 )
 
 
-(print (type-of-char #\a) )
-(print (type-of-char #\1) )
-(print (type-of-char #\space) )
-(print (type-of-char #\newline) )
-(print (type-of-char #\!) )
+(type-of-char #\a)
+(type-of-char #\1)
+(type-of-char #\space)
+(type-of-char #\newline)
+(type-of-char #\!)

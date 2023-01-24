@@ -5,6 +5,7 @@
 ;; Evaluates to T if THING is an atom, NIL otherwise
 (defun is-an-atom-p (thing)
   ;; put the code to determine if THING is a CONS here
-  (if  (atom thing)
+  (if (atom thing)
        T
-       Nil))
+  Nil)
+)
