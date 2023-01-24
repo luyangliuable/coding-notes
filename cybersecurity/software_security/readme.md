@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 
 ## CIA Triad
 
-* Condifentiality: Information is not made avalaible or disclosed to unauthorised invididuals entitity or processes
+* Confidentiality: Information is not made avalaible or disclosed to unauthorised invididuals entitity or processes
 * Integrity: SOfware maintains and assures the accuracy and completeness of data over its entire life cycle.
 * Availability: info. must be available when it is needed.
 

@@ -79,7 +79,7 @@ cache   | ....         |           | ...          |            |             | <
 ## Page Fault Attack
 * Extract sensitive information by measuring the time it takes for a long fault to occur.
     * Occurs when memory page does not reside on physical memory so OS retrieves from disk.
-* Exploits the time difference between page faults that occur when sensitive data is present in memory versus not.
+* Exploits the **time difference between page faults that occur when sensitive data i**s present in memory versus not.
 
 ```
 1. Reset the present bit        2. Victim runs normal

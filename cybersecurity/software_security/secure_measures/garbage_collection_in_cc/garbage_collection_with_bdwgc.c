@@ -1,6 +1,6 @@
 /*
     File: example.c
-    Description: A simple example of using the Boehm-Demers-Weiser Garbage Collector (BDWGC) in C. NOTE: Make sure that you are linking the BDWGC library with your program during compilation.You can do this by adding the - lgc flag to your gcc command line.For example : gcc - o example example.c - lgc
+    Description: A simple example of using the Boehm-Demers-Weiser Garbage Collector (BDWGC) in C. Make sure that you are linking the BDWGC library with your program during compilation.You can do this by adding the - lgc flag to your gcc command line.For example : gcc - o example example.c - lgc
 
    Author: Luyang Liu
    Date: 01-22-2022

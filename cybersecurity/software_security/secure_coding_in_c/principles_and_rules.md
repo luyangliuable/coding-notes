@@ -16,7 +16,7 @@
 
 
 ## Principle
-* Denfensive
+* Defensive coding
   * Avoid depending on anyone else around you.
   * If someone does something unexpected, your program will not crash.
   * It is minimising trust.
