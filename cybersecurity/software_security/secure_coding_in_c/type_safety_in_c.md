@@ -35,7 +35,7 @@ Variables are only used in ways they are intended to be used.
 
 ## Enforcement
 * Type checking
-    * Ensure variables are only used in ways with their decalared types.
+    * Ensure **variables are only used in ways with their declared types**.
     * Typically done at compile time.
 * Type inference
     * Automatically deduce the types of variables based on their context

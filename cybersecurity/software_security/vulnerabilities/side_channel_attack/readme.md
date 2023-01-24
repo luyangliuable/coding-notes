@@ -26,7 +26,7 @@ A type of attack that aims to extract sensitive information from a system by **a
 
 ## Prime+Probe Attack
 * Analyse the behaviour or the cache.
-    * Attacker load large number of data chosen in a way to cause sensitive data to be loaded in the cache.
+    * Attacker **load large number of data chosen in a way to cause sensitive data to be loaded in the cache**.
 * Based on the fact that **accessing a memory location that is currently in the cache is much faster** than accessing a memory location that is not in the cache.
 
 1. Prime phase: In this phase, the attacker loads a large number of data into the cache. This data is chosen in a way that it will cause the **sensitive data that the attacker wants to extract to also be loaded into the cache**.
@@ -55,7 +55,7 @@ cache   | ....         |           | ...          |            |             | <
 
 * Based on the fact that **accessing a memory location that is currently in the cache is much faster** than accessing a memory location that is not in the cache.
 
-1. **Flush Phase**: The attacker uses a special instruction (such as CLFLUSH on x86 process) to flush a memory location out of the cache.
+1. **Flush Phase**: The attacker uses a special instruction (such as **CLFLUSH** on x86 process) to flush a memory location out of the cache.
 2. **Reload Phase**: In this phase, the attacker repeatedly accesses a large number of memory locations.
     * Then measuring the access time for each memory location, the attacker can determine which memory locations are currently in the cache and therefore which memory location contains the sensitive data.
 
@@ -183,7 +183,7 @@ cache   | ....         |           | ...          |
 
 ### Steps
   1. Identify a **victim's enclave** and the **physical address of the data** they want to extract.
-  2. Use **Cache side-channel attack** by clearing the "present" bit of the page table entry to evict the data from the l1 cache.
+  2. Use **Cache side-channel attack** by clearing the "present" bit of the page table entry to **evict the data from the l1 cache**.
      * "Present" bit determines if a page of memory is currently mapped to physical memory
      * The target data will no longer be present in the memory. CPU will automatically evict data from the L1 data cache instead
   3. the attacker uses a technique called **"Flush+Reload"** to access the targeted data from the L1 data cache by timing the accesses to the targeted data
