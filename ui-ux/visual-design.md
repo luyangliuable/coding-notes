@@ -105,9 +105,9 @@ Refers to using relative size to **signal importance** and rank a composition.
     * Larger items are **dominant** and more noticeable
     * **Use no more than 3 different sizes**.
         * Too many will increase **cognitive load**.
-    * Creates visual hierarchy
-Influence what user **notices first on a screen**.
-    * Minise effort to discover important things.
+    * Creates **visual hierarchy**
+    * Influence what user **notices first on a screen**.
+    * Minimise effort to discover important things.
 ### Visual Heirarchy
 Guiding the eye on the page so that it attends to different design elements in order of their importance.
 
@@ -125,10 +125,25 @@ Symmetric balance around an axis.
     * To generate directional flow
     * Create a sense of dynamic energy
 
+* Symetrical
+    * Elements are equally distributed/weighted relative to the center axis.
+* Asymmetrical
+    * Elements are equally unevenly relative to the center axis.
+* Radial
+    * Elements radiate out from a central, common point in circular layout.
+
 ### Contrast
 Juxtaposition of visually dissimilar elements in order to convey the fact that they are different elements.
     * To create perceivable difference that acts as emphasis
     * Applied through colour increasing emphasis of an element without modifying size.
+
+Also difference between colour of foreground and background.
+    * Usually for readability.
+
+Reducing constrast is often used to:
+    * **Soft visual style**
+    * De-emphasise unimportant content
+    * Makes content less assesible
 
 ### Gestalt
 
