@@ -5,6 +5,18 @@
 ;; Evaluates to T if THING is an atom, NIL otherwise
 (defun is-an-atom-p (thing)
   ;; put the code to determine if THING is a CONS here
-  (if  (atom thing)
-       T
-       Nil))
+  (print thing)
+  (if (atom thing)
+    (progn
+      (print t)
+      t
+    )
+    (progn
+      (print nil)
+      nil
+    )
+  )
+)
+
+(is-an-atom-p :a)
+(is-an-atom-p (append (list :a :b) (list :c)))

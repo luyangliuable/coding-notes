@@ -26,7 +26,7 @@ A type of attack that aims to extract sensitive information from a system by **a
 
 ## Prime+Probe Attack
 * Analyse the behaviour or the cache.
-    * Attacker load large number of data chosen in a way to cause sensitive data to be loaded in the cache.
+    * Attacker **load large number of data chosen in a way to cause sensitive data to be loaded in the cache**.
 * Based on the fact that **accessing a memory location that is currently in the cache is much faster** than accessing a memory location that is not in the cache.
 
 1. Prime phase: In this phase, the attacker loads a large number of data into the cache. This data is chosen in a way that it will cause the **sensitive data that the attacker wants to extract to also be loaded into the cache**.
@@ -55,7 +55,7 @@ cache   | ....         |           | ...          |            |             | <
 
 * Based on the fact that **accessing a memory location that is currently in the cache is much faster** than accessing a memory location that is not in the cache.
 
-1. **Flush Phase**: The attacker uses a special instruction (such as CLFLUSH on x86 process) to flush a memory location out of the cache.
+1. **Flush Phase**: The attacker uses a special instruction (such as **CLFLUSH** on x86 process) to flush a memory location out of the cache.
 2. **Reload Phase**: In this phase, the attacker repeatedly accesses a large number of memory locations.
     * Then measuring the access time for each memory location, the attacker can determine which memory locations are currently in the cache and therefore which memory location contains the sensitive data.
 
@@ -79,7 +79,7 @@ cache   | ....         |           | ...          |            |             | <
 ## Page Fault Attack
 * Extract sensitive information by measuring the time it takes for a long fault to occur.
     * Occurs when memory page does not reside on physical memory so OS retrieves from disk.
-* Exploits the time difference between page faults that occur when sensitive data is present in memory versus not.
+* Exploits the **time difference between page faults that occur when sensitive data i**s present in memory versus not.
 
 ```
 1. Reset the present bit        2. Victim runs normal
@@ -133,12 +133,13 @@ cache   | ....         |           | ...          |
 3. During the instruction retirement, commit to registers in order or roll back if CPU realises a mispredication or exception
 
 ## Meltdown Attack
-    1. Access a probe buffer with *offset = secret * 4096*.
+1. Access a probe buffer with *offset = secret * 4096*.
     * 4096 = size of page memory
     * "secret" = arbitrary value that the chosen to target a specific memory page believed to contain sensitive data.
     * Purpose is to load memory page into cache.
     * Location likely to contain sensitive data.
     * "Secret" is the guess? and value of the secret data.
+    * Secret is loaded into l1 cache.
 2. Access memory page and count the access time.
     * Attacker repeatedly access a large number of memory pages.
     * Gauge which memory page contain the sensitive data.
@@ -182,7 +183,7 @@ cache   | ....         |           | ...          |
 
 ### Steps
   1. Identify a **victim's enclave** and the **physical address of the data** they want to extract.
-  2. Use **Cache side-channel attack** by clearing the "present" bit of the page table entry to evict the data from the l1 cache.
+  2. Use **Cache side-channel attack** by clearing the "present" bit of the page table entry to **evict the data from the l1 cache**.
      * "Present" bit determines if a page of memory is currently mapped to physical memory
      * The target data will no longer be present in the memory. CPU will automatically evict data from the L1 data cache instead
   3. the attacker uses a technique called **"Flush+Reload"** to access the targeted data from the L1 data cache by timing the accesses to the targeted data

@@ -82,5 +82,6 @@ High address (0xffffffff)
 * Garbage collection
   * program automatically free memory that is no longer being used.
   * Often a background process running periodically that checks for memory blocks that are no longer reachable by the program.
+  * [Example](/home/blackfish/Documents/coding-notes/cybersecurity/software_security/secure_measures/garbage_collection_in_cc/garbage_collection_with_bdwgc.c )
 * Reference counting
   * Each block of memory has a reference count, which is incremented and decremented as it is used, and the memory is freed when the count reaches zero.

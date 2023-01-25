@@ -68,7 +68,6 @@ Use of hardware-based security features to enhance the security and trust of sys
     * Trusted zone: Secure environment for sensitive operations and data.
     * Untrusted zone: Store less sensitive operations and data can be access by trusted zone.
 * Handled by a specialised level consisting of collection of software tools that use the **TCB services**.
-    * TCB is implemented at a low level of the system.
     * The TCB is implemented at a low level of the system such as **firmware or kernel**.
     * Provide an additional layer of protection.
     * TCB services example incl. secure boot, secure enclaves
@@ -147,19 +146,22 @@ In summary, Sealed storage in an enclave is a mechanism that allows data to be e
 
 ## Remote Attestation
 * Guarantees that a remote party can verify the identity and configuration of an enclave.
-    * Proof an enclave runs on a given cpu and a given **security level**.
-    * Confirm that the code and data inside the enclave has not been tampered or modified.
+    * Proof an enclave runs on a **given cpu** and a given **security level**.
+    * Confirm that the **code and data inside the enclave has not been tampered or modified**.
 
 * SGX attestation parameters:
-    * MRENCLAVE: Enclave Unique ID. Crytographic hash of enclave code and data.
-    * MRSIGNER: Platform Unique ID. Crytographic hash of signing entity's public key.
-    * ISVPRODID: Enclave Product ID Unique Value. Assigned my intel or ISV (independent software vendor)
-    * ISVSVN: A unique value that represents the security version of the enclave.
+    * **MRENCLAVE**: Enclave Unique ID. Crytographic hash of enclave code and data.
+    * **MRSIGNER**: Platform Unique ID. Crytographic hash of signing entity's public key.
+    * **ISVPRODID**: Enclave Product ID Unique Value. Assigned my intel or ISV (independent software vendor)
+    * **ISVSVN**: A unique value that represents the security version of the enclave.
 
 * Verification
   * The enclaved code generates a quote that includes a digest of the code and data inside the enclave, which is then signed by the enclave's private key.
   * The verifier uses the enclave's public key to verify the quote.
   * Example: Verify enclave integrity and code/data has not been tampered with
+
+## Side-channel Attacks Methods
+A type of attack that aims to extract sensitive information from a system by **analysing low-level information** such as **power consumption**, **electromagnetic emissions**, or **timing**. These attacks can be used to extract sensitive information such as encryption keys or other secret data.
 
   ```c
   #include <sgx_urts.h>
