@@ -146,6 +146,14 @@ Reducing constrast is often used to:
     * Makes content less assesible
 
 ### Gestalt
+* Something that is made of many parts and yet is somehow more or different from the combination of its parts.
+
+#### Similarity
+* **Perceive elements that share visual characterics as a group**.
+
+#### Continuation
+
+#### Proximity
 
 ### Consider The Qualities Of Good Design
 
