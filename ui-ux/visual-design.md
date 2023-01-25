@@ -126,6 +126,10 @@ Symmetric balance around an axis.
     * Create a sense of dynamic energy
 
 ### Contrast
+Juxtaposition of visually dissimilar elements in order to convey the fact that they are different elements.
+    * To create perceivable difference that acts as emphasis
+    * Applied through colour increasing emphasis of an element without modifying size.
+
 ### Gestalt
 
 ### Consider The Qualities Of Good Design
