@@ -7,10 +7,14 @@
   (if (null name)
     (progn
       (setq result "One for you, one for me.")
-      (print "One for you, one for me.")
-      "One for you, one for me."
+      (print result)
+      result
     )
-    (format "One for %s, one for me." name)
+    (progn
+      (setq result (format "One for %s, one for me." name))
+      (print result)
+      result
+    )
   )
 )
 
