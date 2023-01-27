@@ -41,6 +41,15 @@ function auto_commit() {
     # Get the number of changed lines
     insertions=$(git diff --stat | tail | grep -o "[0-9]* insertion" | grep -o "[0-9]*")
     deletions=$(git diff --stat | tail | grep -o "[0-9]* deletions" | grep -o "[0-9]*")
+
+    if [ -z "$deletions" ]; then
+        deletions=0
+    fi
+
+    if [ -z "$insertions" ]; then
+        deletions=0
+    fi
+
     total=$(($insertions + $deletions))
 
     if [ $total -ge $LINES_TRIGGER ]; then
