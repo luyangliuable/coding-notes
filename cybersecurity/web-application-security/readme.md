@@ -68,6 +68,7 @@ Content-Length: 2543
 ### Web Client and Server
 
 ```
+
             Client                              Server
 
 +----------------------------+      +----------------------------+
