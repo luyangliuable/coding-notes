@@ -6,8 +6,9 @@
 (defun two-fer (&optional name)
   (if (null name)
     (progn
-      (print "One for ~A, one for me")
-      "One for ~A, one for me"
+      (setq result "One for you, one for me.")
+      (print "One for you, one for me.")
+      "One for you, one for me."
     )
     (format "One for %s, one for me." name)
   )
