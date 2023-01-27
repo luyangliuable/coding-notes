@@ -5,7 +5,7 @@
 ;;; "One for name, one for me." if the name is provided, otherwise
 ;;; it returns the string "One for you, one for me."
 ;;;
-;;; Author: Luyang Liu <blackfish@Luyangs-MacBook-Pro.local>
+;;; Author: Luyang Liu
 ;;;
 ;;; Code:
 (defun two-fer (&optional name)
