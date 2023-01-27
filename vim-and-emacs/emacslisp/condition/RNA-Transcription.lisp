@@ -12,6 +12,7 @@
           ((char-equal nucleotide ?T) (setq rna-strand (concat rna-strand "A")))
           ((char-equal nucleotide ?A) (setq rna-strand (concat rna-strand "U"))))))
     rna-strand))
+
 (defun to-rna-one-char (char)
   (cond ((string= strand 'A)
          'U
@@ -28,7 +29,7 @@
   )
 )
 
-(print (to-rna 'A) )
+(print (to-rna "Hello") )
 
 (provide 'rna-transcription)
 ;;; rna-transcription.el ends here
