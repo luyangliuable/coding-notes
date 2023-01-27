@@ -5,8 +5,11 @@
 (defun to-rna (strand)
   ;;; Code:
   (cond ((string= strand 'A)
-         ()
+         'U
     )
+        ((string= strand 'G)
+         'C
+         )
   )
 )
 
