@@ -4,9 +4,12 @@
 
 (defun to-rna (strand)
   ;;; Code:
+)
+
+(defun to-rna-one-char (char)
   (cond ((string= strand 'A)
          'U
-    )
+         )
         ((string= strand 'G)
          'C
          )
@@ -15,7 +18,7 @@
          )
         ((string= strand 'T)
          'A
-         )
+    )
   )
 )
 
