@@ -11,6 +11,7 @@
           ((char-equal nucleotide ?C) (setq rna-strand (concat rna-strand "G")))
           ((char-equal nucleotide ?T) (setq rna-strand (concat rna-strand "A")))
           ((char-equal nucleotide ?A) (setq rna-strand (concat rna-strand "U")))
+          ()
         )
       )
     )
