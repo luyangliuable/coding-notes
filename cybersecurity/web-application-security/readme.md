@@ -7,8 +7,8 @@
     * The **URL** of the resource the client wishes to obtain.
     * Header describing what the browser can do.
 
-* [More info](../web-requests/HTTP_Requests_and_Responses.md) 
-    
+* [More info](../web-requests/HTTP_Requests_and_Responses.md)
+
 ### URL
 * http://stanford.edu:81/class?name=cs155#homework
 
@@ -51,7 +51,7 @@
     * A series of HTTP headers, or headers field
         * Cookies: Represent state the server would like the browser to store on its behalf
     * A message body
-    
+
 ```
 HTTP/1.0 200 OK
 Date: Sun, 21 Apr 1996 02:20:42 GMT
@@ -65,9 +65,30 @@ Content-Length: 2543
 <HTML>...</HTML>
 ```
 
+### Web Client and Server
+
+```
+            Client                              Server
++----------------------------+      +----------------------------+
+| +------------------------+ |      | +------------------------+ |
+| |                        | |      | |                        | |
+| |         Browser        |<-------->|       Web Server       | |
+| |                        | |      | |                        | |
+| +------------------------+ |      | +------------------------+ |
+|             ^              |      |             ^              |
+|             |              |<---->|             |              |
+|             v              |      |             v              |
+|   +--------------------+   |      |   +--------------------+   |
+|   |                    |   |      |   |                    |   |
+|   |    Private Data    |   |      |   |      Database      |   |
+|   |                    |   |      |   |                    |   |
+|   +--------------------+   |      |   +--------------------+   |
+|                            |      |                            |
++----------------------------+      +----------------------------+
+```
+
 ## Significance Of Web Security And Threats In Web
 
-## Security Of Web Cookies 
+## Security Of Web Cookies
 
 ### Session Hijacking
-
