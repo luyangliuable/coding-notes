@@ -1,7 +1,9 @@
 ;;; rna-transcription.el -- RNA Transcription (exercism)  -*- lexical-binding: t; -*-
-
+;;; Author: Luyang Liu <blackfish@Luyangs-MacBook-Pro.local>
 ;;; Commentary:
-
+;;; This file contains the implementation of the to-rna function, which takes a DNA strand as input
+;;; and returns its corresponding RNA strand.
+;;; Code:
 (defun to-rna (dna-strand)
   (let ((rna-strand ""))
     (dotimes (i (length dna-strand))
@@ -22,10 +24,6 @@
     rna-strand
     )
   )
-
-
-
-
 
 (defun to-rna-one-char (char)
   (cond ((string= strand 'A)
