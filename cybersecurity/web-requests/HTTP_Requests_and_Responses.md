@@ -35,4 +35,4 @@ Content-Type: text/html; charset=UTF-8
 These tools can be a vital asset in any web assessment we perform, as a browser (and its DevTools) are among the assets we are most likely to have in every web assessment exercise.
 
 
-Wwe can use Filter URLs to search for a specific request, in case the website loads too many to go through.
+Www can use Filter URLs to search for a specific request, in case the website loads too many to go through.
