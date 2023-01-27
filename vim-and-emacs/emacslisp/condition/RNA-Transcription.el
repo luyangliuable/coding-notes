@@ -41,7 +41,7 @@
   )
 )
 
-(print (to-rna "Hello") )
+(print (to-rna "AGCT") )
 
 (provide 'rna-transcription)
 ;;; rna-transcription.el ends here
