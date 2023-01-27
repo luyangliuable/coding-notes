@@ -30,7 +30,7 @@
         * GET method: asks the server to send a resource.
         * POST method: sends output data to the server.
     * A series of HTTP headers or header fields.
-    * A message body.
+    * A message body if required.
 
 ```
  --------------------------------------------------------------------------
@@ -41,6 +41,28 @@
 | Host: www.example.com                                                    |
 | Referer: http://www.google.com?q=dingbats                                |
  --------------------------------------------------------------------------
+```
+
+* HTTP Response
+    * A status line (HTTP version, status code, reason phrase)
+        * 2xx: Success
+        * 4xx: Client Error (e.g. 404 Not Found)
+        * 5xx: Server Error (e.g. 503 Service Unavailable)
+    * A series of HTTP headers, or headers field
+        * Cookies: Represent state the server would like the browser to store on its behalf
+    * A message body
+    
+```
+HTTP/1.0 200 OK
+Date: Sun, 21 Apr 1996 02:20:42 GMT
+Server: Microsoft-Internet-Information-Server/5.0
+Connection: keep-alive
+Content-Type: text/html
+Last-Modified: Thu, 18 Apr 1997 17 17:39:05 GMT
+Set Cookie: ...
+Content-Length: 2543
+
+<HTML>...</HTML>
 ```
 
 ## Significance Of Web Security And Threats In Web
