@@ -1,0 +1,3 @@
+[submodule "auto-commit"]
+	path = auto-commit
+	url = https://github.com/luyangliuable/effective-octo-lamp.git
