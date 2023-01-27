@@ -10,8 +10,16 @@
         ((string= strand 'G)
          'C
          )
+        ((string= strand 'C)
+         'G
+         )
+        ((string= strand 'T)
+         'A
+         )
   )
 )
+
+(print (to-rna 'A) )
 
 (provide 'rna-transcription)
 ;;; rna-transcription.el ends here
