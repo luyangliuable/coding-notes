@@ -11,6 +11,9 @@
         - [General goals of web security](#general-goals-of-web-security)
     - [Significance Of Web Security](#significance-of-web-security)
     - [Web Security Threads](#web-security-threads)
+        - [Chrome Security Architecture](#chrome-security-architecture)
+    - [OS vs Browser](#os-vs-browser)
+    - [HTTP is Stateless](#http-is-stateless)
     - [How browser renders a page](#how-browser-renders-a-page)
     - [Security Of Web Cookies](#security-of-web-cookies)
         - [Session Hijacking](#session-hijacking)
@@ -25,6 +28,17 @@
     * Header describing what the browser can do.
 
 * [More info](../web-requests/HTTP_Requests_and_Responses.md)
+
+
+### HTTP is Stateless
+* Lifetime of HTTP:
+  1. Client **connects to the server**
+  2. Client **issues a request**
+  3. Server **responds**
+  4. Client **issues a request for something in the response**
+  5. Repeat...
+  5. Client **disconnects**
+* **HTTP won't remember** the same user again
 
 ### URL
 * http://stanford.edu:81/class?name=cs155#homework
@@ -146,6 +160,13 @@ Content-Length: 2543
     * fear, uncertainty, doubt
 
 ### Chrome Security Architecture
+* Principles:
+    * **Isolation**
+        * **Separate** web application, browser components from each other.
+    * Principle of **Least Previlage**
+        * Runs each component with the bare minimal privileges 
+        * Only if they need it
+        * Minimize damage
 ```
 browser process   GPU singleton  Renderer Sandbox   Renderer Sandbox
   +--------+         -----              -------        -------
@@ -153,16 +174,49 @@ browser process   GPU singleton  Renderer Sandbox   Renderer Sandbox
   |        |         -----             |       |      |       |
   |        | <-----------------------> |       |      |       |
   |        |                            -------        -------
-  |        |                               ^              ^
-  |        |                               |              |
-  |        |                               v              v
+  |        |                             ^                  ^
+  |        |                             | plugin processes |
+  |        |                             v                  v
   |        |                           -------------------------
   |        |                          | ----   -----   -------  |
-  |        |<------------------------>||java| |flash| |acrobat| |
-  |        |                          | ----   -----   -------  |
+  |        |<------------------------>||java| |flash| |acrobat| |    <----->
+  |        |                          | ----   -----   -------  | (IPC Channel)
   |        |                           -------------------------
   +--------+
 ```
+
+* Browser sandbox
+    * **Run remote web applications** safely
+    * **Limited to access** to OS, network, and browser data
+* Approach
+    * **Isolate sites** in different security context
+    * Browser **manages resources** like OS
+
+## OS vs Browser
+|                 | Operating System                    | Web Browser                                                             |
+|:---------------:|:-----------------------------------:|:-----------------------------------------------------------------------:|
+| Primitives      | Processes, system calls, filesystem | Frames, Content (javascript), DOM, cookies and localstorage             |
+| Principles      | Users: Discretionary control        | "Origins": Mandatory access control                                     |
+| Vulnerabilities | Buffer overflow, root exploit       | cross-site scripting, cross-site request forgery, cache history attacks |
+
+## Maintaining State
+```
+ ------------------                 -----------------
+|                  |               |                 |
+|                  |               |                 |
+|     Browser      |               |                 |
+|    ---------     |               |    --------     |
+|   |  State  |    |               |   | State  |    |
+|    ---------     |               |    --------     |
+ ------------------                 -----------------
+```
+
+
+## Security of web cookies
+* Web based state using hidden fields and cookies
+* Session hijacking
+* Session management
+
 
 ## How browser renders a page
 todo
