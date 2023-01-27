@@ -6,6 +6,7 @@
 - [Web Application Safety](#web-application-safety)
     - [Basics Of Web](#basics-of-web)
         - [Web and HTTP (HTTPS)](#web-and-http-https)
+        - [HTTP is Stateless](#http-is-stateless)
         - [URL](#url)
         - [Web Client and Server](#web-client-and-server)
         - [General goals of web security](#general-goals-of-web-security)
@@ -13,7 +14,8 @@
     - [Web Security Threads](#web-security-threads)
         - [Chrome Security Architecture](#chrome-security-architecture)
     - [OS vs Browser](#os-vs-browser)
-    - [HTTP is Stateless](#http-is-stateless)
+    - [Maintaining State](#maintaining-state)
+    - [Security of web cookies](#security-of-web-cookies)
     - [How browser renders a page](#how-browser-renders-a-page)
     - [Security Of Web Cookies](#security-of-web-cookies)
         - [Session Hijacking](#session-hijacking)
@@ -201,15 +203,49 @@ browser process   GPU singleton  Renderer Sandbox   Renderer Sandbox
 
 ## Maintaining State
 ```
+      Client                             Server 
  ------------------                 -----------------
-|                  |               |                 |
-|                  |               |                 |
-|     Browser      |               |                 |
-|    ---------     |               |    --------     |
-|   |  State  |    |               |   | State  |    |
+|                  | HTTP Request  |                 |
+|                  |-------------->|                 |
+|     Browser      |               |    Web Server   |
+|    ---------     | HTTP Response |    --------     |
+|   |  State  |    |<--------------|   | State  |    |
 |    ---------     |               |    --------     |
  ------------------                 -----------------
 ```
+
+* A web application often uses **ephemeral** state to store information that is used during a specific user session.
+  * This state is typically used for intermediate results during server processing, rather than long-term data storage (which is not ACID compliant).
+* This ephemeral state is then sent to the client and returned in subsequent requests.
+* There are two main types of ephemeral state: **hidden fields** and **cookies**. 
+    * Hidden fields: store **data within an HTML form** 
+    * Cookies: store data **in the browser**.
+    
+## Capabilities
+* Large random identifier to index trusted state.
+* Web applications maintain both **ephemeral** and **trusted states**.
+    * These intermediate results are **sent to the client** in the form of capabilities.
+    * The **client references these capabilities** in subsequent responses to the server, **allowing for the continued processing and maintenance** of the trusted state on the server side.
+
+* Capabilities should be **large, random to prevent unauthorized access**.
+    * Difficult to guess 
+
+## Using capabilities
+* Option 1: With hidden fields
+    * Old and tedious way
+* Option 2: Cookies
+
+
+
+## Cookies
+  * Are Key-value pairs
+    * e.g. Set-Cookie:edition=us;expires=Wed,27-Jan-2022 16:29:21 GMT;path=/;domain=.zdnet.com
+
+### Statefulness with cookies
+* Cookie:
+  * Server generates a large random number ( compability ) to denote state.
+  * Is sent to the client and stored by the client.
+  * Client returns the cookie with subsequent requests **to the same server** allowing server to access the associated state.
 
 
 ## Security of web cookies
