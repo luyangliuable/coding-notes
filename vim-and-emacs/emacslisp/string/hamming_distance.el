@@ -4,10 +4,10 @@
 
 (defun hamming-distance (dna1 dna2)
 ;;; Code:  
-  (print "Hello")
+  (print (subseq dna1 1))
   "Hello"
 )
 
 (provide 'hamming)
-(hamming-distance "hello" "bye")
+(print (hamming-distance "hello" "bye"))
 ;;; hamming.el ends here
