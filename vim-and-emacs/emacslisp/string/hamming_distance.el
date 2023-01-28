@@ -9,5 +9,5 @@
 )
 
 (provide 'hamming)
-(hamming-distance)
+(hamming-distance "hello" "bye")
 ;;; hamming.el ends here
