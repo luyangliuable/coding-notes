@@ -44,6 +44,8 @@ touch ./__tests__/filterByTerm.spec.js
 ## Syntax
 ```js
 // Import the 'expect' function from the 'jest' package 
+const filterByTerm = require("../src/filterByTerm");
+//...
 const { expect } = require('jest');
 
 /**
@@ -73,6 +75,7 @@ describe("Filter function", () => {
 
     // Assert that the function returns the expected output when called with the test input
     expect(filterByTerm(input, "link")).toEqual(output);
+    expect(filterByTerm(input, "LINK")).toEqual(output);
   });
 });
 
