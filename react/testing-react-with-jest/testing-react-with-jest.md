@@ -1,12 +1,9 @@
 # Writing Tests for React Applications Using Jest and Enzyme
 Learn about the testing frameworks Jest and Enzyme.
 
-In this article, you will learn how to write tests for your React application using Jest and Enzyme. This is helpful if you want to write tests to catch edge cases, regressions, and have more confidence in shipping updates to your users.
+## Preparation
 
-This article uses yarn instead of npm. Yarn is an alternative package manager. The syntax for Yarn is slightly different compared to npm. You can use either package manager when following along.
-
-Running packages
-Using Yarn:
+* Running packages using yarn
 
 yarn create-react-app my-app
 
