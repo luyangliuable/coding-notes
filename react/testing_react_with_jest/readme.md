@@ -9,9 +9,22 @@
 <!-- markdown-toc end -->
 
 ## Setting Up the Project
-```
+* Get started
+```sh
 mkdir getting-started-with-jest && cd $_
 npm init -y
+```
+
+* Install jest
+```sh
+npm i jest --save-dev
+```
+
+* Configure package json to run test command using jest
+```json
+  "scripts": {
+    "test": "jest"
+  },
 ```
 
 ## References
