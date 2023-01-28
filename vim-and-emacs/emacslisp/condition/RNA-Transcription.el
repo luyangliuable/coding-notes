@@ -1,5 +1,5 @@
 ;;; rna-transcription.el -- RNA Transcription (exercism)  -*- lexical-binding: t; -*-
-;;; Author: Luyang Liu <blackfish@Luyangs-MacBook-Pro.local>
+;;; Author: Luyang Liu
 ;;; Commentary:
 ;;; This file contains the implementation of the to-rna function, which takes a DNA strand as input
 ;;; and returns its corresponding RNA strand.
