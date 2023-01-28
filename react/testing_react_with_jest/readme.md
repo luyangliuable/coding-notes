@@ -5,6 +5,7 @@
 
 - [Testing React with Jest](#testing-react-with-jest)
     - [Setting Up the Project](#setting-up-the-project)
+        - [Getting Coverage](#getting-coverage)
     - [Syntax](#syntax)
     - [References](#references)
 
@@ -91,3 +92,4 @@ describe("Filter function", () => {
 
 ## References
 https://www.valentinog.com/blog/jest/
+https://www.valentinog.com/blog/testing-react/
