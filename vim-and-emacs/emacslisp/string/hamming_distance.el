@@ -4,7 +4,9 @@
 
 (defun hamming-distance (dna1 dna2)
 ;;; Code:  
-  (print (subseq dna1 1))
+  (dotimes (length dna1)
+  (print "Hello")
+  )
   "Hello"
 )
 
