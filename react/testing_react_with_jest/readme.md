@@ -4,6 +4,8 @@
 **Table of Contents**
 
 - [Testing React with Jest](#testing-react-with-jest)
+    - [Setting Up the Project](#setting-up-the-project)
+    - [Syntax](#syntax)
     - [References](#references)
 
 <!-- markdown-toc end -->
@@ -27,8 +29,16 @@ npm i jest --save-dev
   },
 ```
 
+* Create tests folder
 ```sh
 mkdir __tests__
+```
+
+* Create test file
+    * It is a convention borrowed from Ruby for marking the file as a specification for a given functionality.
+
+```sh
+touch ./__tests__/filterByTerm.spec.js
 ```
 
 ## Syntax
