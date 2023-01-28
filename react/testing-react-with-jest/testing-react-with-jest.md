@@ -3,7 +3,7 @@ Learn about the testing frameworks Jest and Enzyme.
 
 ## Preparation
 
-### Running packages using yarn
+### Running Packages Using Yarn
 ```
 yarn create-react-app my-app
 ```
@@ -13,13 +13,13 @@ yarn create-react-app my-app
 npx create-react-app my-app
 ```
 
-### Adding dependencies using yarn
+### Adding Dependencies Using Yarn
 Using Yarn:
 ```
 yarn add enzyme enzyme-adapter-react-16 --dev
 ```
 
-### Using npm:
+### Using Npm:
 ```
 npm install enzyme enzyme-adapter-react-16 --save-dev
 ```
