@@ -5,7 +5,7 @@
 (defun hamming-distance (dna1 dna2)
   ;;; Code:  
   (if (not (eq (length dna1) (length dna2)))
-      (error "Not same length")
+      (print "Not same length")
   )
 
   (let ((dist 0))
@@ -14,7 +14,10 @@
         (setq dist (+ dist 1))
       )
     )
+    (progn
+      (print dist)
       dist
+    )
   )
 )
 
