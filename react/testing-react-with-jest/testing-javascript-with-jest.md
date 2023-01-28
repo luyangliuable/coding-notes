@@ -93,3 +93,4 @@ describe("Filter function", () => {
 ## References
 * https://www.valentinog.com/blog/jest/
 * https://www.valentinog.com/blog/testing-react/
+* [Jest documentation]( https://jestjs.io/docs/tutorial-react )

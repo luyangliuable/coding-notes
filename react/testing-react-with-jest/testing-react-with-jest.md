@@ -34,4 +34,5 @@ npm run test
 ```
 
 ## References
-→ [ Writing Tests for React Applications Using Jest and Enzyme ](https://css-tricks.com/writing-tests-for-react-applications-using-jest-and-enzyme/)
+* [ Writing Tests for React Applications Using Jest and Enzyme ](https://css-tricks.com/writing-tests-for-react-applications-using-jest-and-enzyme/)
+* [Jest documentation]( https://jestjs.io/docs/tutorial-react )
