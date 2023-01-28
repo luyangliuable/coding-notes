@@ -27,6 +27,11 @@ npm i jest --save-dev
   "scripts": {
     "test": "jest"
   },
+  "jest": {
+    "collectCoverage": true // If want coverage always active
+    "coverageReporters": ["html"] // HTML report
+
+  },
 ```
 
 * Create tests folder
@@ -40,6 +45,9 @@ mkdir __tests__
 ```sh
 touch ./__tests__/filterByTerm.spec.js
 ```
+
+### Getting Coverage
+
 
 ## Syntax
 ```js
