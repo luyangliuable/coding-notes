@@ -4,8 +4,10 @@
 
 (defun hamming-distance (dna1 dna2)
   ;;; Code:  
-  (dotimes (i (length dna1) )
+  (let ((dist 0))
+    (dotimes (i (min (length dna1) (length dn2)) )
     (print "Hello")
+  )
   )
 )
 
