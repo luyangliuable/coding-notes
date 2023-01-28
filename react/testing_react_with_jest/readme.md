@@ -91,5 +91,5 @@ describe("Filter function", () => {
 ```
 
 ## References
-https://www.valentinog.com/blog/jest/
-https://www.valentinog.com/blog/testing-react/
+* https://www.valentinog.com/blog/jest/
+* https://www.valentinog.com/blog/testing-react/
