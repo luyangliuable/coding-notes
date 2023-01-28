@@ -43,6 +43,16 @@ touch ./__tests__/filterByTerm.spec.js
 
 ## Syntax
 ```js
+// Import the 'expect' function from the 'jest' package 
+const { expect } = require('jest');
+
+/**
+ * This function filters an array of objects by a search term, matching it against the 'url' property of each object.
+ *
+ * @param {Array} inputArr - The array of objects to filter
+ * @param {string} searchTerm - The term to use as a filter
+ * @returns {Array} - The filtered array
+ */
 function filterByTerm(inputArr, searchTerm) {
   return inputArr.filter(function(arrayElement) {
     return arrayElement.url.match(searchTerm);
@@ -51,17 +61,21 @@ function filterByTerm(inputArr, searchTerm) {
 
 describe("Filter function", () => {
   test("it should filter by a search term (link)", () => {
+    // Test input
     const input = [
       { id: 1, url: "https://www.url1.dev" },
       { id: 2, url: "https://www.url2.dev" },
       { id: 3, url: "https://www.link3.dev" }
     ];
 
+    // Expected output
     const output = [{ id: 3, url: "https://www.link3.dev" }];
 
+    // Assert that the function returns the expected output when called with the test input
     expect(filterByTerm(input, "link")).toEqual(output);
   });
 });
+
 ```
 
 ## References
