@@ -27,5 +27,9 @@ npm i jest --save-dev
   },
 ```
 
+```sh
+mkdir __tests__
+```
+
 ## References
 https://www.valentinog.com/blog/jest/
