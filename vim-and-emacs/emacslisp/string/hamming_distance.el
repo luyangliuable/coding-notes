@@ -10,10 +10,7 @@
         (setq dist (+ dist 1))
       )
     )
-    (progn
-      (print dist)
       dist
-    )
   )
 )
 
