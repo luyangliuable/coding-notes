@@ -13,13 +13,13 @@ yarn create-react-app my-app
 npx create-react-app my-app
 ```
 
-* Adding dependencies
+### Adding dependencies using yarn
 Using Yarn:
 ```
 yarn add enzyme enzyme-adapter-react-16 --dev
 ```
 
-* Using npm:
+### Using npm:
 ```
 npm install enzyme enzyme-adapter-react-16 --save-dev
 ```
