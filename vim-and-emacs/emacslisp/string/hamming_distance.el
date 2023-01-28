@@ -6,8 +6,8 @@
   ;;; Code:  
   (let ((dist 0))
     (dotimes (i (min (length dna1) (length dn2)) )
-    (print "Hello")
-  )
+      (when (not (eq (aref dna1 i) (aref dna2 i) )))
+    )
   )
 )
 
