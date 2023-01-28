@@ -8,8 +8,11 @@
 
 <!-- markdown-toc end -->
 
-
-## What to Test
+## Setting Up the Project
+```
+mkdir getting-started-with-jest && cd $_
+npm init -y
+```
 
 ## References
 https://www.valentinog.com/blog/jest/
