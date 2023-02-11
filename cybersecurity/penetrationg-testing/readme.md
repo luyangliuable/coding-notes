@@ -93,16 +93,50 @@ public bool lt(int x, int y) {
 ```
 
 ### Call Graph
+Which functions call other functions
 
 ```
- -------
-|sort2  |            --------
-|       |  -------> |sort    |
-|       |           |        |
-|       |           |        |
- -------             --------
+ -------                         ---> ----
+|sort2  |            --------   /    | lt |
+|       |  -------> |sort    | /      ----
+|       |            -------- 
+|       |           |        | \
+ -------             --------   \
+                                 \      ----
+                                  ---> | gt |
+                                        ----
 ```
 
+### Control Flow Graph
+Arrows with calls and returns.
+
+```
+ -------                         --->  ----
+|sort2  |  ------->  --------   /     | lt |
+|       |  <------- |sort    | /   --> ----
+|       |  ------->  --------  <--/
+|       |  <------- |        | \
+ -------             --------   \
+                              ^  \      ----
+                               \  \---> | gt |
+                                \----- ----
+```
+
+### CFI: Compliance with CFG
+* Direct calls:
+  * The target (function) of the call is known and fixed at the time the edge is created.
+* Indirect calls:
+  * The call is not known until runtime.
+  * Value stored in a register or calling a function pointer.
+  * Computed dynamically.
+* Compute the call/return CFG in advance
+  * During compilation, or from the binary
+* Monitor the control flow of the program and ensure that it only follows paths allowed by the CFG
+* Observations: Direct calls need not be monitored
+  * Assuming the code is immutable, the target address cannot be changed
+* Therefore: monitor only indirect calls
+  * jmp, call, ret with non-constant targets
+  
 
 ### Source Code Review (i.e. white-box testing)
 * Code walk through - also known as "white box testing"
