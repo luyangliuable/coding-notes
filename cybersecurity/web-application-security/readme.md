@@ -145,17 +145,21 @@ Content-Length: 2543
     * Often vulnerable **making server, database, internal network, and data insecure**.
 
 
-## Web Security Threads
+## Web Security Threats
 * **Information disclosure** (lost data confidentiality)
     * business secrets
     * financial information
     * medical data
     * government documents
+
 * **tampering** (lost data integerity)
+
 * **spoofing**/elevation of privilege/unauthorized access
     * Functionality of the system abused.
+
 * Denial of Service (DDOS)
     * Loss of avalaiblity or functionality (and revenue)
+
 * **Attacker breach firewall** (foot in the door)
 * Web defacement (clients and stakeholders)
     * loss of reputation
