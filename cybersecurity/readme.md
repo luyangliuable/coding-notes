@@ -41,6 +41,20 @@ Please note that the sample codes provided are for educational and demonstration
 
 This repository is meant to be a starting point for cybersecurity learning, it is important to always keep updating your knowledge and stay informed about the latest threats and vulnerabilities.
 
+## Category of Software Attacks
+> See [security-testing-plan](./cybersecurity/security-testing-plan/readme.md)
+
+* Software-dependency attacks
+  * Environment within which apps work
+
+* User-interface attacks
+  * Including buffer overflows
+
+* Attacks against the application's design
+  * Trapdoors, debugging, test instrumentation 
+
+* Attacks against the design implementation
+
 ## Future References
 * Hackthebox
 * "Practical Machine Learning for Cybersecurity" by Wei-Jen Li, Anupam Joshi, and Yi-An Liao: This book covers the basics of machine learning and its applications in cybersecurity, including intrusion detection, malware detection, and network security.
