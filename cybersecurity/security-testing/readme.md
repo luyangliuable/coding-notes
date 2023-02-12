@@ -30,6 +30,7 @@
 ## Security Testing Approaches
 * Risk based security testing
 * "White-box" testing
+    > see [white-box-testing](./coding-notes/cybersecurity/penetrationg-testing/white-box-testing/readme.md)
     * Manual human peer review
     * With a tool, e.g. static code analysis
 * Penetration Testing
@@ -49,7 +50,16 @@
 * Identify types of threat. 
 * Check whether code for any of the possible mitigation method is incorporated.
 
-### Source Code Review (i.e. white-box testing)
+
+### Penetrating Testing [#penetration-testing]() [#testing-for-negatives]()
+Search for application weaknesses through simulating malicious attacks.
+> TODO See [penetration-testing](./penetration-testing/readme.md)
+
+* Point of view of an attacker
+* Testing for positives is functional testing
+* Testing for negatives is penetration testing
+
+### Source Code Review [#source-code-review]() [#white-box-testing]() [#data-flow-issues]() [#control-flow-issues]()
 * Code walk through - also known as "white box testing"
 * Look for bad practices of programming
     * Structural issues such as hard coded key/password.
@@ -67,6 +77,9 @@
     * Executive summary
     * List of technical issues identified
     * Glossary, appendices, indexes and etc.
+    
+## Grey Box Testing [#grey-box-testing]()
+Combination of source code review and penetration testing.
 
 ### With a Tool
 * Less time consuming
@@ -126,7 +139,6 @@
   * **Data Flow Analysis**: Identifies user-controlled input that is involved in a dangerous operation (e.g. longer user input data copied into fixed size buffer.)
   * **Control Flow Analysis**: Identified dangerous operation sequences (e.g. a file is not configured properly before use)
 
-### Penetrating Testing
 
 ## Analyses Testing Specific Types of Application
 
