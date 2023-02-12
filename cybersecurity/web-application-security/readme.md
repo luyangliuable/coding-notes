@@ -11,14 +11,23 @@
         - [Web Client and Server](#web-client-and-server)
         - [General goals of web security](#general-goals-of-web-security)
     - [Significance Of Web Security](#significance-of-web-security)
-    - [Web Security Threads](#web-security-threads)
+    - [Web Security Threats](#web-security-threats)
         - [Chrome Security Architecture](#chrome-security-architecture)
     - [OS vs Browser](#os-vs-browser)
     - [Maintaining State](#maintaining-state)
+    - [Capabilities](#capabilities)
+    - [Using capabilities](#using-capabilities)
+    - [Cookies](#cookies)
+        - [Purpose of Cookies](#purpose-of-cookies)
+        - [Statefulness with cookies](#statefulness-with-cookies)
     - [Security of web cookies](#security-of-web-cookies)
     - [How browser renders a page](#how-browser-renders-a-page)
     - [Security Of Web Cookies](#security-of-web-cookies)
         - [Session Hijacking](#session-hijacking)
+        - [Mitigating Session Hijacking](#mitigating-session-hijacking)
+        - [Non-defense](#non-defense)
+        - [Session mananagent](#session-mananagent)
+    - [Common Threats at Server Side](#common-threats-at-server-side)
 
 <!-- markdown-toc end -->
 
@@ -129,20 +138,20 @@ Content-Length: 2543
 * Safely browse the web
     * No stolen information (without user's permission)
     * Site A cannot compromise session at Site B
-* Secure web applications
+    * Secure web applications
     * Applications delivered over the web should have the **same security properties we require for stand-alone applications**
     * HTTPS - http over SSL (Secure Socket Layer)
-        * **Encrypts** for the browser-server traffic
-        * **Prevents** eavesdropping, and main-in-the-middle attack (if certification verification is done correctly)
-        * Helps user **ensure authenticity** of the server.
+    * **Encrypts** for the browser-server traffic
+    * **Prevents** eavesdropping, and main-in-the-middle attack (if certification verification is done correctly)
+    * Helps user **ensure authenticity** of the server.
 
 
 ## Significance Of Web Security
 * Web apps are:
-    * **easy to target** for attackers
-        * **finding** vulnerable sites, **automating** and **scaling** attacks.
-    * **Not easy to develop well** and securely.
-    * Often vulnerable **making server, database, internal network, and data insecure**.
+* **easy to target** for attackers
+* **finding** vulnerable sites, **automating** and **scaling** attacks.
+* **Not easy to develop well** and securely.
+* Often vulnerable **making server, database, internal network, and data insecure**.
 
 
 ## Web Security Threats
