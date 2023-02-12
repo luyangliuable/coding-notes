@@ -8,7 +8,9 @@
     - [Security Testing Approaches](#security-testing-approaches)
         - [Risk Based Security Testing](#risk-based-security-testing)
         - [Source Code Review (i.e. white-box testing)](#source-code-review-ie-white-box-testing)
-            - [With a Tool](#with-a-tool)
+        - [With a Tool](#with-a-tool)
+            - [Vulnerability Covered by FlawFinder](#vulnerability-covered-by-flawfinder)
+            - [Advanced Static Code Analyzers](#advanced-static-code-analyzers)
         - [Penetrating Testing](#penetrating-testing)
     - [Using Testing Tools](#using-testing-tools)
     - [Analyses Testing Specific Types of Application](#analyses-testing-specific-types-of-application)
@@ -46,97 +48,6 @@
     * Identify the security breach boundaries.
 * Identify types of threat. 
 * Check whether code for any of the possible mitigation method is incorporated.
-
-## Control flow issues
-Improper control of flow of execution within a software system.
-* A file is configured properly before use
-* Infinite loops
-* Improper access controls
-* Race conditions
-* Improper error handling 
-* Buffer overflows
-
-## Data flow issues
-Improper control of the flow data within a software system
-* Long user input data copied into fixed size buffer.
-* XSS 
-* SQL
-* CSRF
-
-## Control Flow Integrity
-> "Observe the program's behaviour - is it doing what we expect it to do?"
-  * If not, might be compromised
-* Challenges
-  * Defined "**expected behavior**"
-    * Use control flow graph (CFG)
-  * Define **deviations from expectation** efficiently
-    * In-line reference monitor (IRM)
-  * Avoid compromise of the control flow integrity detector
-    * Sufficient randomness, immutability
-
-## Graphs
-* Example
-```csharp
-public void sort(int a[], int b[], int len) {
-    sort(b, len, lt)
-    sort(b, len, gt)
-}
-
-public bool lt(int x, int y) {
-    return x<y;
-}
-
-
-public bool lt(int x, int y) {
-    return x>y;
-}
-```
-
-### Call Graph
-Which functions call other functions
-
-```
- -------                         ---> ----
-|sort2  |            --------   /    | lt |
-|       |  -------> |sort    | /      ----
-|       |            -------- 
-|       |           |        | \
- -------             --------   \
-                                 \      ----
-                                  ---> | gt |
-                                        ----
-```
-
-### Control Flow Graph
-Arrows with calls and returns.
-
-```
- -------                         --->  ----
-|sort2  |  ------->  --------   /     | lt |
-|       |  <------- |sort    | /   --> ----
-|       |  ------->  --------  <--/
-|       |  <------- |        | \
- -------             --------   \
-                              ^  \      ----
-                               \  \---> | gt |
-                                \----- ----
-```
-
-### CFI: Compliance with CFG
-* Direct calls:
-  * The target (function) of the call is known and fixed at the time the edge is created.
-* Indirect calls:
-  * The call is not known until runtime.
-  * Value stored in a register or calling a function pointer.
-  * Computed dynamically.
-* Compute the call/return CFG in advance
-  * During compilation, or from the binary
-* Monitor the control flow of the program and ensure that it only follows paths allowed by the CFG
-* Observations: Direct calls need not be monitored
-  * Assuming the code is immutable, the target address cannot be changed
-* Therefore: monitor only indirect calls
-  * jmp, call, ret with non-constant targets
-  
 
 ### Source Code Review (i.e. white-box testing)
 * Code walk through - also known as "white box testing"
@@ -215,11 +126,7 @@ Arrows with calls and returns.
   * **Data Flow Analysis**: Identifies user-controlled input that is involved in a dangerous operation (e.g. longer user input data copied into fixed size buffer.)
   * **Control Flow Analysis**: Identified dangerous operation sequences (e.g. a file is not configured properly before use)
 
-    
-
 ### Penetrating Testing
-
-## Using Testing Tools
 
 ## Analyses Testing Specific Types of Application
 

@@ -84,6 +84,17 @@ You can also use the table of contents to navigate through the notes
 ## Contribute
 If you would like to contribute to this repository, please feel free to create a pull request. I would love to have your input and contributions.
 
+## Procedure for Adding Notes
+1. Place note into a suitable topic organized for path name
+    e.g. A topic for testing RPC and ActiveX apps goes under cybersecurity -> penetration-testing
+2. If the topic is too large break it down into smaller topics by creating sub headings
+3. Move all subheading to other appropriate places
+    e.g. A malformed argument data that causes buffer overflow in RPC argument can go under software security -> vulnerabilities -> buffer-overflow-vulnerability
+4. Place reference link <br />
+> see [Buffer overflow](./cybersecurity/software-security/vulnerabilities/buffer-overflow-vulnerability/readme.md)
+
+At original location of the note
+
 ## Acknowledgments
 Codecademy
 Exercism
