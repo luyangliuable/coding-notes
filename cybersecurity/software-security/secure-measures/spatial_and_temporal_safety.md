@@ -71,7 +71,7 @@ High address (0xffffffff)
  Low Address (0x00000000)
 ```
 
-## Temporal Safety
+## Temporal Safety [#smart-pointers]() [#garbage-collection]() [#reference-counting]()
 * Program should only access memory that is still allocated and not already freed.
 * To prevent illegal access to memory after it has been deallocated.
 
