@@ -31,7 +31,7 @@
 ## Hardware Assisted Trust
 Use of hardware-based security features to enhance the security and trust of system.
 
-### Examples (that are also TCBs)
+### Examples (that are also TCBs) (#secure boot)
 * Secure boot
     * Verify the integrity of system's firmware and os during startup.
     * Prevent malicious software from loaded during boot process.
