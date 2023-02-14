@@ -5,8 +5,9 @@
 
 - [Threat Modeling](#threat-modeling)
     - [Stride Approach [#spoofing]() [#tampering]() [#repudiation]() [#information-disclosure]() [#denial-of-service]() [#elevation-of-Previlage]()](#stride-approach-spoofing-tampering-repudiation-information-disclosure-denial-of-service-elevation-of-previlage)
+    - [Vulnerability Cycle [#exploit]()](#vulnerability-cycle-exploit)
         - [Attack Approach from STRIDE Point of View [network-user]() [snooping-user]() [colated-user]()](#attack-approach-from-stride-point-of-view-network-user-snooping-user-colated-user)
-    - [](#)
+    - [Threat-driven Design](#threat-driven-design)
 
 <!-- markdown-toc end -->
 
@@ -31,6 +32,7 @@ A process by which potential threats such as structural vulnerability or absence
 | Denial of Service      | Availability      |
 | Elevation of Previlage | Authorization     |
 
+## Vulnerability Cycle [#exploit]()
 
 ### Attack Approach from STRIDE Point of View [network-user]() [snooping-user]() [colated-user]()
 * Network user
@@ -50,4 +52,13 @@ A process by which potential threats such as structural vulnerability or absence
   * No need to encrypt communication
   * This is what telnet remote login software assumed.
   
+Develop -> Get alert and install patch -> Discover vulnerability
 
+
+1. Someone uncovers and discloses a new vulnerability in a piece of software.
+2. Hackers exploits the vulnerability and launch attacks agians the system,
+3. Simulaneously, software security teams work on a fix.
+4. If the vulnerability is serious, inform news/media.
+5. Knee-jerk countermeasures
+6. If The patch is ready, security team create/obtain, test, apply the patch
+7. Security technicians check for similar vulnerabilties by examining related utilities and code fragments (as well as the new patch itself) 
