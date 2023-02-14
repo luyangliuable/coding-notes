@@ -8,6 +8,7 @@
     - [Vulnerability Cycle [#exploit]()](#vulnerability-cycle-exploit)
         - [Attack Approach from STRIDE Point of View [network-user]() [snooping-user]() [colated-user]()](#attack-approach-from-stride-point-of-view-network-user-snooping-user-colated-user)
     - [Threat-driven Design](#threat-driven-design)
+    - [Vulnerability Cycle](#vulnerability-cycle)
 
 <!-- markdown-toc end -->
 
@@ -34,6 +35,7 @@ A process by which potential threats such as structural vulnerability or absence
 
 ## Vulnerability Cycle [#exploit]()
 
+<<<<<<< Updated upstream
 ### Attack Approach from STRIDE Point of View [#network-user]() [#snooping-user]() [#colated-user]()
 * Network user
   * Hack a server by connecting to the internet
@@ -46,6 +48,9 @@ A process by which potential threats such as structural vulnerability or absence
   * Hack another user by using malware installed on their machine
   * keylogger, read/write user's system, files or memory
   * Password theft
+=======
+Develop -> Get alert and install patch -> Discover vulnerability
+>>>>>>> Stashed changes
 
 ## Threat-driven Design
 * Network-only attackers implies messages traffic is safe.
@@ -55,7 +60,7 @@ A process by which potential threats such as structural vulnerability or absence
 Develop -> Get alert and install patch -> Discover vulnerability
 
 1. Someone uncovers and discloses a new vulnerability in a piece of software.
-2. Hackers exploits the vulnerability and launch attacks agians the system
+2. Hackers exploits the vulnerability and launch attacks agians the system,
 3. Simulaneously, software security teams work on a fix.
 4. If the vulnerability is serious, inform news/media.
 5. Knee-jerk countermeasures
