@@ -103,3 +103,18 @@ $stmt->close();
 * Other parts of query code cannot be parameterized
   * Like ASC and DESC in order by
   * White list options: ASC and DESC
+
+<!-- markdown-toc end -->
+
+## Tips for Testing SQLi Vulnerabilities
+* Code reviews on queiries without prepare statements
+* Penetration testing
+  * doing single quote in data input field
+    * Good: no error, confirmis hint (escaping)
+    * Bad: Error occurs
+* Further tests
+  * Inject code generating equivalent result
+  * MYSQL: ''alice, space allows string concatentaio
+  * MS-SQL: '+'alice for MS-SQL
+
+    
