@@ -19,6 +19,18 @@
 <!-- markdown-toc end -->
 
 
+## Three Levels of Security Testing [#risk-based-testing]() [#code-review]() [#penetration-testing]()
+* Risk based testing
+* Code Review (White box testing)
+  * With a tool
+  * Manually
+* Penetration Testing (Black box testing)
+  * Exploratory Manual
+  * Systematic Manual
+  * Fuzzing
+    * Random malformed inputs pumped into entry points to help uncover faults
+    * Saves time and it is automated
+
 ## Difference between Security Testing and Functionality Testing
 | Security Testing                                            | Functionality Testing                 |
 |:-----------------------------------------------------------:|:-------------------------------------:|
@@ -115,10 +127,7 @@ Combination of source code review and penetration testing.
         short r = i;
         ```
       * False negative
-        * New zero-day vulnerability not included in the "**rule database**" (patterns)
-        * Runtime environment is unknown
-          * Call external APIs
-          * Other factors, e.g. scheduling of multiple threads
+        * New zero-day vulnerability not included in the "**rule database**" (patterns) * Runtime environment is unknown * Call external APIs * Other factors, e.g. scheduling of multiple threads
 
 #### Vulnerability Covered by FlawFinder
 * Improper **input validation**
