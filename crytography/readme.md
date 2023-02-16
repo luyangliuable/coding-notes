@@ -33,6 +33,12 @@
 ## One-way Hash Functions
 * Essential **building block** in crytography
 
+### Purpose [#integrity-verification]() [#password-verification]() [#trusted-timestamping]()
+* Integrity verification
+* Committing a secret without telling it
+* Password verification without seeing the password
+* Trusted timestamping
+
 ### Example
 * Password Authentication
 * Integrity Preservation
