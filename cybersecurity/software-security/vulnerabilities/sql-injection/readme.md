@@ -102,6 +102,7 @@ $stmt->close();
   * Use strict **validation restriction** (allow only alphanumeric characters, reject spaces and limit length)
 * Other parts of query code cannot be parameterized
   * Like ASC and DESC in order by
+<<<<<<< Updated upstream
   * White list options: ASC and DESC
 
 <!-- markdown-toc end -->
@@ -118,3 +119,6 @@ $stmt->close();
   * MS-SQL: '+'alice for MS-SQL
 
     
+=======
+  * Whitelist options: ASC and DESC
+>>>>>>> Stashed changes
