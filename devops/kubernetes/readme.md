@@ -124,4 +124,3 @@ Set-Alias -Name d -Value docker
 Set-Alias -Name dc -Value docker-compose
 ```
 
-Set-Alias -Name gitkey -Value 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
