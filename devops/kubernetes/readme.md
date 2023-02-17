@@ -125,10 +125,3 @@ Set-Alias -Name dc -Value docker-compose
 ```
 
 Set-Alias -Name gitkey -Value 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
-
-
-TODO Hold off
-
-git clone https://luyangliuable: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@github.com/wexinc/ps-treasury-bta-bank-transfer.git
-
-git clone https://github.com/wexinc/ps-treasury-bta-bank-transfer.git
