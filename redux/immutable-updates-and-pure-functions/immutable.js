@@ -9,3 +9,4 @@ const removeItemAtIndex = (list, index) => {
 
 // This line is not part of the function, it just calls the function with sample arguments and prints the result to the console.
 console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1));
+
