@@ -35,7 +35,6 @@ A process by which potential threats such as structural vulnerability or absence
 
 ## Vulnerability Cycle [#exploit]()
 
-<<<<<<< Updated upstream
 ### Attack Approach from STRIDE Point of View [#network-user]() [#snooping-user]() [#colated-user]()
 * Network user
   * Hack a server by connecting to the internet
@@ -48,9 +47,8 @@ A process by which potential threats such as structural vulnerability or absence
   * Hack another user by using malware installed on their machine
   * keylogger, read/write user's system, files or memory
   * Password theft
-=======
+
 Develop -> Get alert and install patch -> Discover vulnerability
->>>>>>> Stashed changes
 
 ## Threat-driven Design
 * Network-only attackers implies messages traffic is safe.

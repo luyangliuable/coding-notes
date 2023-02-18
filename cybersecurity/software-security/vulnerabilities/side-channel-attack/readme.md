@@ -134,15 +134,15 @@ cache   | ....         |           | ...          |
 
 ## Meltdown Attack
 1. Access a probe buffer with *offset = secret * 4096*.
-    * 4096 = size of page memory
-    * "secret" = arbitrary value that the chosen to target a specific memory page believed to contain sensitive data.
-    * Purpose is to load memory page into cache.
-    * Location likely to contain sensitive data.
-    * "Secret" is the guess? and value of the secret data.
-    * Secret is loaded into l1 cache.
+  * 4096 = size of page memory
+  * "secret" = arbitrary value that the chosen to target a specific memory page believed to contain sensitive data.
+  * Purpose is to load memory page into cache.
+  * Location likely to contain sensitive data.
+  * "Secret" is the guess? and value of the secret data.
+  * Secret is loaded into l1 cache.
 2. Access memory page and count the access time.
-    * Attacker repeatedly access a large number of memory pages.
-    * Gauge which memory page contain the sensitive data.
+  * Attacker repeatedly access a large number of memory pages.
+  * Gauge which memory page contain the sensitive data.
 3. The cached page w/ the shortest access time is likely the one containing the sensitive data. Extract data from memory page.
 
 ```
@@ -166,19 +166,19 @@ cache   | ....         |           | ...          |
 
 ### Difficulties
 * The contents in the enclave page cache (EPC) is encrypted
-  * EVen if an attacker gains access to the EPC, they will not be able to read or modify the code and data that make up the enclave.
+  * Even if an attacker gains access to the EPC, they will not be able to read or modify the code and data that make up the enclave.
 * An attempt to read a memory address in EPC return abort page (0xFF, not an exception )
 
 ## Foreshadow
 * Variations of the meltdown vulnerability to target the sgx
-    * Bypass the abort page semantics when using meltdown to access data in enclave.
-    * Exploits **speculative execution**.
+  * Bypass the abort page semantics when using meltdown to access data in enclave.
+  * Exploits **speculative execution**.
 * Observations:
-    * Abort page semantics apply only when the legacy page table check is done without exception.
-    * When processor encounters an exception it is not handled immediately and the processor continues to execute code speculatively.
-    * mprotect() can be used to clear the "present" bit of a page.
-        * a flag that indicates whether a page is currently in memory or not.
-        * By clearing the "present" bit, the attacker can cause the legacy page table check to fail and allow the exploitation of the vulnerability.
+  * Abort page semantics apply only when the legacy page table check is done without exception.
+  * When processor encounters an exception it is not handled immediately and the processor continues to execute code speculatively.
+  * mprotect() can be used to clear the "present" bit of a page.
+      * a flag that indicates whether a page is currently in memory or not.
+      * By clearing the "present" bit, the attacker can cause the legacy page table check to fail and allow the exploitation of the vulnerability.
 * Can be used to recover provisioning key and the recover attestation key to attest any malicious enclave in the remote platform.
 
 ### Steps
