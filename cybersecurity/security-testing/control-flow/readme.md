@@ -11,13 +11,13 @@
         - [Control Flow Graph](#control-flow-graph)
     - [Control Flow Integrity [#CFI]() [#static-analysis]() [#runtime]() [#CFI-label]()](#control-flow-integrity-cfi-static-analysis-runtime-cfi-label)
         - [CFI: Compliance with CFG [#direct-calls]() [#indirect-calls]() [#compliance]()](#cfi-compliance-with-cfg-direct-calls-indirect-calls-compliance)
-        - [In-Line Monitor](#in-line-monitor)
+        - [In-Line Monitor [#target-address]() [#program-transformation]() [#control-flow-graph]()](#in-line-monitor-target-address-program-transformation-control-flow-graph)
         - [Why CFI is Effective? [#CFI-label]()](#why-cfi-is-effective-cfi-label)
         - [Shortcomings of CFI  [#self-modifying-code]() [#heartbleed]()](#shortcomings-of-cfi--self-modifying-code-heartbleed)
 
 <!-- markdown-toc end -->
 
-## Control Flow Issues 
+## Control Flow Issues  [#control-flow]() [#control-flow-hijacking]()
 Improper control of flow of execution within a software system.
 
 * Often **control flow hijacking attack**.
@@ -39,14 +39,15 @@ Improper control of the flow data within a software system
 
 ## Control Flow Integrity
 > "Observe the program's behaviour - is it doing what we expect it to do?"
-  * If not, might be compromised
-* Challenges
-  * Defined "**expected behavior**"
-    * Use control flow graph (CFG)
-  * Define **deviations from expectation** efficiently
-    * In-line reference monitor (IRM)
-  * Avoid compromise of the control flow integrity detector
-    * Sufficient randomness, immutability
+* If not, might be compromised
+
+## Challenges [#expected-behavior]() [#deviation-from-expectation]()
+* Defined "**expected behavior**"
+  * Use control flow graph (CFG)
+* Define **deviations from expectation** efficiently
+  * In-line reference monitor (IRM)
+* Avoid compromise of the control flow integrity detector
+  * Sufficient randomness, immutability
 
 ## Graphs
 * Example
@@ -99,10 +100,12 @@ Arrows with calls and returns.
 ## Control Flow Integrity [#CFI]() [#static-analysis]() [#runtime]() [#CFI-label]()
 
 ### CFI: Compliance with CFG [#direct-calls]() [#indirect-calls]() [#compliance]()
+
 * Direct calls:
   * The target (function) of the call is known and fixed at the time the edge is created.
 
 * Indirect calls:
+  * Return values, registers.
   * The call is not known until runtime.
   * Value stored in a register or calling a function pointer.
   * Computed dynamically.
@@ -119,7 +122,8 @@ Arrows with calls and returns.
   * jmp, call, ret with non-constant targets
   
 
-### In-Line Monitor
+
+### In-Line Monitor [#target-address]() [#program-transformation]() [#control-flow-graph]()
 * Implement the monitor in-line, as a **program transformation**.
 * Insert a **label just before the target address** of an indirect transfer.
 * Insert a **code to check the label of the target** at each indirect transfer.
@@ -142,8 +146,5 @@ Arrows with calls and returns.
 * Prevents data leaks and corruption TODO is this true?
 
 ### Shortcomings of CFI  [#self-modifying-code]() [#heartbleed]()
-
-TODO Is this true?
-
 * Heartbleed will not be prevented
 * Presence of self-modifying code cause control modification to be allowed by graph.

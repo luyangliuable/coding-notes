@@ -1,4 +1,5 @@
 # Stacks
+
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
@@ -7,6 +8,7 @@
     - [Frame Pointer](#frame-pointer)
         - [Example](#example-1)
     - [Why Push Arguments in Reverse Order?](#why-push-arguments-in-reverse-order)
+    - [Function Call Chain (Previous frame pointers)](#function-call-chain-previous-frame-pointers)
 
 <!-- markdown-toc end -->
 
@@ -57,6 +59,7 @@ v   |----------------|
 * %ebp is the frame pointer, it always points to where the previous frame pointer is stored.
 * Each register holds 4 bytes of memory
 * %edx and %eax are 2 general puporse registers used for storing temporary results.
+
 ```asm
 movl 12(%ebp), %eax ; store b at %ebp + 12
 movl 8(%ebp), %edx  ; store a at %ebp + 8

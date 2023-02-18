@@ -12,6 +12,7 @@
     - [Commands](#commands)
     - [Symmetric Crytosystem](#symmetric-crytosystem)
         - [Issues](#issues)
+    - [Random Number Generator](#random-number-generator)
     - [Stream Cipher](#stream-cipher)
         - [WEP](#wep)
         - [Insecurity of WEP](#insecurity-of-wep)
@@ -32,12 +33,18 @@
 ## One-way Hash Functions
 * Essential **building block** in crytography
 
+### Purpose [#integrity-verification]() [#password-verification]() [#trusted-timestamping]()
+* Integrity verification
+* Committing a secret without telling it
+* Password verification without seeing the password
+* Trusted timestamping
+
 ### Example
 * Password Authentication
 * Integrity Preservation
 * Blockchain
 
-## Security Properties
+### Security Properties
 * Difference from Hash function
     * Hash function: maps arbitrary size data to data of fixed size.
     * Example: f(x) = x mod 1000

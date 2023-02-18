@@ -4,6 +4,8 @@
 **Table of Contents**
 
 - [Stream Ciphers](#stream-ciphers)
+    - [Pros [#stream-ciper-advantages]() [#memory]() [#parallel]()](#pros-stream-ciper-advantages-memory-parallel)
+    - [Cons [#key-reuse-vulnerability]() [#prng]()](#cons-key-reuse-vulnerability-prng)
     - [Rivest Cipher 4 (RC4)](#rivest-cipher-4-rc4)
     - [Security in WEP](#security-in-wep)
         - [Vulnerability](#vulnerability)
@@ -14,13 +16,10 @@
 
 A stream cipher is a type of symmetric-key encryption algorithm that encrypts plaintext into ciphertext.
 
-
-* Pseudo random key using pseudorandom bit generator (PRBG).
-* PRGB is a mathematical algorithm that generates a sequence of bits, which are seemingly random, but are actually determined by an initial value called a seed.
-
-* Suitable for plaintext of arbitrary length generated on the fly (e.g. media stream)
-* Can process input elements in parallel.
-
+* **Pseudo random key** using pseudorandom bit generator (PRBG).
+* PRGB is a **mathematical algorithm** that generates a sequence of bits, which are seemingly random, but are actually determined by an initial value called a seed.
+* The key is typically the same for all messages encrypted using the stream cipher.
+* The key is typically the seed for the pseudo random number generator.
 ```
  -----
 | key |
@@ -45,35 +44,37 @@ A stream cipher is a type of symmetric-key encryption algorithm that encrypts pl
  -------------
 ```
 
-## Pros
+## Pros [#stream-ciper-advantages]() [#memory]() [#parallel]()
 * It takes **less memory than block cipher algorithm**
     * Suited for **low resource environments** such as wireless communication services.
 * **Can entrypt messages of any length** whereas block cipher can only encrypt fix sizes of plaintext sometimes needing padding.
+* Suitable for plaintext of arbitrary length generated on the fly (e.g. media stream)
+* Can process input elements in parallel.
 
 
-## Cons
-* Prone to key-reuse vulerability
+## Cons [#key-reuse-vulnerability]() [#prng]()
+* Prone to key-reuse vulnerability
 * Relies heavily on the randomess and secrecy of random number generators
-    * Good Randomness: Evenly distributed number
-    * Good Secrecy: Hard to predict random number based on previous outputs
+  * Good Randomness: Evenly distributed number
+  * Good Secrecy: Hard to predict random number based on previous outputs
 
 
-## Rivest Cipher 4 (RC4)
+## Rivest Cipher 4 (RC4) [#symmetric-key-stream-cipher]()
 * A symmetric key stream cipher that was widely used in many protocols and systems
 * The algorithm was kept secret until it was leaked to the public in 1994.
 * RC4 is a fast and simple algorithm that is suitable for software and hardware implementation.
-* It has been found to have weaknesses in its key schedule, and its use is now discouraged in favor of more secure algorithms.
+* It has been found to have weaknesses in its **key schedule**, and its use is now discouraged in favor of more secure algorithms.
 
 
-## Security in WEP
+## Security in WEP  [#security]()
 * IV || KEY -> RC4 -> KEYSTREAM = 0101
 * PLAINTEXT = 1100
 * CIPHERTEXT = KEYSTREAM xor PLAINTEXT = PLAINTEXT xor RC4(IV, KEY)
 
-* one of the first security protocols for wireless networks, and it was widely adopted in the early days of wireless networking.
+* One of the first security protocols for wireless networks, and it was widely adopted in the early days of wireless networking.
 * It is easy to set up and use.
 
-### Vulnerability
+### Vulnerability [#key-reuse-vulnerability]()
 * For P1 and P2, if P1 is know then P2 is also known. Where P1 and P2 are original text.
 * C1 = P1 xor RC4(v, k)
 * C1 = P2 xor RC4(v, k)
