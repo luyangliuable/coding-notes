@@ -43,3 +43,6 @@ Use combinations of "known-to-be-dangerous" values (known as fuzzy vectors) and 
 * for chars: escaped, interpretable characters / instructions (e.g., %s%p%x%d,. 1024d, %.2049d, %p%p%p%p, %x%x%x%x, %99999999999s)
 
 * Tools: google AFL, Microsoft's SDL MiniFuzz File Fuzzer
+
+## Resources
+[5 pen testing rules of engagement: What to consider while performing Penetration testing](https://hub.packtpub.com/penetration-testing-rules-of-engagement/) 

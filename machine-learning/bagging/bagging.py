@@ -2,7 +2,6 @@ from tree import build_tree, print_tree, car_data, car_labels
 import random
 random.seed(4)
 
-
 # tree = build_tree(car_data, car_labels)
 # print_tree(tree)
 
