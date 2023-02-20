@@ -30,14 +30,16 @@ def dynamicArray(n, queries):
             arr[idx].append(item[2])
         elif item[0] == 2:
             # assign the value at index queries[i][2] of arr[((arr[i][1] ^ 0 ) % 2)] to last answer
-            idx = (queries[i][1] ^ lastAnswer) % n
-            lastAnswer = arr[][queries[i][2]]
+            idx = (item[1] ^ lastAnswer) % n
+            idx2 = item[2] % len(arr[idx])
+            lastAnswer = arr[idx][idx2]
+
             output.append(lastAnswer)
 
     return output
 
 if __name__ == '__main__':
-    dynamicArray(2, [[1,0,5],[1,1,7],[1,0,3],[2,1,0],[2,1,1]])
+    print(dynamicArray(2, [[1,0,5],[1,1,7],[1,0,3],[2,1,0],[2,1,1]]))
 
 
 # if __name__ == '__main__':
