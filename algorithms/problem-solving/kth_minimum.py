@@ -4,6 +4,9 @@ def kth_min(arr, k):
         for j in range(len(arr)):
             cp_arr.append([arr[i], arr[j]])
 
-    print(cp_arr)
+    cp_arr.sort()
 
-kth_min([1,2,3], 6)
+    print(cp_arr)
+    return cp_arr[k-1]
+
+print(kth_min([1,2,3], 7))
