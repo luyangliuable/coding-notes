@@ -10,6 +10,7 @@ const decrement = () => {
 };
 
 const initialState = 0;
+
 const countReducer = (state = initialState, action) => {
     switch (action.type) {
     case 'increment':
@@ -19,7 +20,7 @@ const countReducer = (state = initialState, action) => {
     default:
         return state;
     }
-}
+};
 
 const store = createStore(countReducer);
 
