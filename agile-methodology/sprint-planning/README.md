@@ -14,6 +14,16 @@
     - [Preparing the stories](#preparing-the-stories)
     - [Definition of ready](#definition-of-ready)
     - [Selecting user stories](#selecting-user-stories)
+    - [Velocity](#velocity)
+        - [Stable and unstable velocity (inspect and adapt)](#stable-and-unstable-velocity-inspect-and-adapt)
+    - [Don't forget your technical stories](#dont-forget-your-technical-stories)
+    - [Detailed planning](#detailed-planning)
+    - [Stories and Tasks](#stories-and-tasks)
+        - [Stories](#stories)
+        - [Task](#task)
+            - [A thing a team member does](#a-thing-a-team-member-does)
+            - [Always part of a story](#always-part-of-a-story)
+            - [Involve a lot of tech stacks](#involve-a-lot-of-tech-stacks)
 
 <!-- markdown-toc end -->
 
@@ -23,7 +33,7 @@ The process of preparing the sprint backlog.
 
 * Create sprint backlog
 
-**Do not think about*** future sprints!
+**Do not think about** future sprints!
 
 This is done at the end of the sprint in backlog maintenance.
 
@@ -143,11 +153,9 @@ If velocity in your team is **stable**, you can simply use last iteration’s ve
 At the start, your initial estimate of velocity will be very rough and likely to be inaccurate, but as you gain experience you'll get better at this.  Then, you will be able to use your past velocity to predict how many story points your team is likely to get through in the sprint.  As a rule of thumb, you can expect your tasks to take about twice as long as you think they will.
 
 ## Don't forget your technical stories
-
 If you have accrued significant technical debt, you may also need to select some tech stories so that you can refactor it away.
 
 If the Product Owner asks you to implement stories that you can only implement by incurring technical debt, have them promise to select some tech stories in future sprints -- and get that promise in writing!
-
 
 ## Detailed planning
 
