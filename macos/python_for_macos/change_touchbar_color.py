@@ -9,6 +9,16 @@ def set_touchbar_color(red: int, green: int, blue: int) -> None:
     NSColor.setIgnoresAlpha_(True)
     # Set the color as the background color for the Touch Bar
     NSColor.setColor_(color)
+    
+    # Print hello world with array comprehension
+    print("Hello World"[i] for i in range(11))
+
+
+
+
+
+
+
 
 # Example usage: set the Touch Bar background color to blue
 set_touchbar_color(0, 0, 255)

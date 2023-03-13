@@ -16,7 +16,6 @@
 
 <!-- markdown-toc end -->
 
-
 ## Packaging
 After the app is finished in the development environment. It needs to be packages, compiled and a makerfile or executable file needs to be created. Sometimes you will need an installer and a set of (installation) instructions.
 
