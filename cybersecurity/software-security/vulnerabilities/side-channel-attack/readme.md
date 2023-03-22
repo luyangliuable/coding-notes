@@ -160,9 +160,7 @@ cache   | ....         |           | ...          |
 |        Execution Unit                  reorder      |     --------
 |                                         buffer      |    |        |
  -----------------------------------------------------      --------
-
 ```
-
 
 ### Difficulties
 * The contents in the enclave page cache (EPC) is encrypted
