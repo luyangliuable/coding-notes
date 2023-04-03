@@ -99,7 +99,7 @@ If a message contains information, an entity receiving it and understanding it w
 * Higher bandwidth or signal to noise ratio gives higher capacity thus how much information it can carry.
 * Channels with very low bandwidth but very high signal to noise ratio can still achieve high capacity.
 * TODO When SNR > 1, the second term approximates the logarithm of SNR.
-* When SNR < 1, the second term -> 0 and bandwidth becomes dominant in terms of improve capacity.
+  * When SNR < 1, the second term -> 0 and bandwidth becomes dominant in terms of improve capacity.
 
 ### Limitations of Shannon's Theorem
 * It is only proven for Addtitive Gaussian White Noise (AGWN), and may not be accurate for other types of noise, interence or crosstalk in a channel.

@@ -12,8 +12,6 @@ def check_zeroes(s):
 
     return i
 
-
-
 def mine(s, padding=None, MAX_LOOP=10000):
     # req = '0'*padding
     max_zeroes = 0
