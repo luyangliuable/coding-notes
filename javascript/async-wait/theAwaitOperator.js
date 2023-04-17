@@ -5,6 +5,7 @@
 const brainstormDinner = () => {
     return new Promise((resolve, reject) => {
         console.log(`I have to decide what's for dinner...`);
+
         setTimeout(() => {
             console.log('Should I make salad...?');
             setTimeout(() => {

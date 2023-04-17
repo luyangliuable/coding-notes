@@ -12,7 +12,7 @@ const countReducer = (state = initialState, action) => {
     default:
         return state;
     }
-}
+};
 
 // Create a Redux store using the countReducer function
 const store = createStore(countReducer);
