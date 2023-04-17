@@ -1,5 +1,20 @@
 # Carrier Sense Multiple Access
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Carrier Sense Multiple Access](#carrier-sense-multiple-access)
+    - [Persistent Carrier Sense Multiple Access](#persistent-carrier-sense-multiple-access)
+    - [1-persistent CSMA](#1-persistent-csma)
+    - [Non-Persistent Carrier Sense Multiple Access](#non-persistent-carrier-sense-multiple-access)
+    - [Persistent vs Non-persistent CSMA](#persistent-vs-non-persistent-csma)
+    - [CSMA wiwth Colision Detection Protocol](#csma-wiwth-colision-detection-protocol)
+        - [Transmission in CSMA with Collision Detection (CSMA/CD)](#transmission-in-csma-with-collision-detection-csmacd)
+        - [Binary Exponential Back off](#binary-exponential-back-off)
+
+<!-- markdown-toc end -->
+
+
 * An attempt to improve from 'Alohas'
 * Make termianls listen to the common channel when they are ready for transmission
 * Make sure the common channel is clear before they can transmit
@@ -17,6 +32,15 @@
 * When terminals sense a busy channel as they are ready:
   * backoff for a while and return back to sense the channel some time later.
 
+## Persistent vs Non-persistent CSMA
+
+| 1-persistent                                                 | non-persistent                                                                       | p-persistent csma                                                                                                  |
+|:------------------------------------------------------------:|:------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------:|
+| If medium is busy, keep sensing the medium until it is free. | If medium is busy, keep sensing the medium until it is free                          | If medium is busy, wait for a random amount of time then check again.                                              |
+| Once medium is free, transmit data immediately.              | Once medium is free, waits for a random amount of time before transmitting the data. | Once the medium is free, start transmitting the data if random value p <= 1 else wait for a random amount of time. |
+
+
+
 ## CSMA wiwth Colision Detection Protocol
 * Enhancement from CSMA protocol
 * Can detect collisions during their transmission.
@@ -25,5 +49,25 @@
 * Transceiver will read the channel and compare the detected signals against the transmitted signals.
 * If `detected signal strength != transmitted signal strength`, signal interference has occurred probably.
 
-## Transmission in CSMA with Collision Detection
+### Transmission in CSMA with Collision Detection (CSMA/CD)
+* Improvement from `CSMA`
 * The terminals choose a future random slot for re-transmission of the packet
+
+### Binary Exponential Back off
+
+* Binary Exponential Backoff
+
+```
+   Collision
+     ___
+    |   |
+----|---|----|---|----|----> Time
+  n  n+1 n+2  n+3  ...
+```
+
+| Number of continuous collisions experienced in the past `c` | Possible Slots for Retransmission |
+|:-----------------------------------------------------------:|:---------------------------------:|
+| 1-9                                                         | [n+1, n+2^c]                      |
+| 10-16                                                       | [n+1, n+2^10]                     |
+| >16                                                         | =ABORT=                           |
+
