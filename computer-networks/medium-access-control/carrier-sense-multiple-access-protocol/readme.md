@@ -42,6 +42,21 @@
 
 
 ## CSMA wiwth Colision Detection Protocol
+
+* CSMA/CD can be inside the following modes
+  * Transmission period
+  * contention period
+  * idle state
+
+```
+ ------------------------ - - - -------- - - - - -------       - -------
+|         Frame          | | | | Frame  | | | | | Frame |     | | Frame |
+ ------------------------ - - - -------- - - - - -------       - -------
+   Transmission Period      \                        idle Period
+                             \
+                             Contention period
+```
+
 * Enhancement from CSMA protocol
 * Can detect collisions during their transmission.
 * As soon as a collision is detected, abort the transmission immediately so that the common channel can be freed for next use.
