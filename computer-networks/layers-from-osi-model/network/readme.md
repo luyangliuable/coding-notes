@@ -108,6 +108,24 @@ AND
 * Uses variable length IP prefixing
   * Allows more efficient use IP addresses
   * Flexible allocation of IP address blocks.
+  
+* A set of IP Address Assignments
+![](yj8+.png ) 
+
+* Aggregation of IP prefixes
+![](R+G5.png) 
+
+* Longest matching prefix routing at the New York router.
+![](XGnb.png) 
+
+### CIDR Notation
+
+e.g. /19 means first 19 bits of IP address is used to represent the network and remaining bits is used to identify the host.
+
+## CIDR vs Subnet
+* Generally mean the same thing
+* CIDR is referred at ISP level
+* Subnet is referred to at organizational level.
 
 
 ## References
