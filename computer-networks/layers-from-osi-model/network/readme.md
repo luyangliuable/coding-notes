@@ -30,6 +30,40 @@
 4. Internet control Protocols
 5. Label switching and MPLS
 
-## The Network Layer in the internet 
+## The Network Layer in the internet
 
-![](a8Of.png ) 
+![](a8Of.png )
+
+## Types of networks
+* Subnets
+* Prefixes
+  * A contiguous block of IP address space
+* CIDR
+  * Classless interDomain Routing
+* Classful and special addressing
+* NAT
+  * Network Address Translation
+
+## Prefix and a Subnet Mask
+
+```
+                                32 bits
+            <------------------------------------------------>
+                        L bits                   32 - L bits
+            <---------------------------------><------------->
+             -------------------------------------------------
+            |             Network             |      Host     |
+             -------------------------------------------------
+Subnet mask  111111111111111111111111111111111 0 0 0 0 0 0 0 0
+```
+    * Both prefixes and subnet masks are used to defining the boundaries of a network.
+      * Important for routing traffic and ensuring that packets are delivered to their intended desintations.
+
+e.g. Prefix is 24 and subnet mask is a 32-bit value.
+    * Subnet mask is set to 1.
+    * 1 bits represent network portion
+    * 0 bits represent the host portion
+    * 255.255.255.0
+
+## Subnets
+![Alt Text](YU0.png ) 
