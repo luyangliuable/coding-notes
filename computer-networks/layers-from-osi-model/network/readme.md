@@ -7,6 +7,11 @@
     - [10 Principals](#10-principals)
     - [Components of Network Layer](#components-of-network-layer)
     - [The Network Layer in the internet](#the-network-layer-in-the-internet)
+    - [Types of networks](#types-of-networks)
+    - [Prefix and a Subnet Mask](#prefix-and-a-subnet-mask)
+    - [Subnets](#subnets)
+    - [Classless Interdomain Routing (CIDR)[#network]() [#cidr]()](#classless-interdomain-routing-cidrnetwork-cidr)
+    - [References](#references)
 
 <!-- markdown-toc end -->
 
@@ -67,3 +72,43 @@ e.g. Prefix is 24 and subnet mask is a 32-bit value.
 
 ## Subnets
 ![Alt Text](YU0.png ) 
+
+* Divide a network into two or more networks.
+* Divide the host identifier portion of an IP address into two or more parts using a subnet mask.
+
+* e.g. Sub netting address range of 192.168.1.0 - 192.168.1.255 into 4 smaller subnets.
+    * Subnet mask is 255.255.255.192
+    * CIDR Notation is /26
+    * 192 is chosen because it allows us to create 4 subnets with 64 values each.
+    * First Subnet
+        * 255.255.255.192 bitwise AND 192.168.1.0 = 192.168.1.0
+    * Second Subnet
+        * 192.168.1.0 Bitwise OR 0.0.0.63
+        
+```
+00000000
+AND
+11000000
+=
+00000000
+```
+
+```
+00000000
+AND
+    11000000
+=
+00000000
+```
+
+## Classless Interdomain Routing (CIDR)[#network]() [#cidr]()
+* Method for allocating IP addresses and routing traffic.
+* Slow the growth of routing tables on routers across the internet and help slow the rapid exhaustion of IPv4 addresses.
+* Uses suffix to represent number of bits in the network prefix.
+* Uses variable length IP prefixing
+  * Allows more efficient use IP addresses
+  * Flexible allocation of IP address blocks.
+
+
+## References
+[CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 
