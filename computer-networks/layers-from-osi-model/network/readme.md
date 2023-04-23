@@ -6,6 +6,7 @@
 - [Network Layer](#network-layer)
     - [10 Principals](#10-principals)
     - [Components of Network Layer](#components-of-network-layer)
+    - [The Network Layer in the internet](#the-network-layer-in-the-internet)
 
 <!-- markdown-toc end -->
 
@@ -30,3 +31,5 @@
 5. Label switching and MPLS
 
 ## The Network Layer in the internet 
+
+![](a8Of.png ) 
