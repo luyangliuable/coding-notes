@@ -72,6 +72,8 @@
 
 * Binary Exponential Backoff
 
+backoff_time = 2^k - 1
+
 ```
    Collision
      ___

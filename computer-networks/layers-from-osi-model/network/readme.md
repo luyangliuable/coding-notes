@@ -75,7 +75,6 @@ e.g. Prefix is 24 and subnet mask is a 32-bit value.
 
 * Divide a network into two or more networks.
 * Divide the host identifier portion of an IP address into two or more parts using a subnet mask.
-
 * e.g. Sub netting address range of 192.168.1.0 - 192.168.1.255 into 4 smaller subnets.
     * Subnet mask is 255.255.255.192
     * CIDR Notation is /26
@@ -96,7 +95,7 @@ AND
 ```
 00000000
 AND
-    11000000
+11000000
 =
 00000000
 ```
@@ -106,11 +105,11 @@ AND
 * Slow the growth of routing tables on routers across the internet and help slow the rapid exhaustion of IPv4 addresses.
 * Uses suffix to represent number of bits in the network prefix.
 * Uses variable length IP prefixing
-  * Allows more efficient use IP addresses
+  * Allows more efficient use IP addresses.
   * Flexible allocation of IP address blocks.
   
 * A set of IP Address Assignments
-![](yj8+.png ) 
+![](yj8+.png) 
 
 * Aggregation of IP prefixes
 ![](R+G5.png) 
@@ -128,5 +127,38 @@ e.g. /19 means first 19 bits of IP address is used to represent the network and 
 * Subnet is referred to at organizational level.
 
 
+## Workshop Questions
+
+A network administrator is given the IP address block 192.168.0.0/21 for a local area network. The network needs to be divided into four equal sized subnets. What will be the new subnet mask and range of IP address for each subnet? 
+
+2^2 = 4
+
+11000000 = 2^6 + 2^7 = 192
+
+255.255.255.192
+
+range = 64
+
+* You are given the IP address block 192.168.10.0/24
+
+## The purpose of subnets is to:
+
+Minimize traffic: Subnets split a large network into smaller, interconnected networks to help reduce traffic, allowing data to flow through fewer routers and increasing network speeds 
+
+Improve address allocation efficiency: Subnetting improves the allocation of IP addresses by subdividing large networks into smaller segments 
+
+Reallocate IP addresses: Subnets enable network administrators to use a single block of addresses on multiple physical networks, reducing the need for additional address blocks 
+
+Relieve network congestion: Placing frequently communicating devices on the same subnet can reduce network traffic 
+
+Improve network security: Subnetting allows administrators to quarantine compromised sections of the network and make it more difficult for trespassers to move around the network 
+
+Efficient data routing: Subnets segregate broadcast domains into smaller sections, which results in fewer nodes for broadcast traffic to interact with, making data routing efficient and direct 
+
+Enhanced network security: Subnets help secure larger networks by isolating compromised segments and controlling access to devices running on the entire network 
+
+Subnet masks play a crucial role in these purposes by ensuring that traffic remains within the defined subnet, reducing congestion, and enhancing overall network performance and speed 
+
 ## References
-[CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 
+[cidr](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 
+[Link Text](https://www.freecodecamp.org/news/subnet-cheat-sheet-24-subnet-mask-30-26-27-29-and-other-ip-address-cidr-network-references/) 
