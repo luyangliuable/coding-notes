@@ -1,6 +1,6 @@
 import ipaddress
 
-ip = "192.168.1.1"
+ip = "255.255.255.254"
 
 for cidr in range(32, -1, -1):
     network = ipaddress.IPv4Network(f"{ip}/{cidr}", strict=False)
