@@ -46,10 +46,75 @@ Explain primary functions of **SMTP**, **IMAP** and **POP** in the context of em
 | Mail will remain on the server      | Once downloaded from server, mail is deleted from server |
 | Multiple devices can download email | Only one device can download email                       |
 
-Question 4:
+## Question 4:
 Explain the relationship between the **World Wide Web** (WWW), **Hypertext Transfer Protocol (**HTTP), and **Hypertext Transfer Protocol Secure** (HTTPS) in the context of **internet communication**. 
-P
-rovide a brief overview of their respective roles and how they work together to enable secure and efficient web browsing. Highlight the main differences and advantages of using HTTPS over HTTP.
+
+Provide a brief overview of their respective roles and how they work together to enable secure and efficient web browsing. Highlight the main differences and advantages of using HTTPS over HTTP.
 
 
 * `www` is a system of interconnected documents and resources that can be accessed via the internet.
+* `http` is used to transfer data between web servers and clients.
+* `https` is a secure version that uses encryption to protect transmitted data over the internet.
+
+| https                                  | http                  |
+|:--------------------------------------:|:---------------------:|
+| Enhanced security, prevent MITM attack | minimal security      |
+| Improves SEO                           | lowers ranking in SEO |
+| better user trust                      | not trustworthy       |
+
+
+## Question 5:
+Explain the concept of **dynamic web pages**, highlighting their purpose and how they differ from **static web pages**. Provide a brief overview of the **technologies used to generate dynamic content** and the advantages they offer in terms of user experience and content management. 
+
+* Dynamic web pages
+  * Generated continuously by updating new content into the frontend (client) from the backend (server).
+  * Technologies
+    * Any server-side script like PHP, node or python
+  * Advantages
+    * Stores state onto the backend
+    * Allows greater interactivity and data retention hence better user satisfaction.
+    * Easier for web devs to update content
+    * Reduce the amount of effort to maintain web site.
+* Static web pages
+  * Often generated from a single http request
+
+## Question 6
+Explain the concept of a **Content Delivery Network** (CDN), focusing on its purpose and how it helps improve the **delivery of content over the Internet**. Briefly discuss the key components of a CDN and the techniques it employs to reduce latency, **increase availability**, and ensure **efficient distribution** of data to end users.
+
+* Content Delivery Network
+  * System of geographically distributed servers that work together to improve content delivery over the internet.
+  * Purpose
+    * Increase avalaiblity
+    * Allow data to be distributed to end user efficiently
+    * Reduce latency
+  * Key components
+    * Edge servers
+      * Severs that are closest to the end user.
+      * Cache and deliver content to user.
+    * Origin servers
+      * Servers that Store the original content
+      * Generate and deliver content to edge servers
+    * Load balancers
+      * Distributing user request among edge servers, ensuring request is handled efficiently and effectively.
+  * Techniques
+    * Routing optimization
+    * Compression
+    * Caching
+
+
+## Question 7:
+Provide an explanation of **Voice over IP** (VoIP) and **Video over IP** technologies, focusing on their purpose and how they enable multimedia communication over the Internet. Briefly discuss the role of codecs in these technologies and their impact on quality and bandwidth requirements.
+
+* Voice over IP
+  * Transmit real-time voice over the internet.
+  * Convert analog waves (voice) into packets that can be transmitted over the internet using IP protocols.
+* Voice over IP
+  * Transmit real-time video over the internet.
+  * Convert video into packets that can be transmitted over the internet using IP protocols.
+
+
+* Codecs
+  * Allow compression and decompressing the voice and video data.
+  * Reduces size of data needed to be transmitted over the internet and bandwith requirements.
+  * However, it can reduce the quality of voice and video data.
+  * Higher compression ratio leads to high loss of data.
