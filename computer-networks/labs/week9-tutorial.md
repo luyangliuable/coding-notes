@@ -112,9 +112,28 @@ Provide an explanation of **Voice over IP** (VoIP) and **Video over IP** technol
   * Transmit real-time video over the internet.
   * Convert video into packets that can be transmitted over the internet using IP protocols.
 
-
 * Codecs
   * Allow compression and decompressing the voice and video data.
   * Reduces size of data needed to be transmitted over the internet and bandwith requirements.
   * However, it can reduce the quality of voice and video data.
   * Higher compression ratio leads to high loss of data.
+
+
+## Question 8:
+Explain the concept of **sockets** in **computer networks**, including their purpose and how they enable communication between devices. Provide a brief overview of the **socket types** and their **roles in network communication**.
+
+* Sockets
+  * Enable two way communication between devices.
+  * Represented by an IP address and a port number
+  * Types
+    * Stream sockets
+      * reliable
+      * data is in orginal order
+    * Datagram sockets
+      * unreliable
+      * connectionless
+      * For application that require fast transmission
+  * Sockets
+      
+
+    
