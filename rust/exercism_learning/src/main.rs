@@ -3,6 +3,7 @@ mod string;
 mod datetime;
 mod enums;
 mod arithmetic;
+mod logic;
 
 use enums::semi_structured_logs::{log, info, error, warn, LogLevel};
 
