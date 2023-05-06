@@ -1,12 +1,25 @@
-use enums::semi_structured_logs::{log, info, error, warn, LogLevel};
 
 pub fn raindrops(n: u32) -> String {
 
     let mut result = String::new();
 
-    result.push_str("poo");
+    if n % 3 == 0 {
+        result.push_str("Pling");
+    }
 
-    println!("{:?}", "result");
+    if n % 5 == 0 {
+        result.push_str("Plang");
+    }
+
+    if n % 7 == 0 {
+        result.push_str("Plong");
+    }
+
+    if result.len() == 0
+    {
+        let str = n.to_string();
+        result.push_str(&str);
+    }
 
     return result;
 }
