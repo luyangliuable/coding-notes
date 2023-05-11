@@ -11,9 +11,9 @@
 #define BUFFER_SIZE 1024
 
 void *sendMessage(void *vargp);
+void *recvMessage(void *vargp);
 
 pthread_mutex_t close_exit_mutex = PTHREAD_MUTEX_INITIALIZER;
-
 int close_exit = 0;
 
 void close_exit_signal() {
@@ -44,10 +44,23 @@ int main() {
   }
 
   pthread_t send_thread;
+  pthread_t recv_thread;
+
   pthread_create(&send_thread, NULL, &sendMessage, (void *)&client_fd);
+  pthread_create(&recv_thread, NULL, &recvMessage, (void *)&client_fd);
 
+  while (1) {
+    if (close_exit) {
+      break;
+    }
+    sleep(1);
+  }
 
-  pthread_join(send_thread, NULL);
+  pthread_cancel(send_thread);
+  pthread_cancel(recv_thread);
+
+  printf("Closed connection.\n");
+
   close(client_fd);
   return 0;
 }
@@ -59,7 +72,7 @@ void *recvMessage(void *client_fd_ptr) {
   while (1) {
     read(client_fd, recv_buffer, BUFFER_SIZE);
 
-    if (strcmp(recv_buffer, "exit\n") == 0 || strcmp(recv_buffer, "exit\n") == 0) {
+    if (close_exit || strcmp(recv_buffer, "exit\n") == 0 || strcmp(recv_buffer, "exit\n") == 0) {
       close_exit_signal();
       break;
     }
