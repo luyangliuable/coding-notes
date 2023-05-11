@@ -64,9 +64,8 @@ int main() {
     /*       Read new content from client file descriptor into a buffer      */
     /*************************************************************************/
     read(client_fd, recv_buffer, BUFFER_SIZE);
-    fflush(STDIN_FILENO);
+    printf("Client: %s", recv_buffer);
     memset(recv_buffer, 0, BUFFER_SIZE);
-    printf("Server: %s", recv_buffer);
   }
 
   close(client_fd);
@@ -82,13 +81,12 @@ void *sendMessage(void *server_fd_ptr) {
     /*************************************************************************/
     /*           Get message from standard input and send to server          */
     /*************************************************************************/
-    printf("Server: ");
+    /* printf("Server: "); */
 
     // Send a message to the server
     fgets(send_buffer, BUFFER_SIZE, stdin);
-    printf("Sending %s.\n", send_buffer);
+    /* printf("Sending %s.\n", send_buffer); */
     int res = send(server_fd, send_buffer, strlen(send_buffer), 0);
-    /* fflush(STDIN_FILENO); */
 
     if (res == -1) {
       perror("send");

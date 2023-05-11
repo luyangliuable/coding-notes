@@ -12,9 +12,14 @@
 
 void *sendMessage(void *vargp);
 
-typedef struct {
-  int socket_fd;
-} thread_arg;
+pthread_mutex_t close_exit_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+int close_exit = 0;
+
+void close_exit_signal() {
+  close_exit = 1;
+  pthread_mutex_lock(&close_exit_mutex);
+}
 
 int main() {
   int client_fd;
@@ -41,15 +46,29 @@ int main() {
   pthread_t send_thread;
   pthread_create(&send_thread, NULL, &sendMessage, (void *)&client_fd);
 
-  while (1) {
-    read(client_fd, recv_buffer, BUFFER_SIZE);
-    fflush(STDIN_FILENO);
-    memset(recv_buffer, 0, BUFFER_SIZE);
-    printf("Client: %s", recv_buffer);
-  }
 
+  pthread_join(send_thread, NULL);
   close(client_fd);
   return 0;
+}
+
+void *recvMessage(void *client_fd_ptr) {
+  int client_fd = *((int *)client_fd_ptr);
+  char recv_buffer[BUFFER_SIZE];
+
+  while (1) {
+    read(client_fd, recv_buffer, BUFFER_SIZE);
+
+    if (strcmp(recv_buffer, "exit\n") == 0 || strcmp(recv_buffer, "exit\n") == 0) {
+      close_exit_signal();
+      break;
+    }
+
+    printf("Server: %s", recv_buffer);
+    memset(recv_buffer, 0, BUFFER_SIZE);
+  }
+
+  pthread_exit(NULL);
 }
 
 void *sendMessage(void *client_fd_ptr) {
@@ -57,12 +76,15 @@ void *sendMessage(void *client_fd_ptr) {
   char send_buffer[BUFFER_SIZE];
 
   while (1) {
-    printf("Client: ");
 
     fgets(send_buffer, BUFFER_SIZE, stdin);
-    printf("Sending %s.\n", send_buffer);
+
+    if (strcmp(send_buffer, "exit\n") == 0 || strcmp(send_buffer, "exit\n") == 0) {
+      close_exit_signal();
+      break;
+    }
+
     int res = send(client_fd, send_buffer, strlen(send_buffer), 0);
-    fflush(STDIN_FILENO);
 
     if (res == -1) {
       perror("send");
@@ -71,4 +93,6 @@ void *sendMessage(void *client_fd_ptr) {
 
     memset(send_buffer, 0, BUFFER_SIZE);
   }
+
+  pthread_exit(NULL);
 }
