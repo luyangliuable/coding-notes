@@ -16,11 +16,21 @@ void *recvMessage(void *vargp);
 pthread_mutex_t close_exit_mutex = PTHREAD_MUTEX_INITIALIZER;
 int close_exit = 0;
 
-void close_exit_signal() {
+/**
+ *  \brief Close client signal
+ *
+ *  Close client signal if client disconnects
+ *
+ *  \return void
+ */
+void terminate_connection() {
   close_exit = 1;
   pthread_mutex_lock(&close_exit_mutex);
 }
 
+/**
+ *  Main function
+ */
 int main() {
   int client_fd;
   struct sockaddr_in server_addr;
@@ -33,22 +43,34 @@ int main() {
     exit(EXIT_FAILURE);
   }
 
+  /***************************************************************************/
+  /*          Include server information like tcp, address and port          */
+  /***************************************************************************/
   server_addr.sin_family = AF_INET;
   server_addr.sin_addr.s_addr = inet_addr(SERVER_IP);
   server_addr.sin_port = htons(PORT);
 
+  /***************************************************************************/
+  /*         If fail to connect to port and address, error then exit         */
+  /***************************************************************************/
   if (connect(client_fd, (struct sockaddr *)&server_addr,
               sizeof(server_addr)) == -1) {
     perror("connect");
     exit(EXIT_FAILURE);
   }
 
+  /*************************************************************************/
+  /*      Create two threads: One for sending and other for receiving        */
+  /*************************************************************************/
   pthread_t send_thread;
   pthread_t recv_thread;
 
   pthread_create(&send_thread, NULL, &sendMessage, (void *)&client_fd);
   pthread_create(&recv_thread, NULL, &recvMessage, (void *)&client_fd);
 
+  /***************************************************************************/
+  /*              Break from waiting if close signal is detected              */
+  /***************************************************************************/
   while (1) {
     if (close_exit) {
       break;
@@ -65,6 +87,14 @@ int main() {
   return 0;
 }
 
+/**
+ *  \brief Receive message thread function
+ *
+ *  This function is for receiving messages
+ *
+ *  \param client_fd_ptr poiting to client_fd
+ *  \return void
+ */
 void *recvMessage(void *client_fd_ptr) {
   int client_fd = *((int *)client_fd_ptr);
   char recv_buffer[BUFFER_SIZE];
@@ -72,8 +102,9 @@ void *recvMessage(void *client_fd_ptr) {
   while (1) {
     read(client_fd, recv_buffer, BUFFER_SIZE);
 
-    if (close_exit || strcmp(recv_buffer, "exit\n") == 0 || strcmp(recv_buffer, "exit\n") == 0) {
-      close_exit_signal();
+    if (close_exit || strcmp(recv_buffer, "exit\n") == 0 ||
+        strcmp(recv_buffer, "exit\n") == 0) {
+      terminate_connection();
       break;
     }
 
@@ -84,6 +115,14 @@ void *recvMessage(void *client_fd_ptr) {
   pthread_exit(NULL);
 }
 
+/**
+ *  \brief Send message thread function
+ *
+ *  This function is for sending messages
+ *
+ *  \param client_fd_ptr poiting to client_fd
+ *  \return void
+ */
 void *sendMessage(void *client_fd_ptr) {
   int client_fd = *((int *)client_fd_ptr);
   char send_buffer[BUFFER_SIZE];
@@ -92,8 +131,9 @@ void *sendMessage(void *client_fd_ptr) {
 
     fgets(send_buffer, BUFFER_SIZE, stdin);
 
-    if (strcmp(send_buffer, "exit") == 0 || strcmp(send_buffer, "exit\n") == 0) {
-      close_exit_signal();
+    if (strcmp(send_buffer, "exit") == 0 ||
+        strcmp(send_buffer, "exit\n") == 0) {
+      terminate_connection();
       break;
     }
 

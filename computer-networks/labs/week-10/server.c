@@ -17,14 +17,13 @@ pthread_mutex_t close_client_mutex = PTHREAD_MUTEX_INITIALIZER;
 int close_client = 0;
 int close_exit = 0;
 
-
 /**
-*  \brief Close client signal
-*
-*  Close client signal if client disconnects
-*
-*  \return void
-*/
+ *  \brief Close client signal
+ *
+ *  Close client signal if client disconnects
+ *
+ *  \return void
+ */
 void close_client_signal() {
 
   close_client = 1;
@@ -41,7 +40,12 @@ void open_client_signal() {
   pthread_mutex_unlock(&close_client_mutex);
 }
 
-void close_exit_signal() {
+/**
+ *  \brief Terminal connection session
+ *
+ *  \return void
+ */
+void terminate_connection() {
   close_exit = 1;
   pthread_mutex_lock(&close_exit_mutex);
 }
@@ -64,10 +68,16 @@ int main() {
     exit(EXIT_FAILURE);
   }
 
+  /***************************************************************************/
+  /*          Include server information like tcp, address and port          */
+  /***************************************************************************/
   server_addr.sin_family = AF_INET;
   server_addr.sin_addr.s_addr = INADDR_ANY;
   server_addr.sin_port = htons(PORT);
 
+  /***************************************************************************/
+  /*           If find ot bind to address and port, error then exit          */
+  /***************************************************************************/
   if (bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) ==
       -1) {
     perror("bind");
@@ -75,44 +85,54 @@ int main() {
   }
 
   while (1) {
+    /*************************************************************************/
+    /*             If the client disconnect start listening again            */
+    /*************************************************************************/
 
     if (listen(server_fd, 1) == -1) {
       perror("listen");
       exit(EXIT_FAILURE);
     }
-    addr_len = sizeof(client_addr);
-
     printf("Server listening for connection...\n");
+
 
     /***************************************************************************/
     /*                      Create client file descriptor */
     /***************************************************************************/
+    addr_len = sizeof(client_addr);
     client_fd = accept(server_fd, (struct sockaddr *)&client_addr,
                        (socklen_t *)&addr_len);
 
     printf("Server connected to client\n");
+
     open_client_signal();
 
     if (client_fd == -1) {
       perror("accept");
       exit(EXIT_FAILURE);
     }
-
+    /*************************************************************************/
+    /*      Create two threads: One for sending and other for receiving        */
+    /*************************************************************************/
     pthread_t send_thread;
     pthread_t recv_thread;
 
     pthread_create(&send_thread, NULL, &sendMessage, (void *)&client_fd);
     pthread_create(&recv_thread, NULL, &recvMessage, (void *)&client_fd);
 
+    /*************************************************************************/
+    /*     If either close connection or client closes break from waiting    */
+    /*************************************************************************/
     while (1) {
       if (close_exit == 1 | close_client == 1) {
         break;
       }
     }
 
-    close(client_fd);
     pthread_cancel(send_thread);
     pthread_cancel(recv_thread);
+
+    close(client_fd);
 
     if (close_exit == 1) {
       break;
@@ -182,7 +202,7 @@ void *sendMessage(void *server_fd_ptr) {
     /*************************************************************************/
 
     if (strcmp(send_buffer, "exit") == 0) {
-      close_exit_signal();
+      terminate_connection();
       break;
     }
 
