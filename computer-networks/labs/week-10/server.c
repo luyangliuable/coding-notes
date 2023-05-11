@@ -35,6 +35,7 @@ int main() {
     perror("bind");
     exit(EXIT_FAILURE);
   }
+
   if (listen(server_fd, 1) == -1) {
     perror("listen");
     exit(EXIT_FAILURE);
@@ -61,7 +62,9 @@ int main() {
     /*       Read new content from client file descriptor into a buffer      */
     /*************************************************************************/
     memset(buffer, 0, BUFFER_SIZE);
+    printf("Reading...\n");
     read(client_fd, buffer, BUFFER_SIZE);
+    printf("Reading done!\n");
 
     printf("Client: %s", buffer);
 
