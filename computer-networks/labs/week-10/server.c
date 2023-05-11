@@ -1,5 +1,6 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,12 +9,13 @@
 #define PORT 8080
 #define BUFFER_SIZE 1024
 
+void *sendMessage(void *vargp);
 
 int main() {
 
   int server_fd, client_fd, addr_len;
   struct sockaddr_in server_addr, client_addr;
-  char buffer[BUFFER_SIZE];
+  char recv_buffer[BUFFER_SIZE];
 
   /***************************************************************************/
   /*                               Start socket                              */
@@ -28,7 +30,6 @@ int main() {
   server_addr.sin_family = AF_INET;
   server_addr.sin_addr.s_addr = INADDR_ANY;
   server_addr.sin_port = htons(PORT);
-
 
   if (bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) ==
       -1) {
@@ -54,30 +55,46 @@ int main() {
     exit(EXIT_FAILURE);
   }
 
+  pthread_t send_thread;
+  pthread_create(&send_thread, NULL, &sendMessage, (void *)&client_fd);
 
   // Receive a message from the client
   while (1) {
-
     /*************************************************************************/
     /*       Read new content from client file descriptor into a buffer      */
     /*************************************************************************/
-    memset(buffer, 0, BUFFER_SIZE);
-    printf("Reading...\n");
-    read(client_fd, buffer, BUFFER_SIZE);
-    printf("Reading done!\n");
-
-    printf("Client: %s", buffer);
-
-    /*************************************************************************/
-    /*           Get message from standard input and send to client          */
-    /*************************************************************************/
-    // Send a message to the client
-    printf("Server: ");
-    fgets(buffer, BUFFER_SIZE, stdin);
-    send(client_fd, buffer, strlen(buffer), 0);
+    read(client_fd, recv_buffer, BUFFER_SIZE);
+    fflush(STDIN_FILENO);
+    memset(recv_buffer, 0, BUFFER_SIZE);
+    printf("Server: %s", recv_buffer);
   }
 
   close(client_fd);
   close(server_fd);
   return 0;
+}
+
+void *sendMessage(void *server_fd_ptr) {
+  int server_fd = *((int *)server_fd_ptr);
+  char send_buffer[BUFFER_SIZE];
+
+  while (1) {
+    /*************************************************************************/
+    /*           Get message from standard input and send to server          */
+    /*************************************************************************/
+    printf("Server: ");
+
+    // Send a message to the server
+    fgets(send_buffer, BUFFER_SIZE, stdin);
+    printf("Sending %s.\n", send_buffer);
+    int res = send(server_fd, send_buffer, strlen(send_buffer), 0);
+    /* fflush(STDIN_FILENO); */
+
+    if (res == -1) {
+      perror("send");
+      exit(EXIT_FAILURE);
+    }
+
+    memset(send_buffer, 0, BUFFER_SIZE);
+  }
 }

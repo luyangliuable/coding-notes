@@ -19,7 +19,8 @@ typedef struct {
 int main() {
   int client_fd;
   struct sockaddr_in server_addr;
-  char buffer[BUFFER_SIZE];
+  char send_buffer[BUFFER_SIZE];
+  char recv_buffer[BUFFER_SIZE];
   client_fd = socket(AF_INET, SOCK_STREAM, 0);
 
   if (client_fd == -1) {
@@ -38,35 +39,36 @@ int main() {
   }
 
   pthread_t send_thread;
-
-  printf("%i\n", client_fd);
   pthread_create(&send_thread, NULL, &sendMessage, (void *)&client_fd);
 
   while (1) {
-    read(client_fd, buffer, BUFFER_SIZE);
-    printf("Server: %s", buffer);
+    read(client_fd, recv_buffer, BUFFER_SIZE);
+    fflush(STDIN_FILENO);
+    memset(recv_buffer, 0, BUFFER_SIZE);
+    printf("Client: %s", recv_buffer);
   }
 
   close(client_fd);
-
   return 0;
 }
 
 void *sendMessage(void *client_fd_ptr) {
   int client_fd = *((int *)client_fd_ptr);
-  printf("%i\n", client_fd);
+  char send_buffer[BUFFER_SIZE];
 
   while (1) {
     printf("Client: ");
-    char buffer[BUFFER_SIZE];
-    fgets(buffer, BUFFER_SIZE, stdin);
-    int res = send(client_fd, buffer, strlen(buffer), 0);
+
+    fgets(send_buffer, BUFFER_SIZE, stdin);
+    printf("Sending %s.\n", send_buffer);
+    int res = send(client_fd, send_buffer, strlen(send_buffer), 0);
+    fflush(STDIN_FILENO);
 
     if (res == -1) {
       perror("send");
       exit(EXIT_FAILURE);
     }
 
-    memset(buffer, 0, BUFFER_SIZE);
+    memset(send_buffer, 0, BUFFER_SIZE);
   }
 }
