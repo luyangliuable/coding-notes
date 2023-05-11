@@ -92,7 +92,7 @@ void *sendMessage(void *client_fd_ptr) {
 
     fgets(send_buffer, BUFFER_SIZE, stdin);
 
-    if (strcmp(send_buffer, "exit\n") == 0 || strcmp(send_buffer, "exit\n") == 0) {
+    if (strcmp(send_buffer, "exit") == 0 || strcmp(send_buffer, "exit\n") == 0) {
       close_exit_signal();
       break;
     }

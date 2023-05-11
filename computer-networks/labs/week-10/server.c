@@ -13,7 +13,19 @@ void *sendMessage(void *vargp);
 void *recvMessage(void *client_fd_ptr);
 
 pthread_mutex_t close_exit_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t close_client_mutex = PTHREAD_MUTEX_INITIALIZER;
+int close_client = 0;
 int close_exit = 0;
+
+void close_client_signal() {
+  close_client = 1;
+  pthread_mutex_lock(&close_client_mutex);
+}
+
+void open_client_signal() {
+  close_client = 0;
+  pthread_mutex_unlock(&close_client_mutex);
+}
 
 void close_exit_signal() {
   close_exit = 1;
@@ -46,42 +58,51 @@ int main() {
     exit(EXIT_FAILURE);
   }
 
-  if (listen(server_fd, 1) == -1) {
-    perror("listen");
-    exit(EXIT_FAILURE);
-  }
+  while (1) {
+    if (listen(server_fd, 1) == -1) {
+      perror("listen");
+      exit(EXIT_FAILURE);
+    }
+    addr_len = sizeof(client_addr);
 
-  addr_len = sizeof(client_addr);
+    printf("Server listening for connection...\n");
 
-  /***************************************************************************/
-  /*                      Create client file descriptor */
-  /***************************************************************************/
-  client_fd = accept(server_fd, (struct sockaddr *)&client_addr,
-                     (socklen_t *)&addr_len);
+    /***************************************************************************/
+    /*                      Create client file descriptor */
+    /***************************************************************************/
+    client_fd = accept(server_fd, (struct sockaddr *)&client_addr,
+                      (socklen_t *)&addr_len);
 
-  if (client_fd == -1) {
-    perror("accept");
-    exit(EXIT_FAILURE);
-  }
+    printf("Server connected to client\n");
+    open_client_signal();
 
-  pthread_t send_thread;
-  pthread_t recv_thread;
+    if (client_fd == -1) {
+      perror("accept");
+      exit(EXIT_FAILURE);
+    }
 
-  pthread_create(&send_thread, NULL, &sendMessage, (void *)&client_fd);
-  pthread_create(&recv_thread, NULL, &recvMessage, (void *)&client_fd);
+    pthread_t send_thread;
+    pthread_t recv_thread;
 
-  while(1) {
+    pthread_create(&send_thread, NULL, &sendMessage, (void *)&client_fd);
+    pthread_create(&recv_thread, NULL, &recvMessage, (void *)&client_fd);
+
+    while (1) {
+      if (close_exit == 1 | close_client == 1) {
+        break;
+      }
+    }
+
+    close(client_fd);
+    pthread_cancel(send_thread);
+    pthread_cancel(recv_thread);
+
     if (close_exit == 1) {
       break;
     }
   }
 
-  close(client_fd);
   close(server_fd);
-
-  pthread_cancel(send_thread);
-  pthread_cancel(recv_thread);
-
   printf("Closed connection.\n");
 
   return 0;
@@ -101,21 +122,18 @@ void *recvMessage(void *client_fd_ptr) {
     }
 
     // Check for data or disconnection from the client
-    if (FD_ISSET(client_fd, &read_fds)) {
-      int bytes_received = recv(client_fd, buffer, BUF_SIZE, 0);
-      if (bytes_received == 0) {
-        printf("Client disconnected.\n");
-        close(client_fd);
-        break; // Close the server
-      } else {
-        buffer[bytes_received] = '\0';
-        printf("Client message: %s\n", buffer);
-      }
-    }
+    int bytes_received = recv(client_fd, recv_buffer, BUFFER_SIZE, 0);
+    /* read(client_fd, recv_buffer, BUFFER_SIZE); */
 
-    read(client_fd, recv_buffer, BUFFER_SIZE);
-    printf("Client: %s", recv_buffer);
-    memset(recv_buffer, 0, BUFFER_SIZE);
+    if (bytes_received == 0) {
+      printf("Client disconnected.\n");
+      close(client_fd);
+      close_client_signal();
+      break; // Close the server
+    } else {
+      printf("Client: %s", recv_buffer);
+      memset(recv_buffer, 0, BUFFER_SIZE);
+    }
   }
 
   pthread_exit(NULL);
@@ -130,14 +148,14 @@ void *sendMessage(void *server_fd_ptr) {
     /*           Get message from standard input and send to server */
     /*************************************************************************/
 
-    if (strcmp(send_buffer, "exit\n") == 0 || strcmp(send_buffer, "exit\n") == 0) {
+    if (strcmp(send_buffer, "exit") == 0 ||
+        strcmp(send_buffer, "exit\n") == 0) {
       close_exit_signal();
       break;
     }
 
     // Send a message to the server
     fgets(send_buffer, BUFFER_SIZE, stdin);
-    /* printf("Sending %s.\n", send_buffer); */
     int res = send(server_fd, send_buffer, strlen(send_buffer), 0);
 
     if (res == -1) {
