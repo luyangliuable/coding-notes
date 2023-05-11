@@ -17,11 +17,25 @@ pthread_mutex_t close_client_mutex = PTHREAD_MUTEX_INITIALIZER;
 int close_client = 0;
 int close_exit = 0;
 
+
+/**
+*  \brief Close client signal
+*
+*  Close client signal if client disconnects
+*
+*  \return void
+*/
 void close_client_signal() {
+
   close_client = 1;
   pthread_mutex_lock(&close_client_mutex);
 }
 
+/**
+ *  \brief open client signal when client connects
+ *
+ *  \return void
+ */
 void open_client_signal() {
   close_client = 0;
   pthread_mutex_unlock(&close_client_mutex);
@@ -32,8 +46,10 @@ void close_exit_signal() {
   pthread_mutex_lock(&close_exit_mutex);
 }
 
+/**
+ *  Main function
+ */
 int main() {
-
   int server_fd, client_fd, addr_len;
   struct sockaddr_in server_addr, client_addr;
   char recv_buffer[BUFFER_SIZE];
@@ -59,6 +75,7 @@ int main() {
   }
 
   while (1) {
+
     if (listen(server_fd, 1) == -1) {
       perror("listen");
       exit(EXIT_FAILURE);
@@ -71,7 +88,7 @@ int main() {
     /*                      Create client file descriptor */
     /***************************************************************************/
     client_fd = accept(server_fd, (struct sockaddr *)&client_addr,
-                      (socklen_t *)&addr_len);
+                       (socklen_t *)&addr_len);
 
     printf("Server connected to client\n");
     open_client_signal();
@@ -108,6 +125,14 @@ int main() {
   return 0;
 }
 
+/**
+ *  \brief Receive message thread function
+ *
+ *  This function is for receiving messages
+ *
+ *  \param client_fd_ptr poiting to client_fd
+ *  \return void
+ */
 void *recvMessage(void *client_fd_ptr) {
   int client_fd = *((int *)client_fd_ptr);
   char recv_buffer[BUFFER_SIZE];
@@ -139,6 +164,14 @@ void *recvMessage(void *client_fd_ptr) {
   pthread_exit(NULL);
 }
 
+/**
+ *  \brief Send message thread function
+ *
+ *  This function is for sending messages
+ *
+ *  \param client_fd_ptr poiting to client_fd
+ *  \return void
+ */
 void *sendMessage(void *server_fd_ptr) {
   int server_fd = *((int *)server_fd_ptr);
   char send_buffer[BUFFER_SIZE];
@@ -148,8 +181,7 @@ void *sendMessage(void *server_fd_ptr) {
     /*           Get message from standard input and send to server */
     /*************************************************************************/
 
-    if (strcmp(send_buffer, "exit") == 0 ||
-        strcmp(send_buffer, "exit\n") == 0) {
+    if (strcmp(send_buffer, "exit") == 0) {
       close_exit_signal();
       break;
     }
