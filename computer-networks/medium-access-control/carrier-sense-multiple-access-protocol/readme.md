@@ -88,3 +88,64 @@ backoff_time = 2^k - 1
 | 10-16                                                       | [n+1, n+2^10]                     |
 | >16                                                         | =ABORT=                           |
 
+## CSMA/CA
+TODO
+
+
+## Examples
+
+1. A network has **5 devices** connected to it, and they are all using **CSMA/CD** with **Binary Exponential Backoff**. Device A experiences a collision when trying to transmit data. Calculate the minimum and maximum backoff times (in microseconds) for Device A after **each collision**, up to the **3rd collision**. Assume that the network is using Ethernet with a slot time of 51.2 microseconds.
+
+BEA = 2^k - 1
+
+* First collision
+BEA  = 2^1 - 1 = 1
+Time  = 51.2 * 1 = 51.2 microseconds
+Range = [0, 51.2]
+
+* Second collison
+BEA = 2^2 - 1 = 3
+Time = 51.2 * 3 = 153.6 microseconds
+Range = [0, 153.6]
+
+* Third Collison
+BEA = 2^3 - 1 = 7
+Time = 51.2 * 7 = 358.4 microseconds
+Range = [0, 358.4]
+
+2. Calculate the total time taken for device to transmit a data frame using CSMA/CA in a wireless network, given the following paramters?
+* Dataframe size: 1500 bytes
+* Data rate: 1Mbps
+* Distributed inter-frame  space: 50 microseocnds
+* Short inter-frame space: 20 microseconds
+* Contention window size: 16
+* Ack frame size: 20 bytes
+* Assume the device has to wait for the average backoff time. Use slot time 20 microseconds.
+
+avg_backoff_time = (cw - 1) * slotted_time/2
+avg_backoff_time = (16 - 1) * 20/2 = 150 microseconds
+
+data_frame_transmittion_time = (1500*8)/(1*10^6) = 1.2 * 10^4 microseconds
+
+ack_frame_transmission_time = (20*8)/(1*10^6) = 1.6 * 10^2 microseconds seconds
+
+Total = 150 + 1.2*10^4 + 1.6*10^2 + 50 + 20  = 12380 ms
+
+ C:\enett\Applications\ph-web
+or D:\eNett\Applications\ph-web
+
+
+2. You are given the IP block `192.168.1.0\24` and you need to subnet it into 3 smaller networks with the following host requirements.
+
+* Network A: 60 hosts
+* Network B: 30 hosts
+* Network C: 10 hosts
+
+Calculate the subnet masks for each of the 3 networks.
+
+
+* Network A
+  * 2^6 = 64 hosts which can hold enough
+  * 1100000 = 2^6 + 2^5 = 96
+  * Subnet mask is therefore 255.255.255.96
+  * CIDR format is \26
