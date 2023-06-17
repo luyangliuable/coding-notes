@@ -3,6 +3,7 @@ class Solution:
 
     # Get the furthest it can jump if it is greater than or equal the length of the array then true
     # If furthest is less than the current index then it can't jump to the end
+    # Beats 99% of people
 
     def canJump(self, nums):
         farthest = 0

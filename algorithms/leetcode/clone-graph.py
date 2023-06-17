@@ -6,8 +6,7 @@ class Node(object):
 
 class Solution(object):
     def cloneGraph(self, node):
-        # Perform a breadth first search on the node and for each node create a corresponding node.
-        # Breadth first search because it is easier
+        # Perform a depth first search on the node and for each node create a corresponding node.
         # Variables: current_node, current_new_node
 
         # Beats 95% of people !!!!!!! Yay!!!!!!!!
