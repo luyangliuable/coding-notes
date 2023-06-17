@@ -9,7 +9,8 @@ class Solution(object):
         # Perform a breadth first search on the node and for each node create a corresponding node.
         # Breadth first search because it is easier
         # Variables: current_node, current_new_node
-        # TODO: brush up breadth first search
+
+        # Beats 95% of people !!!!!!! Yay!!!!!!!!
         
         return self.depthFirstSearch(node)
 
