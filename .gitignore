@@ -13,7 +13,7 @@ ev
 *.exe
 *.dmg
 *.icloud
-*.pdf
+# *.pdf
 *.out
 *.swp
 *.swo
