@@ -19,37 +19,46 @@ class Solution(object):
 
         for c_i in range(n):
             DP[c_i][c_i] = 1
-            if 1 > l:
-                l = 1
-                r = s[c_i]
 
+        r = s[0]
+        l = 1
 
         # Check two same adjacent characters
-        for c_i in range(n-1):
-            if s[c_i] == s[c_i + 1]:
-                # remember second index is always greater for bottom left half
-                DP[c_i][c_i + 1] = 1
+        # for c_i in range(n-1):
+        #     if s[c_i] == s[c_i + 1]:
+        #         # remember second index is always greater for bottom left half
+        #         DP[c_i][c_i + 1] = 1
 
-                if 2 > l:
-                    l = 2
-                    r = s[c_i:c_i + 1 + 1]
+        #         if 2 > l:
+        #             l = 2
+        #             r = s[c_i:c_i + 1 + 1]
+
+
+        for i in range(n):
+            for j in range(i):
+                if s[i] == s[j] and ( s[i+1][j-1] == 1 or j == i+1):
+                    DP[i][j] = 1
+                    n_l = j - i + 1
+                    if n_l > l:
+                        l = n_l
+                        r = s[i:j+1]
 
                 
 
         # Check for palindromes of length 3 or more
-        for curr_len in range(3, n + 1):
-            for j in range(n - curr_len + 1):
-                # j is the last letter in the palindrome
-                # k is the first letter in the palindrome
-                k = j + curr_len - 1
+        # for curr_len in range(2, n + 1):
+        #     for j in range(n - curr_len + 1):
+        #         # j is the last letter in the palindrome
+        #         # k is the first letter in the palindrome
+        #         k = j + curr_len - 1
 
-                # Dynamic programming if last letter of string equals first letter and all string inside are palindromes
-                if s[j] == s[k] and DP[j + 1][k - 1] == 1:
-                    if curr_len > l:
-                        l = curr_len
-                        r = s[j:k+1]
+        #         # Dynamic programming if last letter of string equals first letter and all string inside are palindromes
+        #         if s[j] == s[k] and DP[j + 1][k - 1] == 1:
+        #             if curr_len > l:
+        #                 l = curr_len
+        #                 r = s[j:k+1]
 
-                    DP[j][k] = 1
+        #             DP[j][k] = 1
 
         return r
 
