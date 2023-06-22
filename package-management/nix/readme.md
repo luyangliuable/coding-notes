@@ -18,7 +18,6 @@ pkgs.mkShell {
     export OPENAI_API_KEY="asjdhaskdjbnaskjdbnasjkdhn"
   '';
 }
-
 ```
 
 ## Powerful Things You Could do With nIX
@@ -154,6 +153,28 @@ nix-build default.nix
 ```
 
 Remember, Nix has a steep learning curve. Don't hesitate to consult the official Nix documentation or the man pages (man nix-env, man nix-build, etc.) when you're not sure about something.
+
+
+## Running Nix Via the Package Manager
+
+```sh
+docker run -it nixos/nix
+```
+
+* Start nix package manager by exposing current working directory
+```sh
+mkdir workdir
+docker run -it -v $(pwd)/workdir:/workdir nixos/nix
+```
+
+* Start nix by cloning
+
+```sh
+git clone --depth=1 https://github.com/NixOS/nixpkgs.git
+docker run -it -v $(pwd)/nixpkgs:/nixpkgs nixos/nix
+docker> nix-build -I nixpkgs=/nixpkgs -A hello
+docker> find ./result # this symlink points to the build package
+```
 
 
 ## Version and Rollback Management in NIX
