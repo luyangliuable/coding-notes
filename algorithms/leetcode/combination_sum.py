@@ -1,4 +1,4 @@
-class Solution(object):
+class SolutionOld(object):
     def combinationSum(self, candidates, target):
         # :type candidates: List[int]
         # :type target: int
@@ -43,6 +43,41 @@ class Solution(object):
         backtrack()
 
         return r
+
+
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        # Forgot to return when total == target
+        # Beats 60%
+        # Treat each elemenet as linked to itself and the value next to it.
+        # Run two dfs() where 1 looks into itself 0 to n times where up to n total because more than target. 0 is for skipping it.
+
+        def dfs(i, curr, total):
+            if total == target:
+                r.append(curr)
+                return
+            elif total > target or i >= len(candidates):
+                return
+
+            # dfs next node
+            dfs(i + 1, curr, total)
+
+            # dfs int current node
+            dfs(i, curr + [candidates[i]], total + candidates[i])
+
+
+        r = []
+
+        n = []
+        # Filter out values larger than target
+        for c in candidates:
+            if c <= target:
+                n.append(c)
+
+        dfs(0, [], 0)
+
+        return r
+
 
 a = Solution()
 # print(a.combinationSum([2,3,6,7], 7))
