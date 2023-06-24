@@ -2,7 +2,7 @@ class Solution(object):
     def maxArea(self, height):
         # :type height: List[int]
         # :rtype: int
-        # Beats 20%
+        # Beats 43.8%
         # Learnt two pointer algorithm which seems very simple
         # Thought left_i is the height of left not the index. Next time put `_i` to remember
 
