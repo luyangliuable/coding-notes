@@ -3,7 +3,7 @@ class Solution(object):
         # :type nums: List[int]
         # :rtype: List[List[int]]
         # Finished in 10 mintues
-        # Beats 50%
+        # Beats 55%
         # Confused how to prevent duplicates from showing
         # Method to prevent duplications: sort array first and only use first new element occurrence to now combo
 
