@@ -6,8 +6,6 @@ class Solution(object):
         # Learnt two pointer algorithm which seems very simple
         # Thought left_i is the height of left not the index. Next time put `_i` to remember
 
-        
-
         if len(height) < 2:
             return 0
 
