@@ -1,6 +1,9 @@
+import math
+
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        # TODO this one ran out of time on leetcode apparently it requires some deeper thinking than just math
+
+        return math.pow(x, n)
         r = x
 
         if n > 0:
