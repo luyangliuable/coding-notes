@@ -3,9 +3,8 @@ class Solution:
         hi = len(nums) - 1
         lo = 0
 
-
         while lo <= hi:
-            mid = lo + ( hi - lo )//2
+            mid = lo + ( hi - lo )//2 # (hi + lo)//2
 
             if nums[mid] == target:
                 return mid
