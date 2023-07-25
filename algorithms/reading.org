@@ -1,0 +1,13 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Reading
+#+DESCRIPTION: Require to do all priority A tasks for at least 1.5 hour each. 4 of priority B tasks and 1 of priority C tasks per day. Weekly goal is 56 hours of clock time (subject to change) and need half for priority A and less for others
+* TODO Reading week 2
+** TODO Section 1.1
+** TODO Section 1.5
+** TODO Section 3.1
+** TODO Section 3.3
+** TODO Section 3.4
+** TODO Optional CLRS, Section 2.1, chapter 8
+** TODO Optional Rou, Section 5.6
+
