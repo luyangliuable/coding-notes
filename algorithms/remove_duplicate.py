@@ -1,3 +1,26 @@
+import random
+import merge_sort
+
+def r_dup(arr: list[int]) -> list[int]:
+
+    res = mergesort( arr )
+    print("sorted is", res)
+
+    # Sliding window
+    i = 0
+    previous = res[0]
+    length = 1
+    index = 1
+    for i in range(1, len(res)):
+        if res[i] != previous:
+            length += 1
+            previous = res[i]
+            res[index] = res[i]
+            index +=1
+
+    return res[:length]
+
+
 def mergesort(arr):
     res = arr
     if len(res) > 1:
@@ -39,7 +62,10 @@ def mergesort(arr):
             j += 1
             k += 1
 
-if __name__ == 'main':
-    arr = [12,3,2,2,1,2,3,3,4,5,6,7,8,8,9,9,4,31,2]
-    mergesort(arr)
-    print(arr)
+    return arr
+
+
+for _ in range(5):
+    arr = [random.randint(0,100) for _ in range(10)]
+    print("sorting and removing duplicate in", arr)
+    print("The array without duplicates is", r_dup(arr))

@@ -16,6 +16,7 @@ class Solution:
             while len(s) > 0 and s[-1][1] > h:
                 j, height = s.pop()
 
+                # Genius!
                 r = max(height*(i-j), r)
 
                 start = j

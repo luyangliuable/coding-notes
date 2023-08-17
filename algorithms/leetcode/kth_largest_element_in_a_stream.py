@@ -16,7 +16,7 @@ class KthLargest(object):
 
         for a in nums:
             self.add(a)
-        
+
 
     def __repr__(self):
         return str(self.arr)
@@ -73,7 +73,7 @@ class KthLargest(object):
 
     def left(self, i):
         return 2*i + 1
-             
+
 
 # Your KthLargest object will be instantiated and called as such:
 # obj = KthLargest(k, nums)
