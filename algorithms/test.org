@@ -1,0 +1,53 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Algorithms
+#+DESCRIPTION: Require to do all priority A tasks for at least 1.5 hour each. 4 of priority B tasks and 1 of priority C tasks per day. Weekly goal is 56 hours of clock time (subject to change) and need half for priority A and less for others
+
+#+begin_src python :tangle "insertion_sort.py"
+def insertion_sort(arr):
+  # Traverse through 1 to len(arr)
+  for i in range(1, len(arr)):
+
+      key = arr[i]
+
+      # Move elements of arr[0..i-1], that are
+      # greater than key, to one position ahead
+      # of their current position
+      j = i-1
+      while j >= 0 and key < arr[j]:
+              arr[j+1] = arr[j]
+              j -= 1
+      arr[j+1] = key
+
+  return arr
+
+
+print(insertion_sort(([1,2,23,2,3,1,2,3,4,5,7,8,8])))
+ 
+#+end_src
+
+#+begin_src python
+import sys
+
+def selection_sort(arr):
+    for i in range(len(arr)):
+        # Find the minimum element in remaining
+        # unsorted array
+        min_idx = i
+        for j in range(i+1, len(arr)):
+            if arr[min_idx] > arr[j]:
+                min_idx = j
+
+        # Swap the found minimum element with
+        # the first element
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+    return arr
+
+arr = [1,2,3,1,2,4,5,6,1,2,4]
+
+print(selection_sort(arr))
+
+#+end_src
+
+
