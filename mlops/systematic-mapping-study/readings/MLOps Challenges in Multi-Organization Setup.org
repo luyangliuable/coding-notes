@@ -1,0 +1,38 @@
+
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+
+* TODO MLOps Challenges in Multi-Organization Setup
+:LOGBOOK:
+CLOCK: [2023-09-06 Wed 15:11]--[2023-09-06 Wed 15:38] =>  0:27
+CLOCK: [2023-09-06 Wed 13:26]--[2023-09-06 Wed 13:31] =>  0:05
+CLOCK: [2023-09-06 Wed 13:14]--[2023-09-06 Wed 13:24] =>  0:10
+CLOCK: [2023-09-06 Wed 12:01]--[2023-09-06 Wed 12:14] =>  1:13
+:END:
+
+** Challenges
+*** Ensuring data is reliable
+*** data can be processed according to the needs at hand
+*** Continuous deployment of ML features is complex
+*** Ownership issues with datasets
+*** APIs, data formats, performance issues and so on are similar to any other information system integration between two or more organizations
+*** data sets cannot be moved across data boundaries, but multiple organizations need to
+access the data.
+*** data must be from the same temporal range, and otherwise the operations make no sense
+** TODO Benefit
+** TODO Tool
+*** ThoughtWorks
+*** model re-training
+**** iterative re-training with 45000 patient records improved models’ performance to a certain extent, showing the benefits of model re-trainin
+*** datalakes
+**** can be used to integrate data from various sources
+***** shared between the different information systems, so that it is clear which citizen is being attributed at a given time, and for what purpose
+** TODO Approach
+*** CI/CD
+*** Continuous Delivery for Machine Learning (CD4ML)
+*** human-centric personal data ecosystem
+*** digital twin paradigm
+*** unique identity system
+** organization-level operations
+*** Culture collaboration between organisations
+
+** TODO Metrics

@@ -1,0 +1,43 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Benchmarking Machine Learning Solutions in Production
+#+DESCRIPTION: 
+
+* TODO MLOps Challenges in Multi-Organization Setup
+** Challenges
+*** many ML professionals are not experts in system operations and may not have the skills to easily setup a monitoring and benchmarking environment
+*** A lack of memory,
+*** long training time, 
+*** or low-latency serving requirements
+*** support for parallel execution
+*** cost can become exceedingly high
+*** identify which parts of the ML pipeline are responsible for the observed data requires careful tuning and preparation
+** TODO Benefit
+** TODO Tool
+*** Amazon SageMaker1
+*** Google Cloud Platform 
+*** Prometheus3 for monitoring dotnet
+*** Docker and docker stats for monitoring
+*** Matplotlib
+*** Apache JMeter8
+*** 
+*** 
+*** 
+*** 
+*** 
+*** Ubenchmark
+*** 
+**** allow the developer to easily mark points-of-interest (POI) inside ML tasks
+** TODO Approach 
+*** horizontal scalability
+*** fully-managed cloud-based platform
+*** value imputation
+**** replacing missing data with default values
+*** feature transformation (creating new features from existing ones)
+** TODO Metrics
+*** CPU usage
+*** memory usage
+*** GPU usage
+*** task completion times
+*** disk input/output (IO) operations
+*** operations and network traffic
