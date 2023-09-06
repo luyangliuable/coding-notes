@@ -1,0 +1,51 @@
+Source,Target,Value,VisSide
+CO2 Emissions,Increased Global Temperatures,100,Cause
+CO2 Emissions,Increased Global Temperatures,100,Effect
+Increased Global Temperatures,Melting Glaciers,70,Cause
+Increased Global Temperatures,Melting Glaciers,70,Effect
+Increased Global Temperatures,Rising Sea Levels,60,Cause
+Increased Global Temperatures,Rising Sea Levels,60,Effect
+Increased Global Temperatures,More Frequent Heatwaves,40,Cause
+Increased Global Temperatures,More Frequent Heatwaves,40,Effect
+Increased Global Temperatures,Shift in Weather Patterns,55,Cause
+Increased Global Temperatures,Shift in Weather Patterns,55,Effect
+Melting Glaciers,Rising Sea Levels,50,Cause
+Melting Glaciers,Rising Sea Levels,50,Effect
+Melting Glaciers,Loss of Habitats,40,Cause
+Melting Glaciers,Loss of Habitats,40,Effect
+Melting Glaciers,Permafrost Thaw,45,Cause
+Melting Glaciers,Permafrost Thaw,45,Effect
+Rising Sea Levels,Coastal Erosion,40,Cause
+Rising Sea Levels,Coastal Erosion,40,Effect
+Rising Sea Levels,Displacement of People,35,Cause
+Rising Sea Levels,Displacement of People,35,Effect
+Rising Sea Levels,Saltwater Intrusion,30,Cause
+Rising Sea Levels,Saltwater Intrusion,30,Effect
+More Frequent Heatwaves,Agricultural Impact,30,Cause
+More Frequent Heatwaves,Agricultural Impact,30,Effect
+More Frequent Heatwaves,Health Impact,25,Cause
+More Frequent Heatwaves,Health Impact,25,Effect
+More Frequent Heatwaves,Increased Wildfires,35,Cause
+More Frequent Heatwaves,Increased Wildfires,35,Effect
+Shift in Weather Patterns,Altered Migration Patterns,50,Cause
+Shift in Weather Patterns,Altered Migration Patterns,50,Effect
+Shift in Weather Patterns,Crop Failure,55,Cause
+Shift in Weather Patterns,Crop Failure,55,Effect
+Permafrost Thaw,Release of Methane,70,Cause
+Permafrost Thaw,Release of Methane,70,Effect
+Release of Methane,Amplified Global Warming,60,Cause
+Release of Methane,Amplified Global Warming,60,Effect
+Amplified Global Warming,Destruction of Coral Reefs,50,Cause
+Amplified Global Warming,Destruction of Coral Reefs,50,Effect
+Destruction of Coral Reefs,Loss of Marine Biodiversity,40,Cause
+Destruction of Coral Reefs,Loss of Marine Biodiversity,40,Effect
+Loss of Habitats,Species Extinction,60,Cause
+Loss of Habitats,Species Extinction,60,Effect
+Species Extinction,Imbalanced Ecosystems,55,Cause
+Species Extinction,Imbalanced Ecosystems,55,Effect
+Health Impact,Increased Mortality Rates,40,Cause
+Health Impact,Increased Mortality Rates,40,Effect
+Increased Wildfires,Forest Degradation,50,Cause
+Increased Wildfires,Forest Degradation,50,Effect
+Forest Degradation,Reduced Carbon Sequestration,45,Cause
+Forest Degradation,Reduced Carbon Sequestration,45,Effect

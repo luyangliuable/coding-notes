@@ -1,0 +1,15 @@
+Source,Target,Value,Vis Side
+CO2,Heatup,100,Cause
+CO2,Heatup,100,Effect
+Heatup,Reduce Glacier,100,Cause
+Heatup,Reduce Glacier,100,Effect
+Heatup,Sealevel,100,Cause
+Heatup,Sealevel,100,Effect
+Glacier,Destroy Habitat,100,Cause
+Glacier,Destroy Habitat,100,Effect
+Sealevel,Erosion,100,Cause
+Sealevel,Erosion,100,Effect
+Heatup,Heatwave,100,Cause
+Heatup,Heatwave,100,Effect
+Heatwave,Farm Impact,100,Cause
+Heatwave,Farm Impact,100,Effect

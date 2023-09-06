@@ -1,0 +1,15 @@
+Source,Target,Value,VisSide
+Farm Impact,Food Spike,100,Cause
+Farm Impact,Food Spike,100,Effect
+Erosion,Infra Damage,100,Cause
+Erosion,Infra Damage,100,Effect
+Heatup,Natural Cycle,100,Cause
+Heatup,Natural Cycle,100,Effect
+Destroy Habitat,Species End,100,Cause
+Destroy Habitat,Species End,100,Effect
+Reduce Glacier,Animal Shift,100,Cause
+Reduce Glacier,Animal Shift,100,Effect
+Heatwave,Health Risk,100,Cause
+Heatwave,Health Risk,100,Effect
+Sealevel,Biodiversity,100,Cause
+Sealevel,Biodiversity,100,Effect
