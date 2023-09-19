@@ -20,18 +20,12 @@
 *** Docker and docker stats for monitoring
 *** Matplotlib
 *** Apache JMeter8
-*** 
-*** 
-*** 
-*** 
-*** 
 *** Ubenchmark
-*** 
 **** allow the developer to easily mark points-of-interest (POI) inside ML tasks
 ** TODO Approach 
-*** horizontal scalability
-*** fully-managed cloud-based platform
-*** value imputation
+*** Horizontal scalability
+*** Fully-managed cloud-based platform
+*** Value imputation
 **** replacing missing data with default values
 *** feature transformation (creating new features from existing ones)
 ** TODO Metrics

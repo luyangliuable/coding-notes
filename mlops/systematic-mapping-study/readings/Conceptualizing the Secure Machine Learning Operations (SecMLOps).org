@@ -10,9 +10,9 @@ CLOCK: [2023-09-06 Wed 11:29]--[2023-09-06 Wed 11:58] =>  0:29
 **** Data poisoning attack
 **** Model theft
 **** selected metrics is sound
-*** a lack of highly skilled experts for roles involved in MLOps
-*** inefficient communication
-*** managing voluminous and varying data
+*** A lack of highly skilled experts for roles involved in MLOps
+*** Inefficient communication
+*** Managing voluminous and varying data
 *** scalability of the infrastructure [15]
 *** monitoring [19]
 
@@ -21,7 +21,6 @@ CLOCK: [2023-09-06 Wed 11:29]--[2023-09-06 Wed 11:58] =>  0:29
 ** TODO Tool
 
 ** TODO Approach
-
 *** SecMLOps
 *** Xplainable Artificial Intelligence
 *** PPTGC framework
@@ -33,15 +32,15 @@ CLOCK: [2023-09-06 Wed 11:29]--[2023-09-06 Wed 11:58] =>  0:29
 **** ML attack surfaces 
 *** MITRE ATT&CK framework
 *** Access Control
-*** encryption
+*** Encryption
 *** logging functions
 **** A well-known searchable knowledge base of adversary tactics and techniques for traditional software security.
 *** role-based access control (RBAC)
 *** single sign-on authentication
 *** virus scanning
 *** network isolation
-*** continuous learning and awareness
-*** people-centric security
+*** Continuous learning and awareness
+*** People-centric security
 *** Organisational standards and guidelines
 
 ** TODO Metrics
@@ -64,7 +63,7 @@ CLOCK: [2023-09-06 Wed 11:29]--[2023-09-06 Wed 11:58] =>  0:29
 
 *** the percentage of people who attended activities related to promoting security;
 
-*** current level of maturity in the Capability Maturity Models (CMM) [71].
+*** current level of maturity in the Capability Maturity Models (CMM)
 
 *** the number of times security policies are violated
 
@@ -72,5 +71,5 @@ CLOCK: [2023-09-06 Wed 11:29]--[2023-09-06 Wed 11:58] =>  0:29
 
 *** the time needed to find: (1) the root cause, (2) enforce incident response, and (3) remediate identified issues.
 
-*** Coverage and suitability of security policies
+*** Coverage of security policies
 

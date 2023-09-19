@@ -1,0 +1,14 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Towards Regulatory-Compliant MLOps: Oravizio’s Journey from a Machine Learning Experiment to a Deployed Certified Medical Product
+#+DESCRIPTION:
+
+* TODO MLOps Challenges in Multi-Organization Setup
+** Challenges
+** TODO Benefit
+** TODO Tool
+** TODO Approach humans to be involved in the loop
+** TODO Metrics
+** TODO Responsible AI mentions
+** TODO How to implement Responsible AI
+
