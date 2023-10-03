@@ -5,10 +5,28 @@
 
 * TODO MLOps Challenges in Multi-Organization Setup
 ** Challenges
+Data Governance: Sharing and using data across multiple organizations raises privacy, security, and governance issues.
+Model Compatibility: Different organizations may use various machine learning frameworks, leading to compatibility issues.
+Resource Allocation: Ensuring fair use of resources like compute and storage across organizations.
+Collaboration: Making sure that the different organizations are effectively collaborating, especially when optimizing for application-level metrics.
 ** TODO Benefit
+Standardization: An agent-based approach could standardize the management of ML workflows across organizations.
+Optimized Resource Utilization: Intelligent agents can make resource allocation decisions based on both infrastructure and application-level metrics, offering a better QoS.
+Agility: The ability to quickly adapt to changes and failures can lead to more resilient workflows.
 ** TODO Tool
-** TODO Approach humans to be involved in the loop
+Scanflow-K8s: As demonstrated in the paper, this tool could serve as a useful platform for managing complex ML workflows in a multi-organization setup due to its autonomic capabilities.
+** TODO Approach
+Agent-Based Autonomic Management: Employ intelligent agents that understand both infrastructure-level and application-level metrics for resource management.
+Multi-layered Strategy: Employ a layered approach to control various aspects of both the application and the infrastructure.
 ** TODO Metrics
+QoS metrics: Average queries per second per replica, latency, etc.
+Resource Utilization Metrics: CPU usage, memory usage, etc.
+Throughput and Availability: Keeping track of the uptime of services and the number of processed queries.
 ** TODO Responsible AI mentions
+Fairness: Ensuring that the AI models deployed do not discriminate against any group, especially in a multi-organizational setup where data may come from diverse sources.
+Explainability: The model should be interpretable to stakeholders from all organizations involved.
 ** TODO How to implement Responsible AI
+Transparency: Share all aspects of the model—data, architecture, and decision-making criteria—amongst all organizations involved.
+Audits and Checks: Regularly perform audits to ensure that the AI models meet ethical guidelines.
+Training: Make sure that everyone involved understands the principles of responsible AI and how to implement them.
 

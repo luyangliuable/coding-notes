@@ -3,12 +3,40 @@
 #+TITLE: Towards Regulatory-Compliant MLOps: Oravizio’s Journey from a Machine Learning Experiment to a Deployed Certified Medical Product
 #+DESCRIPTION:
 
-* TODO MLOps Challenges in Multi-Organization Setup
+* TODO Seamless Transition from Machine Learning on the Cloud to Industrial Edge Devices with Thinger.io.org
 ** Challenges
+There are few tools available for facing the cyber-physicality of IoT systems in industrial environments
+
+Edge devices are also limited in bandwidth, storage, and processing power, which can limit training complex ML models
+
+Integrating MLOps practices with edge devices in IoT environment
 ** TODO Benefit
 ** TODO Tool
-** TODO Approach humans to be involved in the loop
+Docker
+Docker registry like DockerHub
+Thinger.io
+TensorFlow,
+PyTorch,
+Keras
+** TODO Approach
+Hybrid cloud-edge approach
+Cloud is used for the expensive part of ML training and validation, and the edge is used for executing the generated model.
+REST API
+Pipeline Triggers depending on a schedule, on availability of new training data, and on model performance degradation
+Low-Code Pipelines
+
+Time-Series Buckets: All data from IoT devices are stored in time-series databases, which allows the ingest scripts to query data by date, apply aggregations (mean, average, max, min, etc.), filter data by sensor ID, filter by asset location, etc.
+
+Events: Thinger.io includes an event manager that can trigger the ML pipeline when required, i.e., changes on scripts, performance degradation, manual trigger, etc.
+Monitoring: Thinger.io is primarily used to ingest data from any source, create monitoring dashboards, and create alerts or events based on incoming data. The ML model performance is just another data source to be monitored with Thinger.io, which can generate triggers based on custom conditions. Thus, automatic ML retraining could be configured based on monitoring parameters.
+File Storages: All ML scripts and intermediary artifacts can be stored on File Storages. Each ML pipeline step has access to a native file storage managed by the platform that can be used to read or write any files.
+Edge devices
+
+
+Metadata: ML scripts can obtain running parameters and configurations from generic metadata stores that are applied to each pipeline instead of being hard-coded in the script. These metadata can be accessed over REST API, environment variables, script parameters, etc. To simplify the development of ML pipelines, ML processes can be designed and executed with a low-code orientation. With this approach, it is possible to drag and drop predefined nodes to a canvas and link them together to create different pipeline sequences (e.g., for building, deploying, and monitoring the ML application). There are different prebuilt nodes for data extraction, pipeline step execution, build container images, deploy images to image registry, or notify devices about updates. It is also possible to use other nodes to trigger pipeline execution, such as based on platform events or based on a schedule. It is possible to execute any step of the pipeline manually, and the pipeline execution can be debugged in real time over a terminal.
 ** TODO Metrics
+** Use cases
+Automatic ML model deployment on edge devices
 ** TODO Responsible AI mentions
 ** TODO How to implement Responsible AI
 
