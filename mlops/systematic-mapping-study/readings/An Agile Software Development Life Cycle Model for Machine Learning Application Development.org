@@ -5,10 +5,49 @@
 
 * TODO MLOps Challenges in Multi-Organization Setup
 ** Challenges
+Machine learning do not allow software engineering methodologies to be applied uniformly.
+Need for a diversity of skills to take a machine learning model to production.
+Data collection and preparation 
+  The quality, structure and relevance of data is key to the performance of a machine learning model. Data can come from different sources, different levels of quality and in different formats
+  
+Ensuring Data consistency
+  Is also a key element of machine learning and is challenging for systems which require large amounts of manually labelled data
+
+Hidden Technical Debt
+  Hidden technical debt refers to the machine learning support system (Table 1) needed to test, monitor, update and maintain a production machine learning system [20] [21] which integrate the different machine learning libraries and pipelines.
+  
+Troubleshooting machine learning systems can be difficult due to dependencies between different models
+
+Component Entanglement
+  Maintaining strict boundaries between models during development is difficult as the models can interact in unexpected ways
+
+  
+Therefore difficult to build using sequential development methods.
 ** TODO Benefit
+Allows engineers to define experiments through the data features and to rapidly analyze results, thereby allowing multiple experiments can be managed in parallel by a small team
 ** TODO Tool
-** TODO Approach humans to be involved in the loop
+** TODO Approach humans
+Data-Centric Machine Learning
+  Data-centric machine learning is gaining attention, promoted by experts like Andrew Ng.
+  This approach simplifies risk and complexity in machine learning projects.
+  Model parameters are fixed early, allowing focus on data experimentation.
+  Easier to align system performance with user expectations.
+  Automation is key in stages like training, evaluation, and deployment for effective data-centric experimentation.
+  
+Agile SDLC for Machine Learning Application Development
+
+Collaborative
+Encourage greater team participation and collaboration through the simplification of the experimentation process.
+
+Simplify experimentation and discovery within an agile development workflow
+
+MLASDLC
+
+MLASDLC advocates for the deployment application to be rapidly built early in the project
+  And thereby allows the machine learning systems to be designed, experimented upon and tested using the real-world environment.
+
+  
 ** TODO Metrics
 ** TODO Responsible AI mentions
 ** TODO How to implement Responsible AI
-
+  Model debugging and evaluation

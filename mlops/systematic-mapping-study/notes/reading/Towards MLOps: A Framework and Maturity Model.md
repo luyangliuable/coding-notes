@@ -1,4 +1,4 @@
-# Summary Template for Systematic Mapping Study on MLOps
+# Paper 4: Summary Template for Systematic Mapping Study on MLOps
 
 ## Paper Title: Towards MLOps: A Framework and Maturity Model
 
@@ -48,7 +48,7 @@ RQ2: Approaches and Tools for MLOps:
 ## Approaches:
 * When performance drops via REST endpoint/custom code, streaming engine, micro-batch
 * CI/CD pipeline
-* Continuous retrainign
+* Continuous retraining
 
 ## Challenges:
 * High AI costs and expectations.

@@ -1,4 +1,4 @@
-# Summary Template for Systematic Mapping Study on MLOps
+# Paper 7: Summary Template for Systematic Mapping Study on MLOps
 
 ## Paper Title: Bridging the Gap Between Java and Python in Mobile Software Development to Enable MLOps
 

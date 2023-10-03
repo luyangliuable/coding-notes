@@ -1,19 +1,7 @@
 MLPacker: A Unified Software Tool for Packaging
 and Deploying Atomic and Distributed Analytic
 Pipelines
-Raul Mi ´ n˜on´
-∗
-, Josu D´ıaz-de-Arcaya∗
-, Ana I. Torre-Bastida∗
-, Gorka Zarate∗
-and Aitor Moreno-Fernandez-de-Leceta†
-∗TECNALIA, Basque Research & Technology Alliance (BRTA)
-Albert Einstein 28, Minano, 01510, ˜ Alava, Spain, ´
-{raul.minon, josu.diazdearcaya, isabel.torre, gorka.zarate}@tecnalia.com
-†
-Instituto Ibermatica de Innovacion´
-Donostia-San Sebastian, Spain
-ai.moreno@ibermatica.com
+
 Abstract—In the last years, MLOps (Machine Learning Operations) paradigm is attracting the attention from the community, extrapolating the DevOps (Development and Operations)
 paradigm to the artificial intelligence (AI) development lifecycle. In this area, some challenges must be addressed to
 successfully deliver solutions since there are specific nuances
@@ -76,6 +64,7 @@ Indeed, each library usually has its own recommended way to
 deploy models. Therefore, the existence of multiple ways of
 deploying a model makes the automation of these deployments
 a great hurdle.
+
 In this context, a wide variety of tools have emerged for providing heterogeneous types of inference in production using
 different approaches to manage packaged models previously
 trained using ML/DL frameworks. However, the majority are
@@ -165,6 +154,7 @@ the model development and packaging, and it provides means
 for the communication of such models and the applications
 through a REST API. It does not support the packaging in
 streaming mode.
+
 In Table I we offer a comparison of the aforementioned tools
 with each of the criteria. It can be seen that to the best of the
 author’s knowledge, no tool has been found that satisfies all the
@@ -206,6 +196,7 @@ ML.NET ✓ ✗ ✗ ✗ ✓
 Clipper ✓ ✓ ✓ ✗ ✓
 MLPacker ✓ ✓ ✓ ✓ ✓
 TABLE I
+
 TOOLS THAT SUPPORT DIFFERENT STAGES OF THE MACHINE LEARNING PACKAGING AND OPERATIONALIZATION.
 two types of analytic pipelines which we denominate: 1)
 atomic: all the pipeline is deployed in the same machine.
@@ -256,7 +247,7 @@ uses BentoML to create the REST API. However, instead
 of having to manually create the necessary code to build
 the API (as in the BentoML approach), it is automatically
 built using Jinja templates considering the input.
-• StreamMe aims at creating the required analytic pipeline,
+• StreamMe .ims at creating the required analytic pipeline,
 in streaming mode, instantiating the necessary connectors
 and AI frameworks. For this purpose, it has been implemented the streaming builder Python class which requires
 an input and output connector and accepts a set of ML
@@ -278,26 +269,11 @@ and get model result to execute the model inference. Thus,
 when integrating a new framework these methods must
 be implemented. Currently, TensorFlow and Scikit Learn
 frameworks are supported.
-• Similarly to Frameworks component, the Connectors
-component provides an abstract super class with the
-required methods to use a connector: connect to establish
-a connection if necessary with the target technology
-and consume and produce to obtain and provide data
-respectively. In this iteration, there is support for MQTT
-(Message Queing Telemetry Protocol), Kafka and Web
-Sockets.
-• Bundler service is dedicated to manage the container
-related aspects. Specifically, when a pipeline is created in
-stream mode, the necessary code is selected (instead of
-packaging all the AI frameworks and all the connectors)
+• Similarly to Frameworks component, the Connectors component provides an abstract super class with the required methods to use a connector: connect to establish a connection if necessary with the target technology and consume and produce to obtain and provide data respectively. In this iteration, there is support for MQTT (Message Queing Telemetry Protocol), Kafka and Web Sockets.
+• Bundler service is dedicated to manage the container related aspects. Specifically, when a pipeline is created in stream mode, the necessary code is selected (instead of packaging all the AI frameworks and all the connectors)
+
 Authorized licensed use limited to: Monash University. Downloaded on September 19,2023 at 11:11:45 UTC from IEEE Xplore. Restrictions apply. 
-CLIENT
- RESTME        STREAMME
-CONNECTORS
-            FRAMEWORKS
-BUNDLER SERVICE
-DEPLOYING SERVICE
-CODE
+
 Fig. 1. MLPacker Architecture overview
 and additional code for the entry point and files like requirements.txt and Dockerfiles are automatically created.
 Next, the necessary Docker images are built. Finally, if
@@ -315,8 +291,9 @@ specific Ansible roles are executed (by using the Ansible
 Python library) to install Docker and Docker Compose
 in the target machine, pull the required images from the
 container registry and execute them in the target machine.
-Currently, the installation of Docker and Docker-compose
-is supported in Debian machines.
+
+Currently, the installation of Docker and Docker-compose is supported in Debian machines.
+
 C. Input
 The tool presented requires an input where the necessary
 information to package and deploy the analytic pipeline is
@@ -325,8 +302,7 @@ pipeline, meta-information related with each step of it such
 as the location of the process or model to deploy and the IA
 framework utilized, the connector properties, the infrastructure
 to deploy in and the modes considered. For this purpose,
-an extension of the PADL (Analytical Pipeline Definition
-and Deployment Language) [15] language has been utilized
+an extension of the PADL (Analytical Pipeline Definition and Deployment Language) [15] language has been utilized
 which is a syntax aiming at describing analytic pipelines to
 be deployed in a distributed edge-fog-cloud infrastructure.
 Listing 1 exposes an example of the syntax used to model

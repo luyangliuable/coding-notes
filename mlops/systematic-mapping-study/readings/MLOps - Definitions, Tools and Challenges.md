@@ -1,4 +1,4 @@
-# Summary Template for Systematic Mapping Study on MLOps
+# Paper 9: Summary Template for Systematic Mapping Study on MLOps
 
 ## Paper Title: MLOps - Definitions, Tools and Challenges
 
@@ -51,11 +51,11 @@ RQ3: Challenges in Operationalizing MLOps:
 ## Challenges:
 RQ4: Integrating Responsible AI Principles into MLOps Pipelines:
 * Collobration between ML engineers, and production engineers to facilitate model deployment.
-* Integration of machine learning (ML) models into production has long been a complex challenge.
+* Integration of ML models into production has long been a complex challenge.
 * Balance between flexibility and compatibility because there are too many tools.
   * Make a list of the available tools that are capable of solving the individual problem in every task. Then, we can check the compatibility between them in order to find the best way to go
   * Requires excellent knowledge of as many tools as possible from every team working on a MLOps system
-*  Creation of robust efficient pipelines with strong compatibility
+* Creation of robust pipelines with strong compatibility
 * Evolving is another critical point of a high maturity level of a MLOps platform, thus constant retraining shifts in the top of the current challenges.
 * There are many problems that complicate or even make retraining impossible
 * Having to manually label the new data but slows down the process and fails at constant retraining tasks.
