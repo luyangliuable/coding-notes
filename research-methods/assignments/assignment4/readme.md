@@ -56,5 +56,6 @@ https://dl.acm.org/doi/10.1145/3319535.3354254.
 * Participants find the explanations from Bugsplainer to be the most accurate, most precise, most concise and most useful. Based on the median and mode values, we see that the participants agree the most with explanations from Bugsplainer. 
 * Bugsplainer achieves a BLEU score of 33.15, which is considered as understandable to good translation ac- cording to Google’s AutoML Translation documentation
 * Bugsplainer 220M (larger model) achieves a big bump of ≈ 39% in BLEU score and ≈ 117% in Exact Match.
+* We note that the participants find the explanations from Bugsplainer to be the most accurate, most precise, most concise and most useful. Based on the median and mode values, we see that the participants agree the most with explanations from Bugsplainer
 
 ## “Creating a Video Communication Plan”
