@@ -1,4 +1,4 @@
-# Summary Template for Systematic Mapping Study on MLOps
+# Paper 6: Summary Template for Systematic Mapping Study on MLOps
 
 ## Paper Title: Towards Automation for MLOps: An Exploratory Study of Bot Usage in Deep Learning Libraries
 
@@ -27,7 +27,9 @@ Adoption by IT Organizations: Organizations like NVIDIA and TransLink have begun
 
 Challenges in MLOps Adoption: Practitioners face automation-related challenges and often lack knowledge on how to apply software engineering practices to ML development and deployment tasks.
 
-Role of Bots: Bots can play a crucial role in making the ML development process efficient by automating various tasks. Studying their usage in established ML projects can offer insights for other practitioners.
+Use of Bots: Bots can play a crucial role in making the ML development process efficient by automating various tasks. Studying their usage in established ML projects can offer insights for other practitioners.
+
+
 
 Research Study: The authors have conducted an empirical study on 135 issue reports from three prominent deep learning libraries - Keras, PyTorch, and Tensorflow. The primary goal is to identify development tasks that bots automate in these projects.
 
@@ -53,7 +55,7 @@ RQ3: Challenges in Operationalizing MLOps:
   * A characterization study of bot usage in established ML projects, such as the Keras [12] can help practitioners gain knowledge on how established ML projects are using bots, and apply that knowledge in their own ML development process.
   
 * Code Coverage
-  * Codecov bot used by kubernetes
+  * kubernetes Codecov bot 
 
 * Commit Mapping
   * Finding commit that address a feature request or a bug fix.

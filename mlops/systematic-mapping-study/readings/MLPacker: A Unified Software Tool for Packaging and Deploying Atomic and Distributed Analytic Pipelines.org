@@ -1,0 +1,45 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Towards Regulatory-Compliant MLOps: Oravizio’s Journey from a Machine Learning Experiment to a Deployed Certified Medical Product
+#+DESCRIPTION:
+
+* TODO MLOps Challenges in Multi-Organization Setup
+** Challenges
+** TODO Benefit
+** TODO Tool
+kedro
+*** BentoML
+**** Aims at simplifying the deployment of analytic models in automatically created REST APIs, without requiring the training code DVC
+*** Scanflow
+**** An MLOps platform to deploy and train distributed analytic pipelines on top of Kubernetes and using MLFlow
+*** ML.NET
+**** an open source framework for incorporating ML capabilities into .NET applications
+*** Clipper
+**** is a prediction system that is able to leverage different machine learning frameworks for the model development and packaging, and it provides means for the communication of such models and the applications through a REST API.
+**** different stages of the pipeline are deployed in distinct machines
+*** RestMe
+**** is in charge of creating the correspondent API to wrap the model or pipeline to deploy.
+
+StreamMe
+Aims at creating the required analytic pipeline, in streaming mode, instantiating the necessary connectors and AI frameworks
+
+TensorFlow
+
+Scikit Learn
+
+Ansible
+
+Python library
+
+Analytical Pipeline Definition and Deployment Language
+
+a syntax aiming at describing analytic pipelines to be deployed in a distributed edge-fog-cloud infrastructure
+
+
+** TODO Approach
+Local mode runs the model or pipeline in the same computer where the tool is executed and remote mode deploys it in a specified machine or set of machines.
+REST API
+** TODO Metrics
+** TODO Responsible AI mentions
+** TODO How to implement Responsible AI
+

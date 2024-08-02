@@ -3,7 +3,7 @@
 #+TITLE: Benchmarking Machine Learning Solutions in Production
 #+DESCRIPTION: 
 
-* TODO MLOps Challenges in Multi-Organization Setup
+* TODO Paper 14 MLOps Challenges in Multi-Organization Setup
 ** Challenges
 *** many ML professionals are not experts in system operations and may not have the skills to easily setup a monitoring and benchmarking environment
 *** A lack of memory,
@@ -20,18 +20,12 @@
 *** Docker and docker stats for monitoring
 *** Matplotlib
 *** Apache JMeter8
-*** 
-*** 
-*** 
-*** 
-*** 
 *** Ubenchmark
-*** 
 **** allow the developer to easily mark points-of-interest (POI) inside ML tasks
 ** TODO Approach 
-*** horizontal scalability
-*** fully-managed cloud-based platform
-*** value imputation
+*** Horizontal scalability
+*** Fully-managed cloud-based platform
+*** Value imputation
 **** replacing missing data with default values
 *** feature transformation (creating new features from existing ones)
 ** TODO Metrics

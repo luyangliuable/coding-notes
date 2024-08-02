@@ -1,0 +1,99 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Towards Regulatory-Compliant MLOps: Oravizio’s Journey from a Machine Learning Experiment to a Deployed Certified Medical Product
+#+DESCRIPTION:
+
+* TODO Paper 17: MLOps Challenges in Multi-Organization Setup
+:LOGBOOK:
+CLOCK: [2023-10-03 Tue 16:25]
+:END:
+** Challenges
+*** Machine learning teams typically build custom tools and work in ad hoc ways to address requirements in different parts of the AI lifecycle
+*** ML teams use custom tools for AI lifecycle needs.
+need for a more streamlined and systematic approach to AI application development
+*** Automation
+**** Automating the entire pipeline from data preparation through model training and deployment to runtime monitoring can be time consuming and error-prone. Particularly UC1 and UC6 reported that teams find themselves creating lots of boilerplate code, instead of focusing on the core data science and machine learning algorithms.
+*** Quality Assurance
+**** As AI models take a more central role in enterprise applications, steering critical decisions like credit worthiness checks (UC4) or health monitoring (UC2), the issues of model fairness and robustness become pressing. Users must be able to easily plug in quality assurance checkers (e.g., bias checks, drift detection, etc.) to continuously assert the performance and reliability of their models.
+*** Traceability
+**** Teams need to be able to answer questions like “Which data was this model trained on?”, or “Which code or data change made our accuracy deteriorate?”. However, keeping track of data and models across the lifecycle is difficult with little tooling support. This is required in regulated domains like health care or finance (UC2, UC4).
+*** Risk Management
+**** Rolling out new model versions in an application introduces risks, and teams need to manage the risk. Possible techniques include canary releases, A/B testing with user feedback, and drift detection. These are essential features for use cases UC1, UC3, and UC4.
+*** Feedback Cycle
+**** Continuous improvement of models requires an efficient feedback loop all the way from the user interface to the model training backend. Instead of handcrafting all steps in this cycle for each use case, teams are demanding reusable patterns and tools that optionally allow humans to be involved in the loop. This requirement is strongly driven from use cases UC3 and UC5.
+
+AI models is stochastic in nature, test results may not be (exactly) reproducible
+Any (significant) changes in the data assets may require to re-build and evaluate the quality of the AI solution
+
+AI can require a more diverse set of skills 
+workflow stages can be much longer
+AI applications often need to manage a huge number of artifact versions 
+Model artifacts also do not necessarily evolve in a linear fashion with incrementing version numbers many model variants may coexist
+AI apps require computationally intensive algorithms at training time
+
+** TODO Benefit
+** TODO Tool
+Watson Machine Learning
+AI pipelines can be very long running and their execution time varies greatly depending on pipeline complexity and the frameworks used
+WML lets users chose the learning frameworks for their pipeline
+
+Pluggability
+Lifecycle services must be easily pluggable and customizable. Consuming services like bias or robustness checks in the lifecycle still comes with a relatively high cost of custom integration, as reported by UC4/UC5. Additionally, some AI pipelines still require human in the loop such as continuous learning pipelines where a human needs to validate certain outcomes or re-label some sample data for re-training. Therefore, we need to support pipelines that are completely automated and others that still require a human in the loop interventions.
+
+Reusability
+To provide an easy on-ramo and to keep the configuration effort at a minimum, users should be able to use pre-configured templates and patterns for pipelines and lifecycle capabilities.
+
+Flexibility
+The system needs to meet developers and data scientists where they are, and integrate with the tools and services they already use and are comfortable with.
+
+Scalability
+The system needs to provide scalability across different dimensions - including model metadata versioning, parallel pipeline executions, event processing, and model performance monitoring.
+
+Hybrid Environments
+While there is a general move to the cloud, a significant number of AI systems use on-premise servers, dedicated clusters, edge devices, or a combination of these. Resource and security heterogeneity in such hybrid environments introduce a number of challenges.
+
+Fault Tolerance
+As ModelOps pipelines plug together a wide range of tools and infrastructure, many things can fail. For example, we found that 8% of all data preprocessing tasks in WML fail or finish with errors, and therefore would stall the subsequent training of a model. This is particularly problematic for automated pipelines of critical models.
+
+
+A. Model Training Pipelines
+We use the concept of pipelines to express the logic applied in complex automated model training workflows. Users express pipelines as a directed acyclic graph (DAG) where each node represents a task and each edge defines the control flow between tasks (including branch and join nodes). Typical tasks include data preprocessing, training and deployment, but also extend to more advanced techniques such as model hardening [12] and [7], compression [13], and bias mitigation [14]. To allow for cyclic functionality (e.g., model retraining loops), ModelOps introduces the concept of events and triggers (see next subsection).
+
+
+** TODO Use cases
+*** ModelOps has a special language designed to manage all the important parts of AI projects, like datasets, models, and apps. This language helps keep track of different versions of these parts and how they are connected, making it easier to recreate results and check past work. It allows teams to build customized workflows for developing AI solutions.
+**** Version-Controlled, Customizable AI Workflow Management in ModelOps
+*** pluggable design
+**** easily infusing quality control checks in the lifecycle of an AI application
+**** easily bootstrap AI pipelines that infuse security checks
+**** bias checks
+**** explainability
+**** compliance checks
+**** enforce quality controls
+Automate complex automated Quality Assurance
+ModelOps tracks metadata across the lifecycle
+Metadata management at the core of Model-Ops allows us to answer the Traceability questions raised by several use cases as described in the previous section
+Promote data, model, or application assets between environments or operational stages
+
+** TODO Approach
+Closed feedback loops between the deployed artifacts and the pipelines that generate them
+Bias detection algorithms are used to monitor bias of a deployed model, and may trigger the execution of a pipeline to harden that model
+Such rules can be formulated as event triggers
+ModelOps monitors the runtime performance of deployed models, as well as data store metrics
+Cross-Cloud Model Training Pipelines
+  even though the APIs for Amazon's AWS SageMaker1 and IBM's Watson Machine Learning2 (WML) platforms provide similar capabilities, the underlying programming model and API interfaces show some significant differences
+  Goal in ModelOps is to abstract from these subtle API differences, allowing the user to focus on the data science rather than having to deal with the low-level API calls and configuration management
+Mapping generic pipelines to cloud platform specific APIs
+
+Declarative Pipeline Configuration
+The static metadata can be specified in a YAML file (or via a graphical UI)
+The former are building blocks of common configuration patterns that can be instantiated by the user, whereas the latter are composable pieces of logic that enrich existing configurations with additional features
+*Pipline Templating* approach that allows users to easily bootstrap their configurations based on pluggable pipeline capabilities
+
+staged deployments
+CI/CD
+** TODO Metrics
+** TODO Responsible AI mentions
+** TODO How to implement Responsible AI
+** Notes
+*** Some challenges can be metrics as well

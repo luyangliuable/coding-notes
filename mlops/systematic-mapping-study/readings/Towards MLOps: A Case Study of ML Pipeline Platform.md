@@ -1,4 +1,4 @@
-# Towards MLOps: A Case Study of ML Pipeline Platform
+# Paper 10: Towards MLOps: A Case Study of ML Pipeline Platform
 
 ## Paper Title: Towards MLOps: A Case Study of ML Pipeline Platform
 
@@ -52,9 +52,8 @@ RQ3: Challenges in Operationalizing MLOps:
   * Model decay over time  such as due to changes in data distribution of the environment.
 * A lot of computational resources required
 * The monitoring and evaluation of a model may loop back to any previous step of development.
-* Massive datasets for model training and testing also bring unignorable challenges to data storage and management
+* Massive datasets for model training and testing also bring unignorable challenges to Data storage and management
 * Takes time
-
 
 RQ4: Integrating Responsible AI Principles into MLOps Pipelines:
 

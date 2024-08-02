@@ -4,12 +4,12 @@
 #+DESCRIPTION: Hoping you can assist, there is a pre-arb that has been unable to be processed in VANS (no claim ID appearing). I have processed this manually in CM but wanted to raise a ticket for you to create the pre-arb in VANS please. 
 #+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
 
-* TODO MLOps Challenges in Multi-Organization Setup
+* TODO Paper 13 MLOps Challenges in Multi-Organization Setup
 :LOGBOOK:
 CLOCK: [2023-09-06 Wed 15:45]--[2023-09-06 Wed 16:18] =>  0:33
 :END:
 ** Challenges
-*** limited hardware and software capabilities of far edge devices usually prevent adopting any of these MLOps tools and practices within the lowest layers of an IoT technology stack
+*** Limited hardware and software capabilities of far edge devices usually prevent adopting any of these MLOps tools and practices within the lowest layers of an IoT technology stack
 *** Loading in memory of the model for Iot devices may saturate the device memory or take a long time, even minutes
 *** missing ground truth for exploiting the locality of devices to better learn from the surrounding environment
 *** access to the monitored asset is difficult after deployment
@@ -23,9 +23,12 @@ CLOCK: [2023-09-06 Wed 15:45]--[2023-09-06 Wed 16:18] =>  0:33
 ** TODO Approach
 *** Tiny-MLOps
 *** Machine Learning Model Operationalization Management
-*** reduced resources available onboard typical IoT devices
+*** Reduced resources available onboard typical IoT devices
 *** Software engineer and operational engineering and data scientists focus on different phases of the MLops lifecycle.
 *** change some run-time parameters of the model (e.g. decision thresholds)
 *** Using an IoT gateway
 *** Sensors
 ** TODO Metrics
+
+
+Machine Learning Model Operationalization Management

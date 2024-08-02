@@ -1,0 +1,50 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Machine Learning application lifecycle augmented with explanation and security
+#+DESCRIPTION:
+
+* TODO Paper 20 Machine Learning application lifecycle augmented with explanation and security
+** Challenges
+ML systems engineer lacks knowledge in software security.
+DDoS attacks
+** TODO Benefit
+** TODO Tool
+** TODO Approach
+
+LIME
+explainer models from the training dataset
+Kernel SHAP 
+
+discarding useless features
+grid search
+feature engineering
+  training time can be reduced, and a better performance accuracy can be achieved using 
+  
+Models are trained using the pre-processed data. To generate a best performed trained model, model validation, hyper-parameter tuning, and ensemble mechanisms are performed multiple times.
+
+** TODO Metrics
+Explainability
+** TODO Responsible AI mentions
+Security
+Explanability
+risk analysis
+data integrity
+** TODO How to implement Responsible AI
+cross validation
+secure API
+static analysis
+penetration testing
+final security review
+incident response plan
+acquire data from authentic repository
+Interpretable Decision Support
+
+When human operators use IDSs to make decisions like attack detection, interpretability is almost as important as accuracy. Hence we use two interpretable machine learning techniques to build the explainer models and after comparing these two explainer models, the best performing model generates the appropriate explanation of the detected DDoS attacks which improves the trustworthiness of the decision-making process to the security experts
+* Notes
+Very vague paper
+
+This paper proposes a way to detect DDoS attacks using machine learning techniques and provides explanations for these detections, all within the context of a modified ML lifecycle that emphasizes security and explainability.
+
+The paper is proposing a complete security solution specifically focused on DDoS attack detection, as well as providing explanations for the detections. The paper employs a modified ML lifecycle that incorporates elements of security and explainability. It builds upon existing research to develop a framework for detecting DDoS attacks effectively while also generating explanations to make the detection process more trustworthy to human operators (likely security experts).
+
+

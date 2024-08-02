@@ -1,0 +1,67 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Towards Regulatory-Compliant MLOps: Oravizio’s Journey from a Machine Learning Experiment to a Deployed Certified Medical Product
+#+DESCRIPTION:
+
+* TODO MLOps Challenges in Multi-Organization Setup
+** Challenges
+Manually slicing the data is a very timeconsuming task
+ ML experts cannot explore all possible data subsets to
+identify relevant failures cases for their application
+
+Manual Slicing: The task is time-consuming and impractical to cover all possible combinations of data subsets. This is indeed an important issue in the industry.
+
+Expert Limitation: Even domain experts can't predict all possible problematic slices of data.
+** TODO Benefit
+** TODO Tool
+** TODO Approach
+automates slice finding
+A state-of-the-art slicefinding algorithm is adapted to find slices on the data for which a performance metric (for example, accuracy) is significantly different from the overall model metric. Once these slices are found, we use a binary matrix graphical encoding to show the data slices compactly, as well as metrics for these data slices (Figure 1).
+Workflow usually took several iterations
+Users often spend a significant amount of time slicing the data based on certain heuristics to learn the boundaries of the model
+
+Visualisation technique
+  Visualization to help users understand and interpret these data slices
+  Visual Analytics (VA) tool
+  
+Experts sliced their data based on product and domain requirements
+
+What-If Analysis: Your ‘Slice Prioritization - What-If Analysis’ tool allows for testing the impact of optimizing for particular data slices.
+
+
+
+** Use Cases
+* mitigate critical mistakes when predicting
+automatically identify these data slices in the validation dataset and present an overview to the user
+evolution of ML models from the perspective of data slices, allowing their evaluation, exploration and comparison
+
+
+
+Slice for model validation at large
+** TODO Metrics
+** TODO Responsible AI mentions
+** TODO How to implement Responsible AI
+
+
+** Notes
+Given the
+input, the system works as follows:
+1) First, the system uses an automatic slice finding algorithm to
+identify data slices where the performance measures (e.g., accuracy)
+are the most different from the overall model performance. We use the
+DivExplorer algorithm [44], a Frequent Pattern Mining-based approach
+for this task (Section 3.3).
+2) Next, a VA system allows the users to quickly visualize and summarize the produced data slices using the Slice Matrix View (where
+rows correspond to slices, and columns, to slice descriptions and associated metrics). The user can select slices to view its details using
+the Slice Distribution View, which can present metadata distributions
+and correlations to the user. These two views allow the user to identify
+critical slices in the data, i.e. slices where the model performance has
+issues (Section 3.4).
+3) When a critical slice is found, the user can test mitigating measures
+using the ‘Slice Prioritization - What-If Analysis’ tool. This tool uses
+our SliceBoosting algorithm to evaluate the effect of optimizing the
+model for particular data slices. SliceBoosting fits a shallow boosting
+model on top of the original model to estimate the effect of prioritized
+optimization (Section 3.5).
+4) Finally, when the user found a group of slices to optimize, they
+can export the selected slices back to their programming environment,

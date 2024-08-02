@@ -1,0 +1,23 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Benchmarking Machine Learning Solutions in Production
+#+DESCRIPTION: 
+
+* TODO Benchmarking Machine Learning Solutions in Production
+:LOGBOOK:
+CLOCK: [2023-09-19 Tue 20:14]--[2023-09-19 Tue 20:17] =>  0:03
+:END:
+** Challenges
+*** resource limitations
+**** lack of memory
+**** long training time
+**** low-latency serving requirements
+requires support for parallel execution
+** Benefit
+** Tool
+** Approach
+*** fullymanaged cloud-based platform
+** Metrics
+** Responsible MLops Mentions
+** Responsible MLops Approaches
+

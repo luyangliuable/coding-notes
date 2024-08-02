@@ -1,0 +1,37 @@
+#-*- mode: org -+-
+#+COLUMNS: %Date(Date) %10TODO %7Clocksum(Clock) %12ITEM %8Effort(Effort){:} %5TAGS %SCHEDULED
+#+TITLE: Towards Regulatory-Compliant MLOps: Oravizio’s Journey from a Machine Learning Experiment to a Deployed Certified Medical Product
+#+DESCRIPTION:
+
+* TODO MLOps Challenges in Multi-Organization Setup
+** Challenges
+Data Privacy and Governance: Ensuring compliance with regulations across different organizations.
+Model Versioning: Keeping track of multiple model versions being used across organizations.
+Resource Allocation: Managing computational resources for training and deployment in a way that is efficient but fair across organizations.
+Workflow Standardization: Maintaining a standard workflow for ML model development, training, and deployment across multiple organizational setups.
+** TODO Benefit
+Efficiency: Centralizing MLOps could lead to more efficient use of resources.
+Collaboration: Easier to share best practices and tools across organizations.
+Consistency: Consistent approaches to AI governance and ethical considerations.
+** TODO Tool
+Kubeflow: For orchestrating ML workflows.
+Azure ML: Offers enterprise-level services for ML, including governance tools.
+AWS SageMaker: Provides a fully-managed service that covers the entire machine learning workflow.
+** TODO Approach
+Standardized CI/CD Pipelines: Ensure that all organizations adopt a similar CI/CD pipeline structure for model development, testing, and deployment.
+Governance Audits: Regular checks to ensure compliance with AI governance and ethical norms.
+** TODO Metrics
+Model Performance Metrics: Like accuracy, precision, recall, etc.
+Compliance Metrics: Measuring adherence to regulations and organizational policies.
+Resource Utilization Metrics: To monitor and manage computational costs.
+** TODO Responsible AI mentions
+Responsible AI mentions
+Ethical Guidelines: Establish ethical guidelines for model development and deployment.
+Transparency and Accountability: Include features for model explainability and auditing.
+Social Impact Assessment: Assess the social impact of deploying the AI models, including considerations like fairness and equity.
+** TODO How to implement Responsible AI
+Ethical Framework: Develop a framework that embeds ethical considerations into the model lifecycle.
+Expert Reviews: Involve ethicists or experts in the domain to review the models.
+User Consent: Ensure that data used has been ethically sourced and that end-users have given informed consent.
+Monitoring and Auditing: Regularly audit AI systems for compliance with ethical guidelines and make adjustments as necessary.
+
