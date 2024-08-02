@@ -13,3 +13,25 @@ def selection_sort(arr: list) -> list:
     return res
 
 print(selection_sort([1,2,23,2,3,1,2,3,4,5,7,8,8]))
+
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        
+        carry = 0
+
+        d = ListNode()
+
+        while l1.next and l2.next:
+
+
