@@ -1,16 +1,21 @@
-class Solution(object):
-    def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        r = 0
+from typing import List
 
-        for n in nums:
-            r ^= n
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        res = 0
 
-        return r
+        for num in nums:
+            res = (res & ~num) | (~res & num)
 
-if __name__ == "__main__":
+        return res
+
+    def xor(self, res, num1, num2) -> int:
+        b = (res & ~num1) | (~res & num2)
+        b = (b & ~num1) | (~b & num2)
+
+        return b
+
+if __name__ == '__main__':
     a = Solution()
-    print(a.singleNumber([1]))
+    print(a.xor(0, 7, 8))
+
