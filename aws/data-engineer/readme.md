@@ -53,15 +53,14 @@ Combines elements of datalakes and data warehouses to provide a unified data pla
 
 ## Data storage difference
 
-| Feature   | Data Warehouse | Data Lake | Data LakeHouse |
-|:----------|:---------------|:----------|:---------------|
-| Data Type |                |           |                |
-| Schema    |                |           |                |
-| Purpose   |                |           |                |
-|           |                |           |                |
-|           |                |           |                |
-|           |                |           |                |
-|           |                |           |                |
+| Feature         | Data Warehouse                       | Data Lake                                      | Data LakeHouse                                     |
+|:----------------|:-------------------------------------|:-----------------------------------------------|:---------------------------------------------------|
+| Data Type       | Structured                           | Structured, Semi-Structured, Unstructured      | Structured, semi-structured, unstructured          |
+| Schema          | Schema-on-write                      | Schema-on-read                                 | Schema-on-read and schema-on-write                 |
+| Purpose         | BI and Reporting                     | Data Science and Big Data Analytics            | BI, Reporting and Advanced Analytics               |
+| Performance     | High for structured queries          | Varies but not optimised for queries           | High for both structured and unstructured queries  |
+| Cost            | Higher due to processing and storage | Lower per GB but can increase with data growth | Moderate, balancing both data lakes and warehouses |
+| Data Governance | Strong                               | Less defined                                   | Combines strength of both                          |
 
 ## ETL
 
