@@ -169,3 +169,29 @@ What kind of motions do i go through for aggregation of data linear?
 |:-----------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
 | To ensure that data is accurate consistentm and meets predefined criteria or rules | To analyse and understand the characteristics, structure, and quality of data within a dataset. |
 
+
+## AWS Glue
+
+![](../images/aws-glue.png) 
+
+* Fully managed ETL Service by AWS
+  * No servers or infra for u as a user to provision.
+* A Spark ETL Engine
+* Consists of a central metadata repo known as **glue data catalogue**
+* Flexible scheduler
+
+### Data Catalogue
+* A store of metedata that's required for aws to operate.
+  * Tables
+  * Connections
+  * Actual databases
+
+### ETL Script
+* The glue job that takes data from data source and put it to a data target.
+
+### Why?
+* AWS glue offers a fully managed serverless ETL tool.
+* This removes the overhead and barriers to entry, when there is a requirement for a ETL service in AWS.
+* Perform ETL on data from any other aws services (s3 or even on-prem) to other aws services, database, repositories or even back to on0prem.
+
+### Setup work
