@@ -129,5 +129,43 @@ Data modeling is the process of designing a structured representation of data to
   
   
 ## Data Lineage
+![](../images/data-lineage.png)
+
 * Involves tracking the flow of data through an organisation's systems and processes.
+* AWS is starting to use an open source library called "deque" that can be integrated into aws glue, can track the lineages for you into glue.
+* Callibra - enterprise solution for tracking, data governance, data discoverability and data lineage.
+
+What is the best path to track data lineage?
+What kind of motions do i go through for aggregation of data linear?
+
+## Schema Evolution
+* Process of managing changes to the schema of a db or data structure over time.
+
+![](../images/data-evolution.png)
+
+## Data Sampling
+* A statistical technique used to select a subset of data from a larger dataset.
+* Population and sample - full or slice of dataset?
+* Sampling frame - what do we actually have in the dataset/population
+* Sampling error - reduced accuract resutls
+* Sample size
+
+
+## Data Skewness
+* Refers to the asymmetry in the distrubution of data values around the mean.
+
+![](../images/data-skewness.png) 
+
+* Position skew is when asymptote is towards the right.
+* Negative skew is when asymptote is towards the legt.
+
+
+### Solution to Skewness
+* Bring the mean values closer to the median value
+
+## Data validating and profiling
+
+| Data validation                                                                    | Data Profiling                                                                                  |
+|:-----------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
+| To ensure that data is accurate consistentm and meets predefined criteria or rules | To analyse and understand the characteristics, structure, and quality of data within a dataset. |
 
