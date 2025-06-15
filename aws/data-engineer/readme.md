@@ -14,6 +14,23 @@
     - [Orchestration](#orchestration)
         - [Examples](#examples-1)
     - [Common data formats](#common-data-formats)
+    - [Common data sources](#common-data-sources)
+    - [Data Modeling](#data-modeling)
+        - [When should i use a new sql model? What service should i use?](#when-should-i-use-a-new-sql-model-what-service-should-i-use)
+    - [Data Lineage](#data-lineage)
+    - [Schema Evolution](#schema-evolution)
+    - [Data Sampling](#data-sampling)
+    - [Data Skewness](#data-skewness)
+        - [Types of Skewness](#types-of-skewness)
+        - [Addressing Skewness](#addressing-skewness)
+            - [Solutions for Skewed Data:](#solutions-for-skewed-data)
+        - [Solution to Skewness](#solution-to-skewness)
+    - [Data validating and profiling](#data-validating-and-profiling)
+    - [AWS Glue](#aws-glue)
+        - [Data Catalogue](#data-catalogue)
+        - [ETL Script](#etl-script)
+        - [Why?](#why)
+        - [Setup work](#setup-work)
 
 <!-- markdown-toc end -->
 
@@ -54,7 +71,7 @@ Combines elements of datalakes and data warehouses to provide a unified data pla
 * Federalised to decision for the product for each team.
 * People can request access, DIAP can grate access.
 
-![](../images/data-mesh.png) 
+![](../images/data-mesh.png)
 
 ### What does it solve?
 
@@ -69,7 +86,7 @@ Combines elements of datalakes and data warehouses to provide a unified data pla
   * If business definition changes, it takes ages massived bottle on data team because they don't know the data.
 * Reduced accuracy
 
-![](../images/before-data-mesh.png) 
+![](../images/before-data-mesh.png)
 
 #### Data mesh principles
 * Domain-Owned Data
@@ -106,7 +123,7 @@ Combines elements of datalakes and data warehouses to provide a unified data pla
   * Data Warehouse
   * Data Lakes
   * Flat files (e.g. csv files)
-  
+
 ## Data Modeling
 
 Data modeling is the process of designing a structured representation of data to define how information is stored, organized, and managed within a system. It typically involves three key layers:
@@ -120,14 +137,14 @@ Data modeling is the process of designing a structured representation of data to
 * **Physical Data Model**
   Database-specific implementation with tables, columns, indexes, and optimizations.
   * Commonly uses *Kimball methodology* for dimensional modeling in data warehousing.
-  
+
 ### When should i use a new sql model? What service should i use?
 * I have a key-value pairs and i'm building a website.
   * A: Amazon dynamodb
 * I have relational, transactional data.
   * A: RDS postgres, RDS mysql, even go to aurora
-  
-  
+
+
 ## Data Lineage
 ![](../images/data-lineage.png)
 
@@ -152,12 +169,52 @@ What kind of motions do i go through for aggregation of data linear?
 
 
 ## Data Skewness
-* Refers to the asymmetry in the distrubution of data values around the mean.
 
-![](../images/data-skewness.png) 
+Data skewness refers to the degree of asymmetry in the probability distribution of a dataset around its mean. It indicates whether data points are concentrated more on one side of the distribution than the other.
 
-* Position skew is when asymptote is towards the right.
-* Negative skew is when asymptote is towards the legt.
+![Illustration of Data Skewness](../images/data-skewness.png)
+
+### Types of Skewness
+
+* **Positive Skew (Right-Skewed)**
+  - The right tail is longer or fatter
+  - Mean > Median > Mode
+  - Asymptote  points towards the right
+  - Common in scenarios like income distribution
+
+* **Negative Skew (Left-Skewed)**
+  - The left tail is longer or fatter
+  - Mean < Median < Mode
+  - Asymptote points towards the left
+  - Seen in data like age at retirement
+
+* **Zero Skew (Symmetrical)**
+  - Perfectly balanced distribution
+  - Mean = Median = Mode
+  - Both sides of the distribution are mirror images
+
+### Addressing Skewness
+
+#### Solutions for Skewed Data:
+* **Data Transformation**
+  - Apply logarithmic transformation (log(x))
+  - Use square root transformation (√x)
+  - Try Box-Cox transformation for optimal results
+
+* **Statistical Techniques**
+  - Winsorization (capping extreme values)
+  - Adding constants to adjust distribution
+  - Using non-parametric statistical methods
+
+* **Algorithm Selection**
+  - Choose models robust to skewness (e.g., tree-based models)
+  - Consider normalization/standardization techniques
+  - Implement weighted approaches for imbalanced data
+
+* **Business Understanding**
+  - Determine if skewness represents true underlying pattern
+  - Assess whether transformation is appropriate for the use case
+  - Consider separate modeling for different distribution segments
 
 
 ### Solution to Skewness
@@ -172,7 +229,7 @@ What kind of motions do i go through for aggregation of data linear?
 
 ## AWS Glue
 
-![](../images/aws-glue.png) 
+![](../images/aws-glue.png)
 
 * Fully managed ETL Service by AWS
   * No servers or infra for u as a user to provision.
