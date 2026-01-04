@@ -27,10 +27,19 @@
         - [Solution to Skewness](#solution-to-skewness)
     - [Data validating and profiling](#data-validating-and-profiling)
     - [AWS Glue](#aws-glue)
+        - [AWS Glue Data Brew](#aws-glue-data-brew)
+        - [Glue Bookmarks](#glue-bookmarks)
+        - [Data Processing Units (DPUs)](#data-processing-units-dpus)
         - [Data Catalogue](#data-catalogue)
         - [ETL Script](#etl-script)
         - [Why?](#why)
-        - [Setup work](#setup-work)
+        - [Setup work - AWS Glue](#setup-work---aws-glue)
+        - [Load Datasets - AWS Glue](#load-datasets---aws-glue)
+    - [Amazon Athena](#amazon-athena)
+    - [Amazon Redshift](#amazon-redshift)
+        - [Scalability](#scalability)
+        - [Row Distribution Styles](#row-distribution-styles)
+    - [Amazon EMR](#amazon-emr)
 
 <!-- markdown-toc end -->
 
@@ -236,6 +245,20 @@ Data skewness refers to the degree of asymmetry in the probability distribution 
 * Consists of a central metadata repo known as **glue data catalogue**
 * Flexible scheduler
 
+### AWS Glue Data Brew
+* Visual data preparation tool
+* Aimed towards data scientists
+* Prebuilt transformations
+* No Code
+
+### Glue Bookmarks
+Glue Bookmarks tracks data that has already been processed during a previous run of an ETL job by persisting state information from the job run.
+* This persisted state information is called a job bookmark.
+
+### Data Processing Units (DPUs)
+A single standard DPU provides 4 vCPU and 16 GB of memory whereas a high-memory DPU (M-DPU) provides 4 vCPU and 32 GB of memory.
+
+
 ### Data Catalogue
 * A store of metedata that's required for aws to operate.
   * Tables
@@ -250,4 +273,140 @@ Data skewness refers to the degree of asymmetry in the probability distribution 
 * This removes the overhead and barriers to entry, when there is a requirement for a ETL service in AWS.
 * Perform ETL on data from any other aws services (s3 or even on-prem) to other aws services, database, repositories or even back to on0prem.
 
-### Setup work
+### Setup work - AWS Glue
+
+1. Log into aws console
+2. Navigate to cloud formation
+3. Create stack
+  * Upload a template file
+
+```yaml
+Description:  This template deploys an AWS Glue Execution Role. 
+
+Parameters:
+  DataEngineeringS3Arn: 
+    Description: Enter the ARN of the S3 bucket which was created during when the setup code was executed. 
+    Type: String  
+
+Resources:
+  GlueIAMRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: GlueDataEngineeringCertRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - glue.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: DataEngineeringCertGlueServicePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - glue:*
+                  - lakeformation:*
+                  - s3:GetBucketLocation
+                  - s3:ListBucket
+                  - s3:ListAllMyBuckets
+                  - s3:GetBucketAcl
+                  - ec2:DescribeVpcEndpoints
+                  - ec2:DescribeRouteTables
+                  - ec2:CreateNetworkInterface
+                  - ec2:DeleteNetworkInterface
+                  - ec2:DescribeNetworkInterfaces
+                  - ec2:DescribeSecurityGroups
+                  - ec2:DescribeSubnets
+                  - ec2:DescribeVpcAttribute
+                  - iam:ListRolePolicies
+                  - iam:GetRole
+                  - iam:GetRolePolicy
+                  - cloudwatch:PutMetricData
+                Resource: "*"
+              - Effect: Allow
+                Action: 
+                  - s3:GetObject
+                  - s3:PutObject
+                  - s3:DeleteObject
+                Resource: 
+                  - arn:aws:s3:::aws-glue-*/*
+                  - arn:aws:s3:::*/*aws-glue-*/*
+                  - Ref: DataEngineeringS3Arn
+                  - !Join 
+                    - ''
+                    - - Ref: DataEngineeringS3Arn
+                      - /*
+              - Effect: Allow
+                Action: 
+                  - s3:GetObject
+                Resource: 
+                  - arn:aws:s3:::crawler-public*
+                  - arn:aws:s3:::aws-glue-*
+              - Effect: Allow 
+                Action: 
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: arn:aws:logs:*:*:*:/aws-glue/*
+              - Effect: Allow
+                Action: 
+                  - ec2:CreateTags
+                  - ec2:DeleteTags
+                Resource: 
+                  - arn:aws:ec2:*:*:network-interface/*
+                  - arn:aws:ec2:*:*:security-group/*
+                  - arn:aws:ec2:*:*:instance/*
+                Condition: 
+                  ForAllValues:StringEquals:
+                    aws:TagKeys:
+                    - aws-glue-service-resource
+```
+
+4. Give stack details
+  * Name
+  * s3 arn - needed for policy, can be found in the data engineering s3 buckets inside **properties**.
+  
+5. Submit - it should take 30 seconds
+
+### Load Datasets - AWS Glue
+1. Go to aws s3 
+2. Go to ur bucket
+3. Go to ur raw data folder
+4. Upload -> add folders (NOTE: must include folder and file)
+
+## Amazon Athena
+* Athena is a serverless analytical service.
+* Athena uses presto/trino/spark
+* Athena uses sql syntax.
+
+## Amazon Redshift
+
+### Scalability
+* Elastic resizing - a few minutes downtime
+* Classic resizinng - hours/days downtime
+* Snapshot and restore - near zero downtime
+
+### Row Distribution Styles
+* Even distribution
+  * All the rows are even distrbuted in a round robin fashion
+  
+* Key distribution
+
+## Amazon EMR
+EMR is a managed cluster platform that simplifies running big data frameworks such as Apache Hadoop and Apache Spark as well as Presto, Trino, Flink, HBase and more.
+
+* EMR also integrates with several other AWS services simplifying big data processing such as the AWS Glue Data Catalog which can act as your metastore.
+* EMR architecture consists of a cluster which can be made up of three types of nodes.
+* Although only a master node is required for EMR.
+* Core nodes and Task nodes are optional.
+  * A one node cluster consisting solely of a master node is possible.
+
+### Nodes
+* Master node: A node that manages the cluster by running software components to coordinate the distribution of data and tasks among other nodes 
+* Core node: A node with software components that run tasks and store data in the Hadoop Distributed File System (HDFS) on your cluster. Multi-node clusters have at least one core node.
+* Task node: A node with software components that only runs tasks and does not store data in HDFS. Task nodes are optional.
