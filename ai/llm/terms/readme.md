@@ -1,4 +1,3 @@
-
 # The Ultimate Local LLM Naming Convention Guide
 
 When downloading cutting-edge local LLMs from Hugging Face, model names often look like a chaotic string of buzzwords. This guide breaks down those complex names into logical categories, explaining exactly what each component means and what it aims to improve (Speed, Accuracy, Memory Footprint, or Specialised Capabilities).
@@ -9,7 +8,8 @@ When downloading cutting-edge local LLMs from Hugging Face, model names often lo
 
 Every advanced LLM name typically follows a structured pipeline from left to right:
 
-Use code with caution.[Creator] / [Base Model & Size] - [Architecture/Fine-Tuning] - [Optimizations & Quantization] - [File Format]
+[Creator] / [Base Model & Size] - [Architecture/Fine-Tuning] - [Optimizations & Quantization] - [File Format]
+
 ### Reference Models Decoded:
 1. `majentik/Qwen3.6-35B-A3B-TurboQuant-MLX-4bit`
 2. `yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF`
